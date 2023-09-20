@@ -1,0 +1,30 @@
+project:
+  type: website
+
+website:
+  title: "5000 Project"
+  sidebar:
+    contents: 
+      - href: introduction.qmd
+        text: Introduction
+      - about.qmd
+      - ARM.qmd
+      - Classfication.qmd
+      - Cleaning.qmd
+      - Clustering.qmd
+      - Code.qmd
+      - Conclusions.qmd
+      - Data.qmd
+      - Dimensionality reduction.qmd
+      - Exploration.qmd
+      - gathering.qmd
+      - Regression.qmd
+
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+
+
+

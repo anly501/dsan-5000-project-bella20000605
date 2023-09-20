@@ -2,11 +2,10 @@ project:
   type: website
 
 website:
-  title: "5000 Project"
+  title: "5000  Project"
   sidebar:
     contents: 
-      - href: introduction.qmd
-        text: Introduction
+      - introduction.qmd
       - about.qmd
       - ARM.qmd
       - Classfication.qmd

@@ -1,5 +1,5 @@
 ---
-title: "Population Health Management"
+title: "Public Health Management"
 bibliography: reference.bib
 ---
 

@@ -1,0 +1,58 @@
+---
+title: "Mental Health Disorder"
+bibliography: reference.bib
+---
+
+# Significance
+
+mental health disorders have a profound impact on individuals, families, communities, and societies. Addressing these disorders is not only a matter of public health but also a moral and ethical imperative to reduce suffering and improve the overall well-being of populations.
+
+1.  **Human Suffering**: Mental health disorders can cause immense suffering for individuals and their families. They can lead to reduced quality of life, disability, and, in some cases, loss of life through suicide.
+
+2.  **Improved Health Outcomes**: Effective population health management can lead to improved health outcomes for individuals and communities. It can help reduce mortality rates, lower the incidence of chronic diseases, and enhance overall quality of life.
+
+3.  **Economic Impact**: These disorders also have a significant economic impact due to medical costs, lost productivity, and reduced quality of life. They can lead to increased healthcare spending and lower workplace productivity.
+
+4.  **Stigma and Discrimination**:Mental health disorders are often associated with stigma and discrimination. This can prevent people from seeking help and contribute to their suffering in silence.
+
+5.  **Comorbidityt**: Mental health disorders often co-occur with other health conditions. For example, people with depression may also have chronic physical conditions, making their overall health worse.
+
+6.  **Lifestyle Factors**:Mental health disorders can contribute to unhealthy lifestyle choices, such as poor diet, lack of physical activity, and substance abuse, which can increase the risk of other health issues.
+
+7.  **Impact on Families**: Mental health disorders don't just affect the individual but also their families and caregivers. This can lead to strain on relationships and increased caregiving responsibilities.
+
+8.  **Preventable and Treatable**: Many mental health disorders are preventable and treatable. Early intervention and effective treatments, including therapy and medication, can improve symptoms and help people lead fulfilling lives.
+
+9.  **Research and Innovation**:The study of mental health has led to advancements in neuroscience, psychology, and psychiatry. Research in this field not only benefits those with mental health disorders but also contributes to our understanding of the human brain and behavior.
+
+10. **Legislation and Advocacy**: The significance of mental health has led to legislative changes and advocacy efforts. Laws and policies are evolving to provide better support and resources for individuals with mental health issues.
+
+In summary, population health management is important because it shifts the healthcare paradigm from a reactive, illness-centered approach to a proactive, wellness-focused one. It aims to improve health outcomes, reduce healthcare costs, promote health equity, and enhance the overall health and well-being of populations, making it a critical component of modern healthcare systems.
+
+# Questions
+
+1.What are the different types of mental health disorders?
+
+2.What is the prevalence of mental illnesses in the United States from 1990 to 2017?
+
+3.How do socioeconomic factors like income, GDP, average outcomes, and employment status correlate with rates of depression?
+
+4.How do socioeconomic factors like income, GDP, average outcomes, and employment status correlate with rates of anxiety?
+
+5.How do socioeconomic factors like income, GDP, average outcomes, and employment status correlate with the occurrence of eating disorders?
+
+6.How do socioeconomic factors like income, GDP, average outcomes, and employment status correlate with the occurrence of bipolar disorder?
+
+7.How do socioeconomic factors like income, GDP, average outcomes, and employment status correlate with the prevalence of schizophrenia?
+
+8.How do socioeconomic factors like income, GDP, average outcomes, and employment status correlate with the occurrence of bipolar disorder?
+
+9.Do people feel comfortable discussing anxiety and depression with someone they know, based on their continent of residence (Africa, Asia, Europe)?
+
+10.Does one's comfort in discussing anxiety and depression with someone they know correlate with their level of education?
+
+11.Is there a relationship between the occurrence of eating disorders and a country's income level (high-income, lower-middle-income, upper-middle-income)?
+
+# Publication
+
+[@MERCHANT2016455] [@JHAMB2023107269]

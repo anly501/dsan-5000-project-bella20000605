@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>5000 Project - Gathering</title>
+<title>Bella Shi’s Website - Data Gathering</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -72,9 +106,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
-      5000 Project
-      </li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Gathering.html">Data Gathering</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -89,7 +121,7 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">5000 Project</a> 
+      <a href="./">Bella Shi’s Website</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -101,14 +133,14 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./introduction.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Public Health Management</span></a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./about.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">About</span></a>
+  <a href="https://bella.georgetown.domains/about/" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About me</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -126,7 +158,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Cleaning.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Cleaning</span></a>
+ <span class="menu-text">Data Cleaning</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -167,6 +199,12 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./Gathering.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Data Gathering</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./Regression.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Regresssion</span></a>
   </div>
@@ -177,14 +215,36 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#download-data" id="toc-download-data" class="nav-link active" data-scroll-target="#download-data">Download Data</a>
+  <ul class="collapse">
+  <li><a href="#mental-health-data" id="toc-mental-health-data" class="nav-link" data-scroll-target="#mental-health-data">Mental Health Data</a></li>
+  <li><a href="#discription" id="toc-discription" class="nav-link" data-scroll-target="#discription">Discription</a></li>
+  <li><a href="#eating-disorder-data" id="toc-eating-disorder-data" class="nav-link" data-scroll-target="#eating-disorder-data">Eating Disorder Data</a></li>
+  <li><a href="#description" id="toc-description" class="nav-link" data-scroll-target="#description">Description</a></li>
+  <li><a href="#discomfort-speaking-to-others-data" id="toc-discomfort-speaking-to-others-data" class="nav-link" data-scroll-target="#discomfort-speaking-to-others-data">Discomfort Speaking to others Data</a></li>
+  <li><a href="#discription-1" id="toc-discription-1" class="nav-link" data-scroll-target="#discription-1">Discription</a></li>
+  <li><a href="#countries-in-continent-data" id="toc-countries-in-continent-data" class="nav-link" data-scroll-target="#countries-in-continent-data">Countries in Continent Data</a></li>
+  <li><a href="#discription-2" id="toc-discription-2" class="nav-link" data-scroll-target="#discription-2">Discription</a></li>
+  </ul></li>
+  <li><a href="#api" id="toc-api" class="nav-link" data-scroll-target="#api">API</a>
+  <ul class="collapse">
+  <li><a href="#description-1" id="toc-description-1" class="nav-link" data-scroll-target="#description-1">Description</a></li>
+  <li><a href="#python-api-code" id="toc-python-api-code" class="nav-link" data-scroll-target="#python-api-code">Python Api Code</a></li>
+  <li><a href="#r-api-code" id="toc-r-api-code" class="nav-link" data-scroll-target="#r-api-code">R Api Code</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Gathering</h1>
+<h1 class="title">Data Gathering</h1>
 </div>
 
 
@@ -199,8 +259,157 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<section id="download-data" class="level2">
+<h2 class="anchored" data-anchor-id="download-data">Download Data</h2>
+<section id="mental-health-data" class="level3">
+<h3 class="anchored" data-anchor-id="mental-health-data">Mental Health Data</h3>
+</section>
+<section id="discription" class="level3">
+<h3 class="anchored" data-anchor-id="discription">Discription</h3>
+<p>Mental health Depression disorder Data. What are mental health disorder types?<br>
+How many people suffer these disorder types?<br>
+How many people in your country have depression?<br>
+Is depression is higher in men or women?<br>
+Does depression leads to suicide? What percentage?<br>
+Which age group has more depression?</p>
+<p><a href="https://data.world/vizzup/mental-health-depression-disorder-data">download link</a></p>
+<p><img src="images/mental-2.png" class="img-fluid" width="993"></p>
+</section>
+<section id="eating-disorder-data" class="level3" style="white">
+<h3 style="white" class="anchored" data-anchor-id="eating-disorder-data">Eating Disorder Data</h3>
+</section>
+<section id="description" class="level3">
+<h3 class="anchored" data-anchor-id="description">Description</h3>
+<p>Share of population with eating disorders. This is estimated as the total number of cases with eating disorders relative to the population of a country.<br>
+This indicator only includes anorexia nervosa and bulimia nervosa (i.e.&nbsp;it does not include binge eating disorder and other specified feeding or eating disorder (OSFED)).</p>
+<p><a href="https://ourworldindata.org/grapher/eating-disorders-prevalence-males-vs-females">download link</a></p>
+<p><img src="images/Screenshot 2023-10-12 at 1.14.57 AM-2.png" class="img-fluid"></p>
+</section>
+<section id="discomfort-speaking-to-others-data" class="level3">
+<h3 class="anchored" data-anchor-id="discomfort-speaking-to-others-data">Discomfort Speaking to others Data</h3>
+</section>
+<section id="discription-1" class="level3">
+<h3 class="anchored" data-anchor-id="discription-1">Discription</h3>
+<p>Respondents were asked how comfortable a local person would feel speaking about anxiety or depression with someone they know. This shows the share that gave each response.</p>
+<p><br> <a href="https://datacatalog.worldbank.org/search/dataset/0037712/World-Development-Indicators">download link</a></p>
+<p><img src="images/Screenshot 2023-10-12 at 1.36.05 AM.png" class="img-fluid"></p>
+</section>
+<section id="countries-in-continent-data" class="level3">
+<h3 class="anchored" data-anchor-id="countries-in-continent-data">Countries in Continent Data</h3>
+</section>
+<section id="discription-2" class="level3">
+<h3 class="anchored" data-anchor-id="discription-2">Discription</h3>
+<p>The relationship between countries and their continents.<br> <a href="https://ourworldindata.org/grapher/perceived-comfort-speaking-anxiety-depression">download link</a></p>
+<p><img src="images/Screenshot 2023-10-12 at 1.36.54 AM.png" class="img-fluid" width="499"></p>
+</section>
+</section>
+<section id="api" class="level2">
+<h2 class="anchored" data-anchor-id="api">API</h2>
+<section id="description-1" class="level3">
+<h3 class="anchored" data-anchor-id="description-1">Description</h3>
+<p>The World Development Indicators (WDI) is the primary World Bank collection of development indicators, compiled from officially-recognized international sources. It presents the most current and accurate global development data available, and includes national, regional and global estimates.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Label</th>
+<th style="text-align: left;">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Fiscal Yeay</td>
+<td style="text-align: left;">FY21</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Publication Date</td>
+<td style="text-align: left;">(July 2020)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Low Income Threshold</td>
+<td style="text-align: left;">$1,035 or less</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Lower Middle Income Range</td>
+<td style="text-align: left;">$1,036 to $4,045</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Upper Middle Income Range</td>
+<td style="text-align: left;">$4,046 to $12,535</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">High Income Threshold</td>
+<td style="text-align: left;">$12,536 or more</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Number of economies</td>
+<td style="text-align: left;">189</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">GNI Year</td>
+<td style="text-align: left;">2019</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Term of Income Classification</td>
+<td style="text-align: left;">until 1 July 2021</td>
+</tr>
+</tbody>
+</table>
+<p><a href="https://ourworldindata.org/grapher/perceived-comfort-speaking-anxiety-depression">API link</a></p>
+</section>
+<section id="python-api-code" class="level3">
+<h3 class="anchored" data-anchor-id="python-api-code">Python Api Code</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> csv</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the API endpoint URL</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://datacatalogapi.worldbank.org/ddhxext/ResourceFileData?resource_unique_id=DR0090755&amp;version_id=2023-09-27T16:44:25.8023254Z"</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Make the GET request</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(url)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the response status</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> response.status_code <span class="op">==</span> <span class="dv">200</span>:</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> response.json()  <span class="co"># If the response contains JSON data, it can be accessed using the .json() method</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Failed to retrieve data. Status code:"</span>, response.status_code)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract column names from the "MetaData" section</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>columns <span class="op">=</span> [item[<span class="st">'ColumnName'</span>] <span class="cf">for</span> item <span class="kw">in</span> data[<span class="st">"MetaData"</span>]]</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract data from the "Details" section</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>details <span class="op">=</span> data[<span class="st">"Details"</span>]</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>rows <span class="op">=</span> []</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> chunk <span class="kw">in</span> details:</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    row<span class="op">=</span>[]</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> key,value <span class="kw">in</span> chunk.items():</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Check if the value is None and replace it with an empty string if needed</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>        value <span class="op">=</span> value <span class="cf">if</span> value <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span> <span class="cf">else</span> <span class="st">''</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>        row.append(value)</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    rows.append(row)</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Write data to a CSV file</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">'./Part2/Code/api_python.csv'</span>, <span class="st">'w'</span>, newline<span class="op">=</span><span class="st">''</span>) <span class="im">as</span> csvfile:</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>    csv_writer <span class="op">=</span> csv.writer(csvfile)</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Write the header row</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>    csv_writer.writerow(columns)</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Write the data rows</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>    csv_writer.writerows(rows)</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"CSV file 'api_python.csv' has been created."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="r-api-code" class="level3">
+<h3 class="anchored" data-anchor-id="r-api-code">R Api Code</h3>
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>library(httr)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>library(jsonlite)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>url <span class="op">&lt;-</span> <span class="st">"https://datacatalogapi.worldbank.org/ddhxext/ResourceFileData?resource_unique_id=DR0090755&amp;version_id=2023-09-27T16:44:25.8023254Z"</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Make the GET request</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>response <span class="op">&lt;-</span> GET(url)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>response.text <span class="op">&lt;-</span> content(response, <span class="st">"text"</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>data <span class="op">&lt;-</span> fromJSON(response.text)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>details <span class="op">&lt;-</span> data$Details</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co"># To write this data to a CSV file</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>write.csv(details, <span class="bu">file</span> <span class="op">=</span> <span class="st">'./api_r.csv'</span>, row.names <span class="op">=</span> FALSE)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

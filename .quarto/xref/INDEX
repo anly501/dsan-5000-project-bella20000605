@@ -40,5 +40,14 @@
   },
   "Data.qmd": {
     "Data.html": "4b87c2a5"
+  },
+  "About.qmd": {
+    "About.html": "ccab73ec"
+  },
+  "Gathering.ipynb": {
+    "Gathering.html": "8fefd1a3"
+  },
+  "Cleaning.ipynb": {
+    "Cleaning.html": "14173e77"
   }
 }

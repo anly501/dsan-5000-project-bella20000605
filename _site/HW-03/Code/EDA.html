@@ -1,0 +1,1924 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Bella Shi’s Website - Data Understanding</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
+      Bella Shi's Website
+      </li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../../">Bella Shi’s Website</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://bella.georgetown.domains/about/" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About me</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Code.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Code</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Gathering.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Gathering</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Cleaning.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Cleaning</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Exploration.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exploration</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Naive Bayes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Naive Bayes</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Clustering.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Clustering</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Classfication.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Classification</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Dimensionality reduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Dimensionality reduction</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Regression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Regresssion</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ARM.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ARM</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Conclusions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Conclusions</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#descriptive-statistics-data-visualization-corralation-analysis-data-grouping-and-segmentation" id="toc-descriptive-statistics-data-visualization-corralation-analysis-data-grouping-and-segmentation" class="nav-link active" data-scroll-target="#descriptive-statistics-data-visualization-corralation-analysis-data-grouping-and-segmentation">Descriptive Statistics &amp; Data Visualization &amp; Corralation Analysis &amp; Data Grouping and Segmentation</a>
+  <ul class="collapse">
+  <li><a href="#mental-health-dataset" id="toc-mental-health-dataset" class="nav-link" data-scroll-target="#mental-health-dataset">Mental Health Dataset</a></li>
+  <li><a href="#eating-disorder-dataset" id="toc-eating-disorder-dataset" class="nav-link" data-scroll-target="#eating-disorder-dataset">Eating disorder Dataset</a></li>
+  <li><a href="#age-first-depression-or-anxiety-data" id="toc-age-first-depression-or-anxiety-data" class="nav-link" data-scroll-target="#age-first-depression-or-anxiety-data">Age First Depression or Anxiety Data</a></li>
+  <li><a href="#gdp_mental_health_2017_dataset" id="toc-gdp_mental_health_2017_dataset" class="nav-link" data-scroll-target="#gdp_mental_health_2017_dataset">GDP_mental_health_2017_Dataset</a></li>
+  </ul></li>
+  <li><a href="#hypothesis-generation" id="toc-hypothesis-generation" class="nav-link" data-scroll-target="#hypothesis-generation">Hypothesis Generation</a></li>
+  <li><a href="#identiy-outliers" id="toc-identiy-outliers" class="nav-link" data-scroll-target="#identiy-outliers">Identiy Outliers</a></li>
+  <li><a href="#report-and-discuss-methods-and-findings" id="toc-report-and-discuss-methods-and-findings" class="nav-link" data-scroll-target="#report-and-discuss-methods-and-findings">Report and discuss methods and findings</a></li>
+  <li><a href="#tools-and-software" id="toc-tools-and-software" class="nav-link" data-scroll-target="#tools-and-software">Tools and Software</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Data Understanding</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<div class="cell" data-execution_count="321">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#load the data sets</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>df_age_first_depression<span class="op">=</span>pd.read_csv(<span class="st">'../Data/age_when_first_anxiety_or_depression.csv'</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>df_eating_disorder<span class="op">=</span>pd.read_csv(<span class="st">'../Data/eating_disorder_male_female.csv'</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>df_mental_health<span class="op">=</span>pd.read_csv(<span class="st">'../Data/mental_health.csv'</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>df_gdp_mental_health_2017<span class="op">=</span>pd.read_csv(<span class="st">'../Data/GDP_percaptita_mental_health_2017.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol type="1">
+<li>Mental Health Dataset</li>
+</ol>
+<p>The dataset contains various mental health-related metrics for different economies over several years, with information from different years and countries, with percentages for various mental health conditions such as schizophrenia, bipolar disorder, eating disorders, anxiety disorders, and depression. Additional columns include economic indicators like income group, average learning adjusted years of school, continent, GDP for 2022, and a column related to comfort speaking about anxiety or depression, which has many missing values (NaN).</p>
+<p>Economy: The name of the economy or country. Code: The country code.</p>
+<p>Year: The year of the data record.</p>
+<p>Schizophrenia (%): The prevalence of schizophrenia as a percentage. Bipolar disorder (%): The prevalence of bipolar disorder as a percentage.</p>
+<p>Eating disorders (%): The prevalence of eating disorders as a percentage.</p>
+<p>Anxiety disorders (%): The prevalence of anxiety disorders as a percentage.</p>
+<p>Depression (%): The prevalence of depression as a percentage.</p>
+<p>Income group: The income group classification of the economy.</p>
+<p>average_learning_Adjusted_of_school: Some metric related to schooling, perhaps average years of schooling adjusted for learning.</p>
+<p>Continent: The continent where the economy is located.</p>
+<p>GDP(2022): The GDP of the economy for the year 2022.</p>
+<p>not_at_all_comfortable_speaking_anxiety_or_depression_percent: The percentage of people not at all comfortable speaking about anxiety or depression</p>
+<p>Records: 5,488 Variables: 13 (1 integer, 8 floats, 4 objects) Features: Includes country data, year, percentages for various mental health conditions, income group, average learning, continent, GDP, and comfort speaking about anxiety/depression.</p>
+<ol start="2" type="1">
+<li>Eating Disorder Dataset</li>
+</ol>
+<p>This dataset includes the prevalence of eating disorders among males and females, as well as a combined figure for all genders, across different countries and years.</p>
+<p>Country: The name of the country.</p>
+<p>Country Code: The corresponding country code.</p>
+<p>Year: The year of the observation.</p>
+<p>Eating_disorders_Male: The prevalence of eating disorders among males.</p>
+<p>Eating_disorders_Female: The prevalence of eating disorders among females.</p>
+<p>All_gender: The prevalence of eating disorders across all genders.</p>
+<p>Records: 6,420 Variables: 6 (1 integer, 3 floats, 2 objects) Features: Includes country data, year, and eating disorder prevalence separated by male, female, and all genders.</p>
+<ol start="3" type="1">
+<li>Age When First Anxiety or Depression Dataset</li>
+</ol>
+<p>The dataset contains information on the age at which individuals first experienced anxiety or depression, categorized by different entities (which seem to represent regions or income categories).</p>
+<p>Entity: The region or income category.</p>
+<p>Age: The age category when anxiety or depression was first experienced.</p>
+<p>Percentage: The percentage of individuals in that entity and age category.</p>
+<p>Records: 42 Variables: 3 (2 objects, 1 float) Features: Includes entity (could be country or other types of entities), age category, and percentage of individuals with first anxiety or depression experience.</p>
+<ol start="4" type="1">
+<li>GDP_per_captita Dataset</li>
+</ol>
+<p>The dataset contains various mental health-related metrics for different economies over several years, with information from different years and countries, with percentages for various mental health conditions such as schizophrenia, bipolar disorder, eating disorders, anxiety disorders, and depression. Additional columns include economic indicator like GDP per captita.</p>
+<p>Economy: The name of the economy or country. Year: The GDP_per_captita of the year 2017 of the economy or country. Schizophrenia (%): The prevalence of schizophrenia as a percentage. Bipolar disorder (%): The prevalence of bipolar disorder as a percentage. Eating disorders (%): The prevalence of eating disorders as a percentage. Anxiety disorders (%): The prevalence of anxiety disorders as a percentage. Depression (%): The prevalence of depression as a percentage.</p>
+<p>Records: 166 Variables, 7 features ( 2 objects, 5 float) features:</p>
+<div class="cell" data-execution_count="322">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>datasets<span class="op">=</span>{</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'age_first_depression'</span>:df_age_first_depression,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'eating_disorder'</span>:df_eating_disorder,</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'mental_health'</span>:df_mental_health,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'gdp_mental_health_2017'</span>:df_gdp_mental_health_2017</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> name,df <span class="kw">in</span> datasets.items():</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss"> Dataset - First 5 Rows:"</span>)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    display(df.head())</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss"> Dataset - Info:"</span>)</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    display(df.info())</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss"> Dataset -Shape:"</span>)</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    display(df.shape)</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'--------------------------------------------------------------------'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>age_first_depression Dataset - First 5 Rows:
+
+age_first_depression Dataset - Info:
+&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 42 entries, 0 to 41
+Data columns (total 3 columns):
+ #   Column      Non-Null Count  Dtype  
+---  ------      --------------  -----  
+ 0   Entity      42 non-null     object 
+ 1   Age         42 non-null     object 
+ 2   Percentage  42 non-null     float64
+dtypes: float64(1), object(2)
+memory usage: 1.1+ KB
+age_first_depression Dataset -Shape:
+--------------------------------------------------------------------
+eating_disorder Dataset - First 5 Rows:
+
+eating_disorder Dataset - Info:
+&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 6420 entries, 0 to 6419
+Data columns (total 6 columns):
+ #   Column                   Non-Null Count  Dtype  
+---  ------                   --------------  -----  
+ 0   Economy                  6420 non-null   object 
+ 1   Code                     6150 non-null   object 
+ 2   Year                     6420 non-null   int64  
+ 3   Eating_disorders_Male    6420 non-null   float64
+ 4   Eating_disorders_Female  6420 non-null   float64
+ 5   All_gender               6420 non-null   float64
+dtypes: float64(3), int64(1), object(2)
+memory usage: 301.1+ KB
+eating_disorder Dataset -Shape:
+--------------------------------------------------------------------
+mental_health Dataset - First 5 Rows:
+
+mental_health Dataset - Info:
+&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 5488 entries, 0 to 5487
+Data columns (total 13 columns):
+ #   Column                                                         Non-Null Count  Dtype  
+---  ------                                                         --------------  -----  
+ 0   Economy                                                        5488 non-null   object 
+ 1   Code                                                           5488 non-null   object 
+ 2   Year                                                           5488 non-null   int64  
+ 3   Schizophrenia (%)                                              5488 non-null   float64
+ 4   Bipolar disorder (%)                                           5488 non-null   float64
+ 5   Eating disorders (%)                                           5488 non-null   float64
+ 6   Anxiety disorders (%)                                          5488 non-null   float64
+ 7   Depression (%)                                                 5488 non-null   float64
+ 8   Income group                                                   5432 non-null   object 
+ 9   average_learning_Adjusted_of_school                            4676 non-null   float64
+ 10  Continent                                                      4900 non-null   object 
+ 11  GDP(2022)                                                      5264 non-null   float64
+ 12  not_at_all_comfortable_speaking_anxiety_or_depression_percent  3108 non-null   float64
+dtypes: float64(8), int64(1), object(4)
+memory usage: 557.5+ KB
+mental_health Dataset -Shape:
+--------------------------------------------------------------------
+gdp_mental_health_2017 Dataset - First 5 Rows:
+
+gdp_mental_health_2017 Dataset - Info:
+&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 166 entries, 0 to 165
+Data columns (total 7 columns):
+ #   Column                 Non-Null Count  Dtype  
+---  ------                 --------------  -----  
+ 0   Economy                166 non-null    object 
+ 1   2017                   166 non-null    object 
+ 2   Schizophrenia (%)      166 non-null    float64
+ 3   Bipolar disorder (%)   166 non-null    float64
+ 4   Eating disorders (%)   166 non-null    float64
+ 5   Anxiety disorders (%)  166 non-null    float64
+ 6   Depression (%)         166 non-null    float64
+dtypes: float64(5), object(2)
+memory usage: 9.2+ KB
+gdp_mental_health_2017 Dataset -Shape:
+--------------------------------------------------------------------</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Entity</th>
+<th data-quarto-table-cell-role="th">Age</th>
+<th data-quarto-table-cell-role="th">Percentage</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Africa</td>
+<td>Ages &lt;13</td>
+<td>1.271836</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>Asia</td>
+<td>Ages &lt;13</td>
+<td>7.795371</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>Europe</td>
+<td>Ages &lt;13</td>
+<td>9.083381</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>High-income countries</td>
+<td>Ages &lt;13</td>
+<td>2.473921</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>Lower-middle-income countries</td>
+<td>Ages &lt;13</td>
+<td>8.800553</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>None</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>(42, 3)</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Economy</th>
+<th data-quarto-table-cell-role="th">Code</th>
+<th data-quarto-table-cell-role="th">Year</th>
+<th data-quarto-table-cell-role="th">Eating_disorders_Male</th>
+<th data-quarto-table-cell-role="th">Eating_disorders_Female</th>
+<th data-quarto-table-cell-role="th">All_gender</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Afghanistan</td>
+<td>AFG</td>
+<td>1990</td>
+<td>0.088487</td>
+<td>0.161867</td>
+<td>0.125177</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>Afghanistan</td>
+<td>AFG</td>
+<td>1991</td>
+<td>0.086048</td>
+<td>0.156910</td>
+<td>0.121479</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>Afghanistan</td>
+<td>AFG</td>
+<td>1992</td>
+<td>0.083625</td>
+<td>0.152412</td>
+<td>0.118018</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>Afghanistan</td>
+<td>AFG</td>
+<td>1993</td>
+<td>0.081628</td>
+<td>0.147938</td>
+<td>0.114783</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>Afghanistan</td>
+<td>AFG</td>
+<td>1994</td>
+<td>0.079439</td>
+<td>0.143980</td>
+<td>0.111710</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>None</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>(6420, 6)</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Economy</th>
+<th data-quarto-table-cell-role="th">Code</th>
+<th data-quarto-table-cell-role="th">Year</th>
+<th data-quarto-table-cell-role="th">Schizophrenia (%)</th>
+<th data-quarto-table-cell-role="th">Bipolar disorder (%)</th>
+<th data-quarto-table-cell-role="th">Eating disorders (%)</th>
+<th data-quarto-table-cell-role="th">Anxiety disorders (%)</th>
+<th data-quarto-table-cell-role="th">Depression (%)</th>
+<th data-quarto-table-cell-role="th">Income group</th>
+<th data-quarto-table-cell-role="th">average_learning_Adjusted_of_school</th>
+<th data-quarto-table-cell-role="th">Continent</th>
+<th data-quarto-table-cell-role="th">GDP(2022)</th>
+<th data-quarto-table-cell-role="th">not_at_all_comfortable_speaking_anxiety_or_depression_percent</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Afghanistan</td>
+<td>AFG</td>
+<td>1990</td>
+<td>0.160560</td>
+<td>0.697779</td>
+<td>0.101855</td>
+<td>4.828830</td>
+<td>4.071831</td>
+<td>Low income</td>
+<td>4.957542</td>
+<td>Asia</td>
+<td>14583.0</td>
+<td>NaN</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>Afghanistan</td>
+<td>AFG</td>
+<td>1991</td>
+<td>0.160312</td>
+<td>0.697961</td>
+<td>0.099313</td>
+<td>4.829740</td>
+<td>4.079531</td>
+<td>Low income</td>
+<td>4.957542</td>
+<td>Asia</td>
+<td>14583.0</td>
+<td>NaN</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>Afghanistan</td>
+<td>AFG</td>
+<td>1992</td>
+<td>0.160135</td>
+<td>0.698107</td>
+<td>0.096692</td>
+<td>4.831108</td>
+<td>4.088358</td>
+<td>Low income</td>
+<td>4.957542</td>
+<td>Asia</td>
+<td>14583.0</td>
+<td>NaN</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>Afghanistan</td>
+<td>AFG</td>
+<td>1993</td>
+<td>0.160037</td>
+<td>0.698257</td>
+<td>0.094336</td>
+<td>4.830864</td>
+<td>4.096190</td>
+<td>Low income</td>
+<td>4.957542</td>
+<td>Asia</td>
+<td>14583.0</td>
+<td>NaN</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>Afghanistan</td>
+<td>AFG</td>
+<td>1994</td>
+<td>0.160022</td>
+<td>0.698469</td>
+<td>0.092439</td>
+<td>4.829423</td>
+<td>4.099582</td>
+<td>Low income</td>
+<td>4.957542</td>
+<td>Asia</td>
+<td>14583.0</td>
+<td>NaN</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>None</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>(5488, 13)</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Economy</th>
+<th data-quarto-table-cell-role="th">2017</th>
+<th data-quarto-table-cell-role="th">Schizophrenia (%)</th>
+<th data-quarto-table-cell-role="th">Bipolar disorder (%)</th>
+<th data-quarto-table-cell-role="th">Eating disorders (%)</th>
+<th data-quarto-table-cell-role="th">Anxiety disorders (%)</th>
+<th data-quarto-table-cell-role="th">Depression (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Afghanistan</td>
+<td>635.789</td>
+<td>0.166158</td>
+<td>0.708089</td>
+<td>0.107142</td>
+<td>4.882481</td>
+<td>4.136347</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>Albania</td>
+<td>4525.887</td>
+<td>0.201025</td>
+<td>0.704480</td>
+<td>0.174046</td>
+<td>3.385245</td>
+<td>2.208414</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>Algeria</td>
+<td>4014.707</td>
+<td>0.197913</td>
+<td>0.818687</td>
+<td>0.213612</td>
+<td>5.065876</td>
+<td>3.661094</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>Andorra</td>
+<td>40017.741</td>
+<td>0.263512</td>
+<td>0.963331</td>
+<td>0.644559</td>
+<td>5.305375</td>
+<td>3.729532</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>Angola</td>
+<td>4039.3</td>
+<td>0.172794</td>
+<td>0.623904</td>
+<td>0.173643</td>
+<td>3.296906</td>
+<td>4.160484</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>None</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>(166, 7)</code></pre>
+</div>
+</div>
+<section id="descriptive-statistics-data-visualization-corralation-analysis-data-grouping-and-segmentation" class="level2">
+<h2 class="anchored" data-anchor-id="descriptive-statistics-data-visualization-corralation-analysis-data-grouping-and-segmentation">Descriptive Statistics &amp; Data Visualization &amp; Corralation Analysis &amp; Data Grouping and Segmentation</h2>
+<p>Calculate and report basic summary statistics for the datasets.</p>
+<p>This will include mean, median, mode, standard deviation, and variance for numerical variables. For categorical variables, we’ll provide frequency distributions.​</p>
+<div class="cell" data-execution_count="323">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>description_stats<span class="op">=</span>{</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"age_first_depression_or_anxiety"</span>:df_age_first_depression.describe(include<span class="op">=</span><span class="st">'all'</span>),</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"eating_disorder"</span>:df_eating_disorder.describe(include<span class="op">=</span><span class="st">'all'</span>),</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'gdp_mental_health_2017'</span>:df_gdp_mental_health_2017.describe(include<span class="op">=</span><span class="st">'all'</span>),</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"mental_health"</span>:df_mental_health.describe(include<span class="op">=</span><span class="st">'all'</span>),</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>description_stats</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="323">
+<pre><code>{'age_first_depression_or_anxiety':         Entity       Age  Percentage
+ count       42        42   42.000000
+ unique       7         6         NaN
+ top     Africa  Ages &lt;13         NaN
+ freq         6         7         NaN
+ mean       NaN       NaN   16.666667
+ std        NaN       NaN   10.060695
+ min        NaN       NaN    1.271836
+ 25%        NaN       NaN    8.871260
+ 50%        NaN       NaN   14.426575
+ 75%        NaN       NaN   22.251861
+ max        NaN       NaN   42.724724,
+ 'eating_disorder':             Economy  Code         Year  Eating_disorders_Male  \
+ count          6420  6150  6420.000000            6420.000000   
+ unique          214   205          NaN                    NaN   
+ top     Afghanistan   AFG          NaN                    NaN   
+ freq             30    30          NaN                    NaN   
+ mean            NaN   NaN  2004.500000               0.119775   
+ std             NaN   NaN     8.656116               0.068943   
+ min             NaN   NaN  1990.000000               0.033360   
+ 25%             NaN   NaN  1997.000000               0.071057   
+ 50%             NaN   NaN  2004.500000               0.098256   
+ 75%             NaN   NaN  2012.000000               0.148705   
+ max             NaN   NaN  2019.000000               0.672270   
+ 
+         Eating_disorders_Female   All_gender  
+ count               6420.000000  6420.000000  
+ unique                      NaN          NaN  
+ top                         NaN          NaN  
+ freq                        NaN          NaN  
+ mean                   0.273787     0.196781  
+ std                    0.214920     0.140066  
+ min                    0.056762     0.045083  
+ 25%                    0.121105     0.096171  
+ 50%                    0.187430     0.144395  
+ 75%                    0.352395     0.252282  
+ max                    1.395754     1.034012  ,
+ 'gdp_mental_health_2017':             Economy     2017  Schizophrenia (%)  Bipolar disorder (%)  \
+ count           166      166         166.000000            166.000000   
+ unique          166      166                NaN                   NaN   
+ top     Afghanistan  635.789                NaN                   NaN   
+ freq              1        1                NaN                   NaN   
+ mean            NaN      NaN           0.210030              0.736341   
+ std             NaN      NaN           0.040753              0.157692   
+ min             NaN      NaN           0.149087              0.411127   
+ 25%             NaN      NaN           0.182119              0.626204   
+ 50%             NaN      NaN           0.201004              0.708670   
+ 75%             NaN      NaN           0.234878              0.845505   
+ max             NaN      NaN           0.363326              1.206088   
+ 
+         Eating disorders (%)  Anxiety disorders (%)  Depression (%)  
+ count             166.000000             166.000000      166.000000  
+ unique                   NaN                    NaN             NaN  
+ top                      NaN                    NaN             NaN  
+ freq                     NaN                    NaN             NaN  
+ mean                0.260652               4.024311        3.443300  
+ std                 0.167330               1.176412        0.621952  
+ min                 0.079896               2.066871        2.196154  
+ 25%                 0.136695               3.187924        2.958046  
+ 50%                 0.204115               3.593617        3.463656  
+ 75%                 0.307116               4.712918        3.828232  
+ max                 0.943081               8.539931        5.636661  ,
+ 'mental_health':             Economy  Code         Year  Schizophrenia (%)  \
+ count          5488  5488  5488.000000        5488.000000   
+ unique          196   196          NaN                NaN   
+ top     Afghanistan   AFG          NaN                NaN   
+ freq             28    28          NaN                NaN   
+ mean            NaN   NaN  2003.500000           0.208183   
+ std             NaN   NaN     8.078483           0.041998   
+ min             NaN   NaN  1990.000000           0.146902   
+ 25%             NaN   NaN  1996.750000           0.179452   
+ 50%             NaN   NaN  2003.500000           0.198509   
+ 75%             NaN   NaN  2010.250000           0.230554   
+ max             NaN   NaN  2017.000000           0.375110   
+ 
+         Bipolar disorder (%)  Eating disorders (%)  Anxiety disorders (%)  \
+ count            5488.000000           5488.000000            5488.000000   
+ unique                   NaN                   NaN                    NaN   
+ top                      NaN                   NaN                    NaN   
+ freq                     NaN                   NaN                    NaN   
+ mean                0.716884              0.234023               3.946979   
+ std                 0.164246              0.154147               1.134810   
+ min                 0.314535              0.073908               2.023393   
+ 25%                 0.615732              0.121760               3.178912   
+ 50%                 0.693954              0.180378               3.515140   
+ 75%                 0.830217              0.278681               4.659540   
+ max                 1.206597              0.943991               8.967330   
+ 
+         Depression (%) Income group  average_learning_Adjusted_of_school  \
+ count      5488.000000         5432                          4676.000000   
+ unique             NaN            4                                  NaN   
+ top                NaN  High income                                  NaN   
+ freq               NaN         1764                                  NaN   
+ mean          3.474504          NaN                             7.760170   
+ std           0.671741          NaN                             2.528810   
+ min           2.139903          NaN                             2.251002   
+ 25%           2.955355          NaN                             5.684793   
+ 50%           3.461421          NaN                             7.855914   
+ 75%           3.877343          NaN                            10.048229   
+ max           6.602754          NaN                            12.775495   
+ 
+        Continent     GDP(2022)  \
+ count       4900  5.264000e+03   
+ unique         6           NaN   
+ top       Africa           NaN   
+ freq        1428           NaN   
+ mean         NaN  3.929245e+05   
+ std          NaN  1.451071e+06   
+ min          NaN  2.230000e+02   
+ 25%          NaN  1.240875e+04   
+ 50%          NaN  4.239550e+04   
+ 75%          NaN  2.550042e+05   
+ max          NaN  1.796317e+07   
+ 
+         not_at_all_comfortable_speaking_anxiety_or_depression_percent  
+ count                                         3108.000000              
+ unique                                                NaN              
+ top                                                   NaN              
+ freq                                                  NaN              
+ mean                                            30.009805              
+ std                                             11.940808              
+ min                                              5.833535              
+ 25%                                             21.170624              
+ 50%                                             30.920343              
+ 75%                                             37.729200              
+ max                                             58.778120              }</code></pre>
+</div>
+</div>
+<section id="mental-health-dataset" class="level3">
+<h3 class="anchored" data-anchor-id="mental-health-dataset">Mental Health Dataset</h3>
+<p>Correlation Heatmap: To see how different types of mental health disorders are correlated with each other.</p>
+<p>Time Series Plot: To observe the trend of a specific disorder over time for a particular economy or aggregated globally.</p>
+<p>Bar Chart: To compare the prevalence of different disorders in a specific year across multiple economies.</p>
+<p>Box Plot: To visualize the distribution of prevalence rates for a particular disorder across different income groups or continents.</p>
+<p>Scatter Plot: To examine the relationship between GDP and the prevalence of a particular disorder or the discomfort in speaking about mental health issues.</p>
+<p>Histograms for mental disorders</p>
+<div class="cell" data-execution_count="324">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the aesthetics for the plots</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>sns.<span class="bu">set</span>(style<span class="op">=</span><span class="st">"whitegrid"</span>)</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a function to create histograms for given columns</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_histograms(data, columns, bins<span class="op">=</span><span class="dv">20</span>, figsize<span class="op">=</span>(<span class="dv">15</span>, <span class="dv">5</span>)):</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>    fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="bu">len</span>(columns), figsize<span class="op">=</span>figsize)</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> ax, col <span class="kw">in</span> <span class="bu">zip</span>(axes, columns):</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>        sns.histplot(data[col].dropna(), bins<span class="op">=</span>bins, ax<span class="op">=</span>ax, kde<span class="op">=</span><span class="va">True</span>)  <span class="co"># Drop NaN for plotting</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>        ax.set_title(<span class="ss">f'Distribution of </span><span class="sc">{</span>col<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>    plt.tight_layout()</span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> fig</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Select columns to plot for Mental Health Data (excluding 'Year' and non-numerical columns)</span></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>mental_health_columns <span class="op">=</span> [<span class="st">'Schizophrenia (%)'</span>, <span class="st">'Bipolar disorder (%)'</span>, </span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>                         <span class="st">'Eating disorders (%)'</span>, <span class="st">'Anxiety disorders (%)'</span>, <span class="st">'Depression (%)'</span>]</span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot histograms for the selected columns</span></span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>histograms_mental_health <span class="op">=</span> plot_histograms(df_mental_health, mental_health_columns)</span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="EDA_files/figure-html/cell-5-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="325">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>df_income_group<span class="op">=</span>df_mental_health.groupby(<span class="st">'Income group'</span>).mean()</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>df_income_group<span class="op">=</span>df_income_group.drop(columns<span class="op">=</span>[<span class="st">'Year'</span>,<span class="st">'GDP(2022)'</span>,<span class="st">'not_at_all_comfortable_speaking_anxiety_or_depression_percent'</span>])</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(df_income_group))</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_income_group)</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>df_income_group.plot(kind<span class="op">=</span><span class="st">'bar'</span>, ax<span class="op">=</span>ax)</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Customization</span></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'Mean Percentage of Mental Health Disorders by Income Group'</span>)</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'Mean Percentage'</span>)</span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'Income Group'</span>)</span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>)</span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>plt.legend(title<span class="op">=</span><span class="st">'Mental Health Disorders'</span>)</span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the plot</span></span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
+                     Schizophrenia (%)  Bipolar disorder (%)  \
+Income group                                                   
+High income                   0.243514              0.822296   
+Low income                    0.164570              0.626751   
+Lower middle income           0.192946              0.631165   
+Upper middle income           0.202089              0.724714   
+
+                     Eating disorders (%)  Anxiety disorders (%)  \
+Income group                                                       
+High income                      0.399097               4.707860   
+Low income                       0.102740               3.500061   
+Lower middle income              0.134964               3.493755   
+Upper middle income              0.202037               3.739220   
+
+                     Depression (%)  average_learning_Adjusted_of_school  
+Income group                                                              
+High income                3.575551                            10.382413  
+Low income                 3.804767                             4.031739  
+Lower middle income        3.495127                             6.440634  
+Upper middle income        3.172075                             7.940104  </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/var/folders/px/bhxss9d10zs_wzsv0ck6sb200000gn/T/ipykernel_4733/1122149726.py:4: FutureWarning: The default value of numeric_only in DataFrameGroupBy.mean is deprecated. In a future version, numeric_only will default to False. Either specify numeric_only or select only columns which should be valid for the function.
+  df_income_group=df_mental_health.groupby('Income group').mean()</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="EDA_files/figure-html/cell-6-output-3.png" class="img-fluid"></p>
+</div>
+</div>
+<section id="corralation-analysis" class="level4">
+<h4 class="anchored" data-anchor-id="corralation-analysis">Corralation Analysis</h4>
+<p>Correlation Heatmap</p>
+<p>‘Income group’ and ‘Continent’ to the list of columns for the correlation matrix, which are categorical variables. The correlation matrix typically requires numerical variables. To include these categorical variables, we would need to convert them into a numerical format using techniques such as one-hot encoding.</p>
+<div class="cell" data-execution_count="326">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>correlation_columns <span class="op">=</span> [</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Schizophrenia (%)'</span>, </span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Bipolar disorder (%)'</span>, </span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Eating disorders (%)'</span>, </span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Anxiety disorders (%)'</span>, </span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Depression (%)'</span>, </span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">'GDP(2022)'</span>,</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">'average_learning_Adjusted_of_school'</span>,</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 'Income group',</span></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 'Continent',</span></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a><span class="co"># One-hot encoding the 'Income group' and 'Continent' columns to include them in the correlation matrix</span></span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>encoded_data <span class="op">=</span> pd.get_dummies(df_mental_health, columns<span class="op">=</span>[<span class="st">'Income group'</span>, <span class="st">'Continent'</span>])</span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Updating the correlation_columns list to include the newly created one-hot encoded columns</span></span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>new_correlation_columns <span class="op">=</span> correlation_columns <span class="op">+</span> <span class="bu">list</span>(encoded_data.columns[encoded_data.columns.<span class="bu">str</span>.startswith(<span class="st">'Income group_'</span>)]) <span class="op">+</span> <span class="bu">list</span>(encoded_data.columns[encoded_data.columns.<span class="bu">str</span>.startswith(<span class="st">'Continent_'</span>)])</span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the new correlation matrix including the one-hot encoded columns</span></span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>new_correlation_matrix <span class="op">=</span> encoded_data[new_correlation_columns].corr()</span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a mask for the upper triangle</span></span>
+<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a>mask <span class="op">=</span> np.triu(np.ones_like(new_correlation_matrix, dtype<span class="op">=</span><span class="bu">bool</span>))</span>
+<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Set up the matplotlib figure</span></span>
+<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">10</span>))</span>
+<span id="cb18-28"><a href="#cb18-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-29"><a href="#cb18-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Draw the heatmap with the mask</span></span>
+<span id="cb18-30"><a href="#cb18-30" aria-hidden="true" tabindex="-1"></a>sns.heatmap(new_correlation_matrix, mask<span class="op">=</span>mask, annot<span class="op">=</span><span class="va">False</span>, fmt<span class="op">=</span><span class="st">".2f"</span>, cmap<span class="op">=</span><span class="st">'coolwarm'</span>, cbar_kws<span class="op">=</span>{<span class="st">"shrink"</span>: <span class="fl">.5</span>})</span>
+<span id="cb18-31"><a href="#cb18-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-32"><a href="#cb18-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Add title</span></span>
+<span id="cb18-33"><a href="#cb18-33" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Correlation Heatmap for Mental Health Metrics with Categorical Variables'</span>)</span>
+<span id="cb18-34"><a href="#cb18-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-35"><a href="#cb18-35" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the heatmap</span></span>
+<span id="cb18-36"><a href="#cb18-36" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb18-37"><a href="#cb18-37" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="EDA_files/figure-html/cell-7-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>The updated heatmap now includes the one-hot encoded categorical variables ‘Income group’ and ‘Continent’. Due to the number of categories, the annotations were turned off to keep the heatmap readable. Each square still represents the correlation between two variables, with warmer colors indicating a stronger positive correlation and cooler colors a stronger negative correlation.</p>
+<p>Time Series Plot</p>
+<p>Global trend of ‘Depression (%)’ over time.</p>
+<div class="cell" data-execution_count="327">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Time Series Plot for 'Depression (%)' trend globally over time</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculating the global average of 'Depression (%)' for each year</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>global_depression_trend <span class="op">=</span> df_mental_health.groupby(<span class="st">'Year'</span>)[<span class="st">'Depression (%)'</span>].mean().reset_index()</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting the global trend of 'Depression (%)' over time</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">6</span>))</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>sns.lineplot(data<span class="op">=</span>global_depression_trend, x<span class="op">=</span><span class="st">'Year'</span>, y<span class="op">=</span><span class="st">'Depression (%)'</span>)</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Global Trend of Depression Over Time'</span>)</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Year'</span>)</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Average Depression (%)'</span>)</span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the plot</span></span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="EDA_files/figure-html/cell-8-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>The Time Series Plot above shows the global trend of depression over time, depicting the average percentage of depression prevalence across all economies for each year.</p>
+<p>#### Data Grouping and Segmentation Bar Chart</p>
+<p>compare the prevalence of ‘Anxiety disorders (%)’ and ‘Eating disorders (%)’ in the most recent year available across the top 10 economies by GDP. To do this, we first need to identify the top 10 economies by GDP and then gather the data for the specified disorders.</p>
+<div class="cell" data-execution_count="328">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Bar Chart: Prevalence of 'Anxiety disorders (%)' and 'Eating disorders (%)' ,'Bipolar disorder (%),in the most recent year across top 10 economies by GDP</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Identifying the most recent year available in the dataset</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>most_recent_year <span class="op">=</span> df_mental_health[<span class="st">'Year'</span>].<span class="bu">max</span>()</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Identifying the top 10 economies by GDP in the most recent year</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>top_economies <span class="op">=</span> df_mental_health[df_mental_health[<span class="st">'Year'</span>] <span class="op">==</span> most_recent_year].sort_values(by<span class="op">=</span><span class="st">'GDP(2022)'</span>, ascending<span class="op">=</span><span class="va">False</span>).head(<span class="dv">10</span>)</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Preparing the data for the bar chart</span></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>bar_chart_data <span class="op">=</span> top_economies[[<span class="st">'Economy'</span>, <span class="st">'Anxiety disorders (%)'</span>, <span class="st">'Eating disorders (%)'</span>,<span class="st">'Bipolar disorder (%)'</span>]].set_index(<span class="st">'Economy'</span>)</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting the bar chart</span></span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>bar_chart_data.plot(kind<span class="op">=</span><span class="st">'bar'</span>, figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">7</span>))</span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="ss">f'Prevalence of Anxiety and Eating Disorders in </span><span class="sc">{</span>most_recent_year<span class="sc">}</span><span class="ss"> Across Top 10 Economies by GDP'</span>)</span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Economy'</span>)</span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Prevalence (%)'</span>)</span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>, ha<span class="op">=</span><span class="st">'right'</span>)</span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>plt.grid(axis<span class="op">=</span><span class="st">'y'</span>)</span>
+<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the bar chart</span></span>
+<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="EDA_files/figure-html/cell-9-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>The Bar Chart displays the prevalence of anxiety and eating disorders in the most recent year available across the top 10 economies as measured by GDP. Each economy is represented by a bar, with separate segments for anxiety disorders and eating disorders, allowing for a direct comparison between these conditions within each economy.</p>
+<p>we can draw the conclusion that the Eating disorders and Anxiety disorders, Bipolar disorder (%) are not related to GDP</p>
+<p>The Box Plot</p>
+<p>Box Plot: Distribution of ‘Bipolar disorder (%)’ prevalence rates across different income groups</p>
+<div class="cell" data-execution_count="329">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter the data for 'Bipolar disorder (%)' for the most recent year</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>bipolar_data_recent_year <span class="op">=</span> df_mental_health[df_mental_health[<span class="st">'Year'</span>] <span class="op">==</span> most_recent_year]</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting the box plot</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">6</span>))</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>sns.boxplot(data<span class="op">=</span>bipolar_data_recent_year, x<span class="op">=</span><span class="st">'Income group'</span>, y<span class="op">=</span><span class="st">'Bipolar disorder (%)'</span>)</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="ss">f'Distribution of Bipolar Disorder Prevalence Across Income Groups in </span><span class="sc">{</span>most_recent_year<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Income Group'</span>)</span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Bipolar Disorder Prevalence (%)'</span>)</span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>plt.grid(axis<span class="op">=</span><span class="st">'y'</span>)</span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the box plot</span></span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="EDA_files/figure-html/cell-10-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>The Box Plot above shows the distribution of bipolar disorder prevalence rates across different income groups for the most recent year available. The plot provides insights into the median prevalence rates, the interquartile ranges, and any potential outliers within each income group category.</p>
+<p>We can draw the conclusion that the Bipolar Disorder is realted to Income group.</p>
+<p>Scatter Plot:</p>
+<p>Examine the relationship between GDP and the prevalence of depression for the most recent year across all economies.​</p>
+<div class="cell" data-execution_count="330">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Scatter Plot: Relationship between 'GDP(2022)' and 'Depression (%)' for the most recent year</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting the scatter plot</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">7</span>))</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(data<span class="op">=</span>bipolar_data_recent_year, x<span class="op">=</span><span class="st">'GDP(2022)'</span>, y<span class="op">=</span><span class="st">'Depression (%)'</span>)</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="ss">f'Relationship Between GDP and Depression Prevalence in </span><span class="sc">{</span>most_recent_year<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'GDP (2022)'</span>)</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Depression Prevalence (%)'</span>)</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the scatter plot</span></span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="EDA_files/figure-html/cell-11-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>we can draw the conclusion that Depression Prevalence (%) are not related to GDP</p>
+<p>The scatter plot</p>
+<div class="cell" data-execution_count="331">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Let's create a function that generates scatter plots for any given list of disorders.</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="co"># This function will adjust the number of subplots based on the number of disorders.</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> create_scatter_plots(dataframe, x_col, y_cols, row_col_count):</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Calculate the number of rows and columns needed for the subplots</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>    total_plots <span class="op">=</span> <span class="bu">len</span>(y_cols)</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>    nrows <span class="op">=</span> (total_plots <span class="op">+</span> row_col_count <span class="op">-</span> <span class="dv">1</span>) <span class="op">//</span> row_col_count  <span class="co"># Ceiling division</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>    ncols <span class="op">=</span> row_col_count</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Create subplots</span></span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>    fig, axes <span class="op">=</span> plt.subplots(nrows, ncols, figsize<span class="op">=</span>(<span class="dv">15</span>, nrows <span class="op">*</span> <span class="dv">5</span>))</span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> nrows <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>        axes <span class="op">=</span> [axes]  <span class="co"># Ensure axes is always a list</span></span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>        axes <span class="op">=</span> axes.flatten()</span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Generate scatter plots</span></span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i, y_col <span class="kw">in</span> <span class="bu">enumerate</span>(y_cols):</span>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a>        sns.scatterplot(ax<span class="op">=</span>axes[i], data<span class="op">=</span>dataframe, x<span class="op">=</span>x_col, y<span class="op">=</span>y_col)</span>
+<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a>        axes[i].set_title(<span class="ss">f'</span><span class="sc">{</span>y_col<span class="sc">}</span><span class="ss"> vs </span><span class="sc">{</span>x_col<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a>        axes[i].set_xlabel(x_col)</span>
+<span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a>        axes[i].set_ylabel(<span class="ss">f'Prevalence of </span><span class="sc">{</span>y_col<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb23-23"><a href="#cb23-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-24"><a href="#cb23-24" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Hide any unused subplots</span></span>
+<span id="cb23-25"><a href="#cb23-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(i<span class="op">+</span><span class="dv">1</span>, <span class="bu">len</span>(axes)):</span>
+<span id="cb23-26"><a href="#cb23-26" aria-hidden="true" tabindex="-1"></a>        axes[j].set_visible(<span class="va">False</span>)</span>
+<span id="cb23-27"><a href="#cb23-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-28"><a href="#cb23-28" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Adjust layout</span></span>
+<span id="cb23-29"><a href="#cb23-29" aria-hidden="true" tabindex="-1"></a>    plt.tight_layout()</span>
+<span id="cb23-30"><a href="#cb23-30" aria-hidden="true" tabindex="-1"></a>    plt.show()</span>
+<span id="cb23-31"><a href="#cb23-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-32"><a href="#cb23-32" aria-hidden="true" tabindex="-1"></a>education_col <span class="op">=</span> <span class="st">'average_learning_Adjusted_of_school'</span></span>
+<span id="cb23-33"><a href="#cb23-33" aria-hidden="true" tabindex="-1"></a>mental_health_disorders <span class="op">=</span> [</span>
+<span id="cb23-34"><a href="#cb23-34" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Schizophrenia (%)'</span>,  <span class="co"># The prevalence of schizophrenia as a percentage</span></span>
+<span id="cb23-35"><a href="#cb23-35" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Bipolar disorder (%)'</span>,  <span class="co"># The prevalence of bipolar disorder as a percentage</span></span>
+<span id="cb23-36"><a href="#cb23-36" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Eating disorders (%)'</span>,  <span class="co"># The prevalence of eating disorders as a percentage</span></span>
+<span id="cb23-37"><a href="#cb23-37" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Anxiety disorders (%)'</span> , <span class="co"># The prevalence of anxiety disorders as a percentage</span></span>
+<span id="cb23-38"><a href="#cb23-38" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Depression (%)'</span>  <span class="co"># The prevalence of depression as a percentage</span></span>
+<span id="cb23-39"><a href="#cb23-39" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb23-40"><a href="#cb23-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-41"><a href="#cb23-41" aria-hidden="true" tabindex="-1"></a><span class="co"># Now let's use the function to create scatter plots</span></span>
+<span id="cb23-42"><a href="#cb23-42" aria-hidden="true" tabindex="-1"></a>create_scatter_plots(df_mental_health, education_col, mental_health_disorders, <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="EDA_files/figure-html/cell-13-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Schizophrenia: There appears to be a cluster of points towards the lower end of the educational scale with varying prevalence rates. As education levels increase, the prevalence rates seem to spread out, indicating a less clear relationship.</p>
+<p>Bipolar Disorder: The data points are dispersed across the educational spectrum with no clear trend indicating a strong relationship between education and the prevalence of bipolar disorder.</p>
+<p>Eating Disorders: This plot shows a somewhat more dispersed distribution, suggesting that higher education levels might not necessarily correlate with higher or lower prevalence rates of eating disorders.</p>
+<p>Anxiety Disorders: There’s a wide spread of prevalence rates at all levels of education, suggesting that the relationship between education and anxiety disorders may be influenced by factors other than education alone.</p>
+<p>Depression (%): There’s a wide spread of prevalence rates at all levels of education, suggesting that the relationship between education and Depression disorders may be influenced by factors other than education alone.</p>
+</section>
+</section>
+<section id="eating-disorder-dataset" class="level3">
+<h3 class="anchored" data-anchor-id="eating-disorder-dataset">Eating disorder Dataset</h3>
+<p>Time Series Line Plot: Showing the trend of eating disorder prevalence over years for a specific country or averaged globally.</p>
+<p>Bar Chart: Comparing the prevalence of eating disorders between males and females across different countries.</p>
+<p>Box Plot: Displaying the distribution of eating disorder prevalence for all countries across different years to see the variability and outliers.</p>
+<p>Heatmap: Visualizing the prevalence of eating disorders across countries and years in a color-coded format.</p>
+<p>Scatter Plot: Comparing the male vs.&nbsp;female prevalence of eating disorders to see the correlation between genders.</p>
+<div class="cell" data-execution_count="332">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the average prevalence of eating disorders for each year across all countries</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>average_eating_disorders_per_year <span class="op">=</span> df_eating_disorder.groupby(<span class="st">'Year'</span>).mean().reset_index()</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Time Series Line Plot for the global trend</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">7</span>))</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting the trends for each gender and all genders combined</span></span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>sns.lineplot(data<span class="op">=</span>average_eating_disorders_per_year, x<span class="op">=</span><span class="st">'Year'</span>, y<span class="op">=</span><span class="st">'Eating_disorders_Male'</span>, label<span class="op">=</span><span class="st">'Male'</span>)</span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>sns.lineplot(data<span class="op">=</span>average_eating_disorders_per_year, x<span class="op">=</span><span class="st">'Year'</span>, y<span class="op">=</span><span class="st">'Eating_disorders_Female'</span>, label<span class="op">=</span><span class="st">'Female'</span>)</span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>sns.lineplot(data<span class="op">=</span>average_eating_disorders_per_year, x<span class="op">=</span><span class="st">'Year'</span>, y<span class="op">=</span><span class="st">'All_gender'</span>, label<span class="op">=</span><span class="st">'All Genders'</span>)</span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Global Average Prevalence of Eating Disorders Over Time'</span>)</span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Year'</span>)</span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Average Prevalence'</span>)</span>
+<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-21"><a href="#cb24-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the line plot</span></span>
+<span id="cb24-22"><a href="#cb24-22" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/var/folders/px/bhxss9d10zs_wzsv0ck6sb200000gn/T/ipykernel_4733/758625183.py:5: FutureWarning: The default value of numeric_only in DataFrameGroupBy.mean is deprecated. In a future version, numeric_only will default to False. Either specify numeric_only or select only columns which should be valid for the function.
+  average_eating_disorders_per_year = df_eating_disorder.groupby('Year').mean().reset_index()</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="EDA_files/figure-html/cell-14-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<p>The line plot above shows the global average prevalence of eating disorders over time for males, females, and all genders combined. The trends can be compared to see how the prevalence has changed over the years.</p>
+<p>Bar chart compare the prevalence of eating disorders between males and females across different countries. For clarity, we will take a subset of countries to avoid cluttering the chart.</p>
+<div class="cell" data-execution_count="335">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Randomly select 10 countries for comparison</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>random_countries <span class="op">=</span> df_eating_disorder[<span class="st">'Economy'</span>].drop_duplicates().sample(<span class="dv">10</span>, random_state<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter the data for the selected countries and the latest year available</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>latest_year <span class="op">=</span> df_eating_disorder[<span class="st">'Year'</span>].<span class="bu">max</span>()</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>comparison_data <span class="op">=</span> df_eating_disorder[(df_eating_disorder[<span class="st">'Economy'</span>].isin(random_countries)) <span class="op">&amp;</span> (df_eating_disorder[<span class="st">'Year'</span>] <span class="op">==</span> latest_year)]</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Bar Chart: Comparing the prevalence of eating disorders between males and females across different countries</span></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">7</span>))</span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot for males</span></span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>sns.barplot(x<span class="op">=</span><span class="st">'Economy'</span>, y<span class="op">=</span><span class="st">'Eating_disorders_Male'</span>, data<span class="op">=</span>comparison_data, color<span class="op">=</span><span class="st">'lightblue'</span>, label<span class="op">=</span><span class="st">'Male'</span>)</span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot for females on top of males to create a grouped bar chart</span></span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a>sns.barplot(x<span class="op">=</span><span class="st">'Economy'</span>, y<span class="op">=</span><span class="st">'Eating_disorders_Female'</span>, data<span class="op">=</span>comparison_data, color<span class="op">=</span><span class="st">'pink'</span>, label<span class="op">=</span><span class="st">'Female'</span>)</span>
+<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="ss">f'Comparison of Eating Disorders Prevalence by Gender in </span><span class="sc">{</span>latest_year<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb26-18"><a href="#cb26-18" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Economy'</span>)</span>
+<span id="cb26-19"><a href="#cb26-19" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Prevalence of Eating Disorders'</span>)</span>
+<span id="cb26-20"><a href="#cb26-20" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>, ha<span class="op">=</span><span class="st">'right'</span>)</span>
+<span id="cb26-21"><a href="#cb26-21" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb26-22"><a href="#cb26-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-23"><a href="#cb26-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the bar chart</span></span>
+<span id="cb26-24"><a href="#cb26-24" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb26-25"><a href="#cb26-25" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="EDA_files/figure-html/cell-15-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>The bar chart above compares the prevalence of eating disorders between males (in light blue) and females (in pink) for a randomly selected subset of 10 countries in the latest year available in the dataset.</p>
+<p>Data Grouping and Segmentation For the third visualization, We can group the data by country and by year to analyze trends over time and segment by gender to compare the prevalence rates.</p>
+<p>Identifying Outliers We will look for countries with prevalence rates that are significantly higher or lower than the global average for each year and by gender.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># For the trend analysis, let's select the most recent year available for all countries</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>latest_year <span class="op">=</span> df_eating_disorder[<span class="st">'Year'</span>].<span class="bu">max</span>()</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Now, let's prepare the data for that year to identify outliers</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>latest_data <span class="op">=</span> df_eating_disorder[df_eating_disorder[<span class="st">'Year'</span>] <span class="op">==</span> latest_year]</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Generating box plots for male and female prevalence rates to identify outliers</span></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">16</span>, <span class="dv">8</span>))</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Box plot for male prevalence</span></span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>)</span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>sns.boxplot(y<span class="op">=</span>latest_data[<span class="st">'Eating_disorders_Male'</span>])</span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Male Eating Disorder Prevalence Rate in '</span> <span class="op">+</span> <span class="bu">str</span>(latest_year))</span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Box plot for female prevalence</span></span>
+<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a>sns.boxplot(y<span class="op">=</span>latest_data[<span class="st">'Eating_disorders_Female'</span>])</span>
+<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Female Eating Disorder Prevalence Rate in '</span> <span class="op">+</span> <span class="bu">str</span>(latest_year))</span>
+<span id="cb27-19"><a href="#cb27-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-20"><a href="#cb27-20" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb27-21"><a href="#cb27-21" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb27-22"><a href="#cb27-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-23"><a href="#cb27-23" aria-hidden="true" tabindex="-1"></a><span class="co"># We can also calculate the summary statistics for each gender</span></span>
+<span id="cb27-24"><a href="#cb27-24" aria-hidden="true" tabindex="-1"></a>male_stats <span class="op">=</span> latest_data[<span class="st">'Eating_disorders_Male'</span>].describe()</span>
+<span id="cb27-25"><a href="#cb27-25" aria-hidden="true" tabindex="-1"></a>female_stats <span class="op">=</span> latest_data[<span class="st">'Eating_disorders_Female'</span>].describe()</span>
+<span id="cb27-26"><a href="#cb27-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-27"><a href="#cb27-27" aria-hidden="true" tabindex="-1"></a>(male_stats, female_stats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="EDA_files/figure-html/cell-16-output-1.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="278">
+<pre><code>(count    214.000000
+ mean       0.131786
+ std        0.074714
+ min        0.033747
+ 25%        0.081544
+ 50%        0.111878
+ 75%        0.156691
+ max        0.672270
+ Name: Eating_disorders_Male, dtype: float64,
+ count    214.000000
+ mean       0.299529
+ std        0.230234
+ min        0.057713
+ 25%        0.141947
+ 50%        0.210908
+ 75%        0.398235
+ max        1.395754
+ Name: Eating_disorders_Female, dtype: float64)</code></pre>
+</div>
+</div>
+<p>Male Eating Disorder Prevalence Rate:</p>
+<p>The median prevalence rate is approximately 0.11%. The range of prevalence rates is quite broad, with the lowest around 0.03% and the highest at about 0.67%. The interquartile range (middle 50% of the data) spans from approximately 0.08% to 0.16%, indicating that half of the reported rates fall within this range.</p>
+<p>Female Eating Disorder Prevalence Rate:</p>
+<p>The median prevalence rate is approximately 0.21%, which is notably higher than that of males. The prevalence rates for females also show a broad range, from about 0.06% to 1.40%. The interquartile range for females is wider than for males, ranging from about 0.14% to 0.40%, reflecting greater variability in the rates reported for females.</p>
+<p>Outlier Identification:</p>
+<p>For males, any country with a prevalence rate significantly higher than 0.16% could be considered an outlier. For females, countries with rates above 0.40% would be outliers, with the maximum reported rate being quite extreme at 1.40%.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># For the heatmap focused on China, we will select all years of data for China only.</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>china_data <span class="op">=</span> df_eating_disorder[df_eating_disorder[<span class="st">'Country'</span>] <span class="op">==</span> <span class="st">'China'</span>].pivot(<span class="st">'Year'</span>, <span class="st">'Country Code'</span>, <span class="st">'All_gender'</span>)</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Heatmap: Visualizing the prevalence of eating disorders across years in China</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">8</span>))</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>sns.heatmap(china_data, cmap<span class="op">=</span><span class="st">"YlOrRd"</span>, linewidths<span class="op">=</span><span class="fl">.5</span>, annot<span class="op">=</span><span class="va">True</span>, fmt<span class="op">=</span><span class="st">".2f"</span>)</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Heatmap of Eating Disorders Prevalence Across Years in China'</span>)</span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Country Code'</span>)</span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Year'</span>)</span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the heatmap</span></span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/var/folders/px/bhxss9d10zs_wzsv0ck6sb200000gn/T/ipykernel_4733/1600456578.py:2: FutureWarning: In a future version of pandas all arguments of DataFrame.pivot will be keyword-only.
+  china_data = df_eating_disorder[df_eating_disorder['Country'] == 'China'].pivot('Year', 'Country Code', 'All_gender')</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="EDA_files/figure-html/cell-17-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<p>heatmap</p>
+<p>The heatmap above visualizes the prevalence of eating disorders across different years in China. Each cell in the heatmap corresponds to a specific year and shows the prevalence rate, with the color intensity reflecting the magnitude of that rate.​</p>
+<p>create a scatter plot to compare the male vs.&nbsp;female prevalence of eating disorders to see the correlation between genders. We’ll use data from the most recent year for all countries to see the relationship.​</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Scatter Plot: Comparing male vs. female prevalence of eating disorders</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter the dataset for the latest year</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>scatter_data <span class="op">=</span> df_eating_disorder[df_eating_disorder[<span class="st">'Year'</span>] <span class="op">==</span> latest_year]</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">7</span>))</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting the scatter plot for male vs. female prevalence</span></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(data<span class="op">=</span>scatter_data, x<span class="op">=</span><span class="st">'Eating_disorders_Male'</span>, y<span class="op">=</span><span class="st">'Eating_disorders_Female'</span>, hue<span class="op">=</span><span class="st">'Country'</span>, legend<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="ss">f'Correlation Between Male and Female Prevalence of Eating Disorders in </span><span class="sc">{</span>latest_year<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Male Prevalence'</span>)</span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Female Prevalence'</span>)</span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot a 45 degree line to show y=x for reference</span></span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a>max_val <span class="op">=</span> <span class="bu">max</span>(scatter_data[<span class="st">'Eating_disorders_Male'</span>].<span class="bu">max</span>(), scatter_data[<span class="st">'Eating_disorders_Female'</span>].<span class="bu">max</span>())</span>
+<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a>plt.plot([<span class="dv">0</span>, max_val], [<span class="dv">0</span>, max_val], <span class="st">'--'</span>, color<span class="op">=</span><span class="st">'gray'</span>)</span>
+<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-18"><a href="#cb31-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the scatter plot</span></span>
+<span id="cb31-19"><a href="#cb31-19" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="EDA_files/figure-html/cell-18-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>The scatter plot above compares the prevalence of eating disorders between males (on the x-axis) and females (on the y-axis) for the most recent year available in the dataset. Each point represents a country, and the gray dashed line indicates where the prevalence would be equal for both genders. Points above the line show countries where the prevalence is higher in females compared to males, which seems to be the case for all countries shown.</p>
+</section>
+<section id="age-first-depression-or-anxiety-data" class="level3">
+<h3 class="anchored" data-anchor-id="age-first-depression-or-anxiety-data">Age First Depression or Anxiety Data</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select columns to plot for Age First Depression or Anxiety Data</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the style of seaborn</span></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>sns.set_style(<span class="st">"whitegrid"</span>)</span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Bar Chart: Showing the percentage of individuals for each age category within each entity</span></span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">8</span>))</span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a>bar_chart <span class="op">=</span> sns.barplot(x<span class="op">=</span><span class="st">'Percentage'</span>, y<span class="op">=</span><span class="st">'Entity'</span>, hue<span class="op">=</span><span class="st">'Age'</span>, data<span class="op">=</span>df_age_first_depression, ci<span class="op">=</span><span class="va">None</span>)</span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Percentage of Individuals by Entity and Age Category for First Anxiety or Depression'</span>)</span>
+<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Percentage'</span>)</span>
+<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Entity'</span>)</span>
+<span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a>plt.legend(title<span class="op">=</span><span class="st">'Age Category'</span>, bbox_to_anchor<span class="op">=</span>(<span class="fl">1.05</span>, <span class="dv">1</span>), loc<span class="op">=</span><span class="st">'upper left'</span>)</span>
+<span id="cb32-15"><a href="#cb32-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-16"><a href="#cb32-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the bar chart</span></span>
+<span id="cb32-17"><a href="#cb32-17" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb32-18"><a href="#cb32-18" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/var/folders/px/bhxss9d10zs_wzsv0ck6sb200000gn/T/ipykernel_4733/626523418.py:10: FutureWarning: 
+
+The `ci` parameter is deprecated. Use `errorbar=None` for the same effect.
+
+  bar_chart = sns.barplot(x='Percentage', y='Entity', hue='Age', data=df_age_first_depression, ci=None)</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="EDA_files/figure-html/cell-19-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Create a pie chart showing the distribution of age categories for the onset of anxiety or depression for the “World” entity, I’ll first filter the dataset for the ‘World’ entity, and then plot the data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter the data for the 'World' entity</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>world_data <span class="op">=</span> df_age_first_depression[df_age_first_depression[<span class="st">'Entity'</span>] <span class="op">==</span> <span class="st">'World'</span>]</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Pie Chart: Showing the distribution of age categories for the World entity</span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">8</span>))</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>plt.pie(world_data[<span class="st">'Percentage'</span>], labels<span class="op">=</span>world_data[<span class="st">'Age'</span>], autopct<span class="op">=</span><span class="st">'</span><span class="sc">%1.1f%%</span><span class="st">'</span>, startangle<span class="op">=</span><span class="dv">140</span>)</span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Distribution of Age Categories for First Anxiety or Depression in the World'</span>)</span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>plt.axis(<span class="st">'equal'</span>)  <span class="co"># Equal aspect ratio ensures that pie is drawn as a circle.</span></span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the pie chart</span></span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="EDA_files/figure-html/cell-20-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Since the data does not seem to have a time component or an inherent sequence, we’ll skip the line chart and instead create a heatmap to visualize the relationship between entities and age groups.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a pivot table for the heatmap</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>heatmap_data <span class="op">=</span> df_age_first_depression.pivot(<span class="st">"Entity"</span>, <span class="st">"Age"</span>, <span class="st">"Percentage"</span>)</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Heatmap: Visualize the percentage of individuals by entity and age category</span></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">10</span>))</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>heatmap <span class="op">=</span> sns.heatmap(heatmap_data, annot<span class="op">=</span><span class="va">True</span>, fmt<span class="op">=</span><span class="st">".1f"</span>, linewidths<span class="op">=</span><span class="fl">.5</span>, cmap<span class="op">=</span><span class="st">"YlGnBu"</span>)</span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Heatmap of Percentage by Entity and Age Category for First Anxiety or Depression'</span>)</span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Age Category'</span>)</span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Entity'</span>)</span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the heatmap</span></span>
+<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/var/folders/px/bhxss9d10zs_wzsv0ck6sb200000gn/T/ipykernel_4733/601293865.py:2: FutureWarning: In a future version of pandas all arguments of DataFrame.pivot will be keyword-only.
+  heatmap_data = df_age_first_depression.pivot("Entity", "Age", "Percentage")</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="EDA_files/figure-html/cell-21-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<p>The heatmap above visualizes the percentages by entity and age category for the first experience of anxiety or depression. The color intensity represents the magnitude of the percentages, with cooler colors indicating lower percentages and warmer colors indicating higher percentages.</p>
+<p>Finally create a stacked bar chart to represent the cumulative percentages of age categories for each entity.</p>
+<p>grouping the data by Entity and visualizing the distribution of the Percentage across different Age brackets. This will help us understand if there are significant differences in the age of onset for anxiety or depression across different parts of the world and different income levels.​</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Stacked Bar Chart: Create a crosstab to prepare data for the stacked plot</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>stacked_data <span class="op">=</span> pd.crosstab(index<span class="op">=</span>df_age_first_depression[<span class="st">'Entity'</span>], columns<span class="op">=</span>df_age_first_depression[<span class="st">'Age'</span>], values<span class="op">=</span>df_age_first_depression[<span class="st">'Percentage'</span>], aggfunc<span class="op">=</span><span class="st">'sum'</span>, normalize<span class="op">=</span><span class="st">'index'</span>)</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting the stacked bar chart</span></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>stacked_data.plot(kind<span class="op">=</span><span class="st">'bar'</span>, stacked<span class="op">=</span><span class="va">True</span>, figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">8</span>), colormap<span class="op">=</span><span class="st">'viridis'</span>)</span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Stacked Bar Chart of Age Categories for First Anxiety or Depression by Entity'</span>)</span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Entity'</span>)</span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Percentage'</span>)</span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>plt.legend(title<span class="op">=</span><span class="st">'Age Category'</span>, bbox_to_anchor<span class="op">=</span>(<span class="fl">1.05</span>, <span class="dv">1</span>), loc<span class="op">=</span><span class="st">'upper left'</span>)</span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>, ha<span class="op">=</span><span class="st">'right'</span>)</span>
+<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the stacked bar chart</span></span>
+<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb37-14"><a href="#cb37-14" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="EDA_files/figure-html/cell-22-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>The bar chart and table display the distribution of the age of onset for anxiety or depression across various entities, which include continents, income categories, and the world overall. From the visualization and the data, we can observe the following:</p>
+<p>Variability in Age of Onset: There is considerable variability in the age of onset for anxiety or depression among different entities. For example, in Europe, a higher percentage reports the onset during the age brackets of “Ages 20-29” and “Ages ≥40”, whereas in Africa, the onset is more reported in the younger age bracket “Ages 13-19” and “Ages 20-29”.</p>
+<p>High-Income Countries: In high-income countries, the age bracket “Ages 13-19” has the highest reported onset, followed by “Ages ≥40” and “Ages 20-29”.</p>
+<p>Lower-Middle-Income Countries: Here, the age bracket “Ages 20-29” has the highest reported onset, suggesting that the onset of anxiety or depression may occur later compared to high-income countries.</p>
+<p>Don’t Know/Refused: A significant portion of respondents across all entities did not provide a specific age bracket or refused to answer, with Africa having the highest percentage in this category. This could reflect cultural differences in discussing mental health or data collection challenges.</p>
+</section>
+<section id="gdp_mental_health_2017_dataset" class="level3">
+<h3 class="anchored" data-anchor-id="gdp_mental_health_2017_dataset">GDP_mental_health_2017_Dataset</h3>
+<p>Histograms for mental health indicators to see their distribution across the dataset.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Histograms for mental health indicators</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">15</span>, <span class="dv">10</span>))</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="co"># List of mental health indicators to plot</span></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>mental_health_indicators <span class="op">=</span> [<span class="st">'Schizophrenia (%)'</span>, <span class="st">'Bipolar disorder (%)'</span>, <span class="st">'Eating disorders (%)'</span>, </span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'Anxiety disorders (%)'</span>]</span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting each histogram</span></span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, indicator <span class="kw">in</span> <span class="bu">enumerate</span>(mental_health_indicators, <span class="dv">1</span>):</span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>    plt.subplot(<span class="dv">2</span>, <span class="dv">2</span>, i)</span>
+<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a>    sns.histplot(df_gdp_mental_health_2017[indicator], kde<span class="op">=</span><span class="va">False</span>, bins<span class="op">=</span><span class="dv">30</span>)</span>
+<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a>    plt.title(<span class="ss">f'Distribution of </span><span class="sc">{</span>indicator<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a>    plt.xlabel(indicator)</span>
+<span id="cb38-14"><a href="#cb38-14" aria-hidden="true" tabindex="-1"></a>    plt.ylabel(<span class="st">'Frequency'</span>)</span>
+<span id="cb38-15"><a href="#cb38-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-16"><a href="#cb38-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Adjusting layout</span></span>
+<span id="cb38-17"><a href="#cb38-17" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb38-18"><a href="#cb38-18" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="EDA_files/figure-html/cell-23-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>The histograms provide a distribution of each mental health indicator across the countries in the dataset for the year 2017</p>
+<p>scatter plots</p>
+<p>visualize the potential correlation between GDP per capita and each mental health indicator.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Renaming the '2017' column to 'GDP_per_capita' for clarity</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>df_gdp_mental_health_2017.rename(columns<span class="op">=</span>{<span class="st">'2017'</span>: <span class="st">'GDP_per_capita'</span>}, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Ensuring 'GDP_per_capita' is a numeric column</span></span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>df_gdp_mental_health_2017[<span class="st">'GDP_per_capita'</span>] <span class="op">=</span> pd.to_numeric(df_gdp_mental_health_2017[<span class="st">'GDP_per_capita'</span>], errors<span class="op">=</span><span class="st">'coerce'</span>)</span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a><span class="co"># List of mental health indicators to plot</span></span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a>mental_health_indicators <span class="op">=</span> [<span class="st">'Schizophrenia (%)'</span>, <span class="st">'Bipolar disorder (%)'</span>, <span class="st">'Eating disorders (%)'</span>, <span class="st">'Anxiety disorders (%)'</span>]</span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Scatter plots of GDP per capita vs each mental health indicator</span></span>
+<span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">15</span>, <span class="dv">10</span>))</span>
+<span id="cb39-12"><a href="#cb39-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-13"><a href="#cb39-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting scatter plots</span></span>
+<span id="cb39-14"><a href="#cb39-14" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, indicator <span class="kw">in</span> <span class="bu">enumerate</span>(mental_health_indicators):</span>
+<span id="cb39-15"><a href="#cb39-15" aria-hidden="true" tabindex="-1"></a>    sns.scatterplot(ax<span class="op">=</span>axes[i<span class="op">//</span><span class="dv">2</span>, i<span class="op">%</span><span class="dv">2</span>], </span>
+<span id="cb39-16"><a href="#cb39-16" aria-hidden="true" tabindex="-1"></a>                    data<span class="op">=</span>df_gdp_mental_health_2017, </span>
+<span id="cb39-17"><a href="#cb39-17" aria-hidden="true" tabindex="-1"></a>                    x<span class="op">=</span><span class="st">'GDP_per_capita'</span>, </span>
+<span id="cb39-18"><a href="#cb39-18" aria-hidden="true" tabindex="-1"></a>                    y<span class="op">=</span>indicator)</span>
+<span id="cb39-19"><a href="#cb39-19" aria-hidden="true" tabindex="-1"></a>    axes[i<span class="op">//</span><span class="dv">2</span>, i<span class="op">%</span><span class="dv">2</span>].set_title(<span class="ss">f'GDP per Capita vs </span><span class="sc">{</span>indicator<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb39-20"><a href="#cb39-20" aria-hidden="true" tabindex="-1"></a>    axes[i<span class="op">//</span><span class="dv">2</span>, i<span class="op">%</span><span class="dv">2</span>].set_xlabel(<span class="st">'GDP per Capita'</span>)</span>
+<span id="cb39-21"><a href="#cb39-21" aria-hidden="true" tabindex="-1"></a>    axes[i<span class="op">//</span><span class="dv">2</span>, i<span class="op">%</span><span class="dv">2</span>].set_ylabel(indicator)</span>
+<span id="cb39-22"><a href="#cb39-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-23"><a href="#cb39-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Adjusting layout</span></span>
+<span id="cb39-24"><a href="#cb39-24" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb39-25"><a href="#cb39-25" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="EDA_files/figure-html/cell-24-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>The scatter plots have been generated, showing the relationship between GDP per capita and each mental health indicator.</p>
+<p>Schizophrenia (%) vs GDP per Capita: There does not appear to be a clear trend indicating that the prevalence of schizophrenia is related to GDP per capita. The distribution of points seems scattered without a distinct pattern.</p>
+<p>Bipolar Disorder (%) vs GDP per Capita: Similar to schizophrenia, bipolar disorder prevalence does not show a clear correlation with GDP per capita based on the scatter plot.</p>
+<p>Eating Disorders (%) vs GDP per Capita: For eating disorders, there might be a slight positive trend, suggesting that higher GDP per capita could be associated with a higher reported prevalence of eating disorders. This could be due to better reporting and diagnosis in higher-income countries, but further statistical analysis would be needed to confirm any correlation.</p>
+<p>Anxiety Disorders (%) vs GDP per Capita: The scatter plot does not reveal a strong correlation between the prevalence of anxiety disorders and GDP per capita. However, there is some spread in the data that might warrant a closer look with more sophisticated statistical tools.</p>
+<p>General Observations: The prevalence rates for the mental health conditions do not show strong visual evidence of a correlation with GDP per capita. This might suggest that mental health issues are widespread and not necessarily directly related to the economic status of a country.</p>
+<p>It is important to note that these are preliminary insights based solely on visual analysis. To draw more concrete conclusions, you would need to perform a quantitative analysis, such as calculating the correlation coefficients or conducting regression analysis. Additionally, it’s important to consider other factors that could influence mental health statistics, such as healthcare access, cultural attitudes towards mental health, and the quality of data reporting in different countries.</p>
+<p>Heatmap of the correlation matrix to understand how different indicators are related to each other. This will include GDP per capita and the mental health indicators.​</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Correlation matrix heatmap</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">8</span>))</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate correlation matrix</span></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>corr_matrix <span class="op">=</span> df_gdp_mental_health_2017.corr()</span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a heatmap</span></span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>sns.heatmap(corr_matrix, annot<span class="op">=</span><span class="va">True</span>, fmt<span class="op">=</span><span class="st">".2f"</span>, cmap<span class="op">=</span><span class="st">'coolwarm'</span>, cbar<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Title</span></span>
+<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Correlation Matrix Heatmap'</span>)</span>
+<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/var/folders/px/bhxss9d10zs_wzsv0ck6sb200000gn/T/ipykernel_4733/1859813442.py:5: FutureWarning: The default value of numeric_only in DataFrame.corr is deprecated. In a future version, it will default to False. Select only valid columns or specify the value of numeric_only to silence this warning.
+  corr_matrix = df_gdp_mental_health_2017.corr()</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="EDA_files/figure-html/cell-25-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<p>The heatmap displays the correlation coefficients between the GDP per capita and mental health indicators. Values close to 1 or -1 indicate a strong positive or negative correlation, respectively, while values close to 0 indicate a weak or no correlation.</p>
+</section>
+</section>
+<section id="hypothesis-generation" class="level2">
+<h2 class="anchored" data-anchor-id="hypothesis-generation">Hypothesis Generation</h2>
+<section id="age-first-depression-or-anxiety-data-1" class="level4">
+<h4 class="anchored" data-anchor-id="age-first-depression-or-anxiety-data-1">Age First Depression or Anxiety Data</h4>
+<ol type="1">
+<li><p>The cultural, economic, and social environments in high-income countries might contribute to an earlier age of onset for anxiety or depression.</p></li>
+<li><p>In regions with lower-middle-income levels, the onset of anxiety or depression might occur later, potentially due to different life stressors or lower levels of mental health awareness and reporting.</p></li>
+</ol>
+</section>
+<section id="eating-disorder-dataset-1" class="level4">
+<h4 class="anchored" data-anchor-id="eating-disorder-dataset-1">Eating disorder Dataset</h4>
+<ol type="1">
+<li><p>The prevalence of eating disorders is higher in countries with higher GDP per capita, which could reflect better diagnostic capabilities or different societal pressures.</p></li>
+<li><p>There may be significant differences in the prevalence of eating disorders between genders across different countries, potentially reflecting cultural, social, or biological factors.</p></li>
+</ol>
+</section>
+<section id="gdp_mental_health_2017_dataset-1" class="level4">
+<h4 class="anchored" data-anchor-id="gdp_mental_health_2017_dataset-1">GDP_mental_health_2017_Dataset</h4>
+<ol type="1">
+<li><p>Higher GDP per capita might be associated with higher reported rates of mental health disorders, potentially due to better health services and reporting mechanisms.</p></li>
+<li><p>The prevalence of different mental health disorders will vary across economies, possibly due to genetic, environmental, cultural, or socioeconomic factors.</p></li>
+</ol>
+</section>
+<section id="mental-health-dataset-1" class="level4">
+<h4 class="anchored" data-anchor-id="mental-health-dataset-1">Mental Health Dataset</h4>
+<ol type="1">
+<li><p>Educational outcomes may be associated with the prevalence or reporting of certain mental health conditions, such as schizophrenia and eating disorders.</p></li>
+<li><p>The lack of correlation between GDP and comfort in discussing mental health could imply that economic development does not directly influence cultural attitudes toward mental health openness.</p></li>
+</ol>
+<p>3.The correlations between different mental health conditions suggest the possibility of common underlying risk factors or increased comorbidity.</p>
+</section>
+</section>
+<section id="identiy-outliers" class="level2">
+<h2 class="anchored" data-anchor-id="identiy-outliers">Identiy Outliers</h2>
+<section id="age-first-depression-or-anxiety-data-2" class="level5">
+<h5 class="anchored" data-anchor-id="age-first-depression-or-anxiety-data-2">Age First Depression or Anxiety Data</h5>
+<p>The data does not have individual country-level entries, so it’s not possible to identify outliers in the traditional sense. However, the “Don’t Know/Refused” category stands out and could be considered an anomaly in the reporting of mental health data.</p>
+</section>
+<section id="eating-disorder-dataset-2" class="level5">
+<h5 class="anchored" data-anchor-id="eating-disorder-dataset-2">Eating disorder Dataset</h5>
+<p>We will look for countries with prevalence rates that are significantly higher or lower than the global average for each year and by gender.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># For the trend analysis, let's select the most recent year available for all countries</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>latest_year <span class="op">=</span> df_eating_disorder[<span class="st">'Year'</span>].<span class="bu">max</span>()</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Now, let's prepare the data for that year to identify outliers</span></span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>latest_data <span class="op">=</span> df_eating_disorder[df_eating_disorder[<span class="st">'Year'</span>] <span class="op">==</span> latest_year]</span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Generating box plots for male and female prevalence rates to identify outliers</span></span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">16</span>, <span class="dv">8</span>))</span>
+<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Box plot for male prevalence</span></span>
+<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>)</span>
+<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a>sns.boxplot(y<span class="op">=</span>latest_data[<span class="st">'Eating_disorders_Male'</span>])</span>
+<span id="cb42-13"><a href="#cb42-13" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Male Eating Disorder Prevalence Rate in '</span> <span class="op">+</span> <span class="bu">str</span>(latest_year))</span>
+<span id="cb42-14"><a href="#cb42-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-15"><a href="#cb42-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Box plot for female prevalence</span></span>
+<span id="cb42-16"><a href="#cb42-16" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb42-17"><a href="#cb42-17" aria-hidden="true" tabindex="-1"></a>sns.boxplot(y<span class="op">=</span>latest_data[<span class="st">'Eating_disorders_Female'</span>])</span>
+<span id="cb42-18"><a href="#cb42-18" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Female Eating Disorder Prevalence Rate in '</span> <span class="op">+</span> <span class="bu">str</span>(latest_year))</span>
+<span id="cb42-19"><a href="#cb42-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-20"><a href="#cb42-20" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb42-21"><a href="#cb42-21" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb42-22"><a href="#cb42-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-23"><a href="#cb42-23" aria-hidden="true" tabindex="-1"></a><span class="co"># We can also calculate the summary statistics for each gender</span></span>
+<span id="cb42-24"><a href="#cb42-24" aria-hidden="true" tabindex="-1"></a>male_stats <span class="op">=</span> latest_data[<span class="st">'Eating_disorders_Male'</span>].describe()</span>
+<span id="cb42-25"><a href="#cb42-25" aria-hidden="true" tabindex="-1"></a>female_stats <span class="op">=</span> latest_data[<span class="st">'Eating_disorders_Female'</span>].describe()</span>
+<span id="cb42-26"><a href="#cb42-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-27"><a href="#cb42-27" aria-hidden="true" tabindex="-1"></a>(male_stats, female_stats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="EDA_files/figure-html/cell-26-output-1.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="288">
+<pre><code>(count    214.000000
+ mean       0.131786
+ std        0.074714
+ min        0.033747
+ 25%        0.081544
+ 50%        0.111878
+ 75%        0.156691
+ max        0.672270
+ Name: Eating_disorders_Male, dtype: float64,
+ count    214.000000
+ mean       0.299529
+ std        0.230234
+ min        0.057713
+ 25%        0.141947
+ 50%        0.210908
+ 75%        0.398235
+ max        1.395754
+ Name: Eating_disorders_Female, dtype: float64)</code></pre>
+</div>
+</div>
+<p>For males, any country with a prevalence rate significantly higher than 0.16% could be considered an outlier. For females, countries with rates above 0.40% would be outliers, with the maximum reported rate being quite extreme at 1.40%.</p>
+</section>
+<section id="gdp_mental_health_2017_dataset-2" class="level5">
+<h5 class="anchored" data-anchor-id="gdp_mental_health_2017_dataset-2">GDP_mental_health_2017_Dataset</h5>
+</section>
+<section id="mental-health-dataset-2" class="level5">
+<h5 class="anchored" data-anchor-id="mental-health-dataset-2">Mental Health Dataset</h5>
+</section>
+</section>
+<section id="report-and-discuss-methods-and-findings" class="level2">
+<h2 class="anchored" data-anchor-id="report-and-discuss-methods-and-findings">Report and discuss methods and findings</h2>
+<section id="age-first-depression-or-anxiety-data-3" class="level5">
+<h5 class="anchored" data-anchor-id="age-first-depression-or-anxiety-data-3">Age First Depression or Anxiety Data</h5>
+<p>The bar chart and table display the distribution of the age of onset for anxiety or depression across various entities, which include continents, income categories, and the world overall. From the visualization and the data, we can observe the following:</p>
+<p>Variability in Age of Onset: There is considerable variability in the age of onset for anxiety or depression among different entities. For example, in Europe, a higher percentage reports the onset during the age brackets of “Ages 20-29” and “Ages ≥40”, whereas in Africa, the onset is more reported in the younger age bracket “Ages 13-19” and “Ages 20-29”.</p>
+<p>High-Income Countries: In high-income countries, the age bracket “Ages 13-19” has the highest reported onset, followed by “Ages ≥40” and “Ages 20-29”.</p>
+<p>Lower-Middle-Income Countries: Here, the age bracket “Ages 20-29” has the highest reported onset, suggesting that the onset of anxiety or depression may occur later compared to high-income countries.</p>
+<p>Don’t Know/Refused: A significant portion of respondents across all entities did not provide a specific age bracket or refused to answer, with Africa having the highest percentage in this category. This could reflect cultural differences in discussing mental health or data collection challenges.</p>
+</section>
+<section id="eating-disorder-dataset-3" class="level5">
+<h5 class="anchored" data-anchor-id="eating-disorder-dataset-3">Eating disorder Dataset</h5>
+<p>The prevalence of eating disorders is significantly higher in females than in males, which aligns with the general understanding of these conditions.</p>
+<p>The variability in prevalence rates among females is greater, indicating that eating disorders in females may be more influenced by a variety of factors, possibly including cultural aspects, societal pressures, or biological predispositions.</p>
+<p>The global average prevalence of eating disorders over time for males, females, and all genders combined is growing up.</p>
+</section>
+<section id="gdp_mental_health_2017_dataset-3" class="level5">
+<h5 class="anchored" data-anchor-id="gdp_mental_health_2017_dataset-3">GDP_mental_health_2017_Dataset</h5>
+<p>Eating Disorders (%) vs GDP per Capita: For eating disorders, there might be a slight positive trend, suggesting that higher GDP per capita could be associated with a higher reported prevalence of eating disorders.</p>
+</section>
+<section id="mental-health-dataset-3" class="level4">
+<h4 class="anchored" data-anchor-id="mental-health-dataset-3">Mental Health Dataset</h4>
+<p>we can draw the conclusion that the Eating disorders and Anxiety disorders, Bipolar disorder (%) are not related to GDP.</p>
+<p>Schizophrenia: There appears to be a cluster of points towards the lower end of the educational scale with varying prevalence rates. As education levels increase, the prevalence rates seem to spread out, indicating a less clear relationship.</p>
+<p>Bipolar Disorder: The data points are dispersed across the educational spectrum with no clear trend indicating a strong relationship between education and the prevalence of bipolar disorder.</p>
+<p>Eating Disorders: This plot shows a somewhat more dispersed distribution, suggesting that higher education levels might not necessarily correlate with higher or lower prevalence rates of eating disorders.</p>
+<p>Anxiety Disorders: There’s a wide spread of prevalence rates at all levels of education, suggesting that the relationship between education and anxiety disorders may be influenced by factors other than education alone.</p>
+<p>Depression (%): There’s a wide spread of prevalence rates at all levels of education, suggesting that the relationship between education and Depression disorders may be influenced by factors other than education alone.</p>
+</section>
+</section>
+<section id="tools-and-software" class="level2">
+<h2 class="anchored" data-anchor-id="tools-and-software">Tools and Software</h2>
+<ul>
+<li>Pandas: For data manipulation and analysis.</li>
+<li>Matplotlib: For creating the bar chart visualization.</li>
+<li>Seaborn: Although not used in the last plot, it is an excellent tool for creating heatmaps and other complex visualizations.</li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

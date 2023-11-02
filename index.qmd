@@ -31,27 +31,27 @@ In summary, population health management is important because it shifts the heal
 
 # Questions
 
-1.What are the different types of mental health disorders?
+1. What are the range of mental health disorder types, and how prevalent are they in the population?
 
-2.What is the prevalence of mental illnesses in the United States from 1990 to 2017?
+2. How has this prevalence changed over time in the population?
 
-3.How do socioeconomic factors like income, GDP, average outcomes, and employment status correlate with rates of depression?
+3. What is the relationship between socialeconimic factors(income(high-income, lower-middle-income, upper-middle-income), GDP, average outcomes, and employment status) correlate with mental health outcomes (depression,anxiety,eating disorders, bipolar disorder)?
 
-4.How do socioeconomic factors like income, GDP, average outcomes, and employment status correlate with rates of anxiety?
+4. How does comfort talking about mental health vary by country and continent (Africa, Asia, Europe)?
 
-5.How do socioeconomic factors like income, GDP, average outcomes, and employment status correlate with the occurrence of eating disorders?
+5. How does comfort talking about mental health vary by education level?
 
-6.How do socioeconomic factors like income, GDP, average outcomes, and employment status correlate with the occurrence of bipolar disorder?
+6. How does the prevalence of eating disorders vary by country and income level(high-income, lower-middle-income, upper-middle-income)?
 
-7.How do socioeconomic factors like income, GDP, average outcomes, and employment status correlate with the prevalence of schizophrenia?
+7. Which set of factors "better" explains mental health outcomes: socioeconomic or geographic or educational factors?
 
-8.How do socioeconomic factors like income, GDP, average outcomes, and employment status correlate with the occurrence of bipolar disorder?
+8. Is this true for all mental health disorders, and if not, which disorders are "most talked about" in which countries?
 
-9.Do people feel comfortable discussing anxiety and depression with someone they know, based on their continent of residence (Africa, Asia, Europe)?
+9. How is the data actually gathered? Is it gathered using surveys? Or is it medical diagnoses? Or both?
 
-10.Does one's comfort in discussing anxiety and depression with someone they know correlate with their level of education?
+10. Are there issues with using the survey data available? Similarly, are there issues with using the medical data available?
 
-11.Is there a relationship between the occurrence of eating disorders and a country's income level (high-income, lower-middle-income, upper-middle-income)?
+
 
 # Publication
 

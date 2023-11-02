@@ -5,21 +5,22 @@ website:
   title: "Bella Shi's Website"
   sidebar:
     contents: 
-      - text: "Introduction"
+      - text: Introduction
         href: index.qmd
       - text: About me
         href: https://bella.georgetown.domains/about/
-      - ARM.qmd
-      - Classfication.qmd
-      - Cleaning.ipynb
-      - Clustering.qmd
       - Code.qmd
-      - Conclusions.qmd
       - Data.qmd
-      - Dimensionality reduction.qmd
-      - Exploration.qmd
       - Gathering.ipynb
+      - Cleaning.ipynb
+      - Exploration.ipynb
+      - Naive Bayes.ipynb
+      - Clustering.qmd
+      - Classfication.qmd
+      - Dimensionality reduction.qmd
       - Regression.qmd
+      - ARM.qmd
+      - Conclusions.qmd
 
 
 format:

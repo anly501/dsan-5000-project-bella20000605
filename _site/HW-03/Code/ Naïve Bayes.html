@@ -1,0 +1,1530 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Bella Shi’s Website - HW-3.2.0: Introduction to Naive Bayes</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
+      Bella Shi's Website
+      </li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../../">Bella Shi’s Website</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://bella.georgetown.domains/about/" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About me</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Code.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Code</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Gathering.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Gathering</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Cleaning.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Cleaning</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Exploration.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exploration</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Naive Bayes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Naive Bayes</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Clustering.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Clustering</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Classfication.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Classification</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Dimensionality reduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Dimensionality reduction</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Regression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Regresssion</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ARM.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ARM</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Conclusions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Conclusions</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#hw-3.2.1-prepare-your-data-for-naïve-bayes" id="toc-hw-3.2.1-prepare-your-data-for-naïve-bayes" class="nav-link active" data-scroll-target="#hw-3.2.1-prepare-your-data-for-naïve-bayes">HW-3.2.1: Prepare your Data for Naïve Bayes</a></li>
+  <li><a href="#hw-3.2.2-feature-selection" id="toc-hw-3.2.2-feature-selection" class="nav-link" data-scroll-target="#hw-3.2.2-feature-selection">HW-3.2.2: Feature selection</a>
+  <ul class="collapse">
+  <li><a href="#hw-3.2.3-naïve-bayes-nb-with-labeled-record-data" id="toc-hw-3.2.3-naïve-bayes-nb-with-labeled-record-data" class="nav-link" data-scroll-target="#hw-3.2.3-naïve-bayes-nb-with-labeled-record-data">HW-3.2.3: Naïve Bayes (NB) with Labeled Record Data</a></li>
+  </ul></li>
+  <li><a href="#hw-3.2.4-naïve-bayes-nb-with-labeled-text-data" id="toc-hw-3.2.4-naïve-bayes-nb-with-labeled-text-data" class="nav-link" data-scroll-target="#hw-3.2.4-naïve-bayes-nb-with-labeled-text-data">HW-3.2.4: Naïve Bayes (NB) with Labeled Text Data</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">HW-3.2.0: Introduction to Naive Bayes</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>Naive Bayes classification is a probabilistic machine learning model that’s based on Bayes’ Theorem. It’s called “naive” because it assumes that the presence (or absence) of a particular feature of a class is unrelated to the presence (or absence) of any other feature, even if these features depend on each other. This simplification makes Naive Bayes easy to build and particularly useful for very large datasets.</p>
+<section id="bayes-theorem-foundation" class="level4">
+<h4 class="anchored" data-anchor-id="bayes-theorem-foundation"><b>Bayes’ Theorem Foundation</b><br></h4>
+<p>At its core, Naive Bayes relies on Bayes’ Theorem, which describes the probability of an event, based on prior knowledge of conditions that might be related to the event. For classification, Bayes’ Theorem is stated as:</p>
+<p><span class="math display">\[\begin{equation}
+P(A|B) = \frac{P(B|A) \cdot P(A)}{P(B)}
+\end{equation}\]</span></p>
+<p>Here,P(B|A) is the probability of hypothesis A given data B. P(B|A) is the probability of the data under the hypothesis, P(A) is the probability of the hypothesis before seeing the data, and P(B) is the probability of the data under any hypothesis.</p>
+</section>
+<section id="objectives-of-naive-bayes-classification" class="level4">
+<h4 class="anchored" data-anchor-id="objectives-of-naive-bayes-classification"><b>Objectives of Naive Bayes Classification</b><br></h4>
+<p>The objective in Naive Bayes is to determine the probability of a label given a set of features, and then predict the label with the highest probability. In other words, we calculate the posterior probability of each class given the input features and predict the class for which the posterior probability is the highest.</p>
+</section>
+<section id="what-naive-bayes-aims-to-achieve" class="level4">
+<h4 class="anchored" data-anchor-id="what-naive-bayes-aims-to-achieve"><b>What Naive Bayes Aims to achieve</b><br></h4>
+<p>Naive Bayes aims to model the conditional probability of the class labels given the features in order to make predictions. It’s particularly advantageous in situations where the dimensionality of the input space is high, as it avoids the curse of dimensionality to a certain extent due to its feature independence assumption</p>
+</section>
+<section id="variants-of-naive-bayes" class="level4">
+<h4 class="anchored" data-anchor-id="variants-of-naive-bayes"><b>Variants of Naive Bayes</b><br></h4>
+<p>There are several variants of the Naive Bayes classifier, each appropriate for a different type of dataset:</p>
+<ol type="1">
+<li>Gaussian Naive Bayes:</li>
+</ol>
+<p>Used when features have a continuous distribution and an assumption of normal distribution (Gaussian) is reasonable. Appropriate for many real-world problems, like predicting whether a given email is spam or not.</p>
+<ol start="2" type="1">
+<li>Multinomial Naive Bayes:</li>
+</ol>
+<p>Used for discrete data where features represent counts or frequency counts of events. Often used in text classification, where the features are related to word counts or frequencies within the documents.</p>
+<ol start="3" type="1">
+<li>Bernoulli Naive Bayes:</li>
+</ol>
+<p>Used when features are binary (i.e., they take only two values like true and false). Suitable for making predictions from binary features, like if a word occurs in a document or not, which is a common scenario in text classification problems.</p>
+</section>
+<section id="hw-3.2.1-prepare-your-data-for-naïve-bayes" class="level2">
+<h2 class="anchored" data-anchor-id="hw-3.2.1-prepare-your-data-for-naïve-bayes">HW-3.2.1: Prepare your Data for Naïve Bayes</h2>
+<p>1.Handle missing values</p>
+<p>2.Encode the ‘Income group’ and ‘Continent’ categorical variables into a numerical format suitable for machine learning models.</p>
+<p>3.Split the data into training and test sets</p>
+<div class="cell" data-execution_count="387">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> missingno <span class="im">as</span> msno</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>df_mental_health<span class="op">=</span>pd.read_csv(<span class="st">'../Data/mental_health.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Check missing values in the dataset</p>
+<div class="cell" data-execution_count="388">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>missing_data<span class="op">=</span>df_mental_health.isnull().<span class="bu">sum</span>()</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(missing_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Economy                                                             0
+Code                                                                0
+Year                                                                0
+Schizophrenia (%)                                                   0
+Bipolar disorder (%)                                                0
+Eating disorders (%)                                                0
+Anxiety disorders (%)                                               0
+Depression (%)                                                      0
+Income group                                                       56
+average_learning_Adjusted_of_school                               812
+Continent                                                         588
+GDP(2022)                                                         224
+not_at_all_comfortable_speaking_anxiety_or_depression_percent    2380
+dtype: int64</code></pre>
+</div>
+</div>
+<section id="handle-missing-values" class="level5">
+<h5 class="anchored" data-anchor-id="handle-missing-values">1.Handle missing values</h5>
+<p>a.Dropping columns with more than 1000 null values</p>
+<p>(We don’t Remove Rows with Missing Values because although this is the simplest approach, but it can lead to a significant reduction in data size, which might not be ideal if the missing data is extensive.)</p>
+<p>so after this step, we dropped the column not_at_all_comfortable_speaking_anxiety_or_depression_percent</p>
+<div class="cell" data-execution_count="389">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>threshold <span class="op">=</span> <span class="dv">1000</span>  <span class="co"># Set the threshold for the minimum number of non-NA values required</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>df_mental_health <span class="op">=</span> df_mental_health.dropna(axis<span class="op">=</span><span class="dv">1</span>, thresh<span class="op">=</span>(<span class="bu">len</span>(df_mental_health) <span class="op">-</span> threshold))</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the columns remaining after the operation</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>missing_data <span class="op">=</span> df_mental_health.isnull().<span class="bu">sum</span>()</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(missing_data)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>Nr0<span class="op">=</span><span class="bu">len</span>(df_mental_health.index)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>Nc0<span class="op">=</span><span class="bu">len</span>(df_mental_health.columns)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Nrows = "</span>,Nr0,<span class="st">"</span><span class="ch">\n</span><span class="st">Ncol="</span>,Nc0,<span class="st">"</span><span class="ch">\n</span><span class="st">Matrix entries = "</span>, Nr0<span class="op">*</span>Nc0)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co"># missing_data1 = encoded_data1.isnull().sum()</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co"># print(missing_data1)</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Economy                                  0
+Code                                     0
+Year                                     0
+Schizophrenia (%)                        0
+Bipolar disorder (%)                     0
+Eating disorders (%)                     0
+Anxiety disorders (%)                    0
+Depression (%)                           0
+Income group                            56
+average_learning_Adjusted_of_school    812
+Continent                              588
+GDP(2022)                              224
+dtype: int64
+Nrows =  5488 
+Ncol= 12 
+Matrix entries =  65856</code></pre>
+</div>
+</div>
+<p>b.Impute Missing Values:</p>
+<p>Mean/Median/Mode Imputation: Replace missing values with the mean, median, or mode of the column. This is a common strategy for numerical data.</p>
+<p>Forward or Backward Fill: For time-series data, you can fill missing values with the next or previous values.</p>
+<p>Predictive Imputation: Use a machine learning algorithm to predict the missing values based on other data in the dataset.</p>
+<p>Mean/Median Imputation: If the data is normally distributed, you might use the mean. If the distribution is skewed,the median might be more appropriate.</p>
+<div class="cell" data-execution_count="390">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co">#plot the GDP(2022) in df_mental_health</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">5</span>))</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>sns.distplot(df_mental_health[<span class="st">'GDP(2022)'</span>])</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co">#plot the average_learning_Adjusted_of_school in df_mental_health</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">5</span>))</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>sns.distplot(df_mental_health[<span class="st">'average_learning_Adjusted_of_school'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/var/folders/px/bhxss9d10zs_wzsv0ck6sb200000gn/T/ipykernel_54217/2106952041.py:4: UserWarning: 
+
+`distplot` is a deprecated function and will be removed in seaborn v0.14.0.
+
+Please adapt your code to use either `displot` (a figure-level function with
+similar flexibility) or `histplot` (an axes-level function for histograms).
+
+For a guide to updating your code to use the new functions, please see
+https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
+
+  sns.distplot(df_mental_health['GDP(2022)'])
+/var/folders/px/bhxss9d10zs_wzsv0ck6sb200000gn/T/ipykernel_54217/2106952041.py:7: UserWarning: 
+
+`distplot` is a deprecated function and will be removed in seaborn v0.14.0.
+
+Please adapt your code to use either `displot` (a figure-level function with
+similar flexibility) or `histplot` (an axes-level function for histograms).
+
+For a guide to updating your code to use the new functions, please see
+https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
+
+  sns.distplot(df_mental_health['average_learning_Adjusted_of_school'])</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="390">
+<pre><code>&lt;Axes: xlabel='average_learning_Adjusted_of_school', ylabel='Density'&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="Naïve Bayes_files/figure-html/cell-5-output-3.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="Naïve Bayes_files/figure-html/cell-5-output-4.png" class="img-fluid"></p>
+</div>
+</div>
+<p>so here we impute missing values using the mean for GDP(2022) and the median for average_learning_Adjusted_of_school (assuming the distributions are appropriate for these measures):</p>
+<div class="cell" data-execution_count="391">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Impute missing values with the mean for GDP(2022)</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>df_mental_health[<span class="st">'GDP(2022)'</span>].fillna(df_mental_health[<span class="st">'GDP(2022)'</span>].mean(), inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Impute missing values with the median for average_learning_Adjusted_of_school</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>df_mental_health[<span class="st">'average_learning_Adjusted_of_school'</span>].fillna(df_mental_health[<span class="st">'average_learning_Adjusted_of_school'</span>].median(), inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>missing_data <span class="op">=</span> df_mental_health.isnull().<span class="bu">sum</span>()</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(missing_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Economy                                  0
+Code                                     0
+Year                                     0
+Schizophrenia (%)                        0
+Bipolar disorder (%)                     0
+Eating disorders (%)                     0
+Anxiety disorders (%)                    0
+Depression (%)                           0
+Income group                            56
+average_learning_Adjusted_of_school      0
+Continent                              588
+GDP(2022)                                0
+dtype: int64</code></pre>
+</div>
+</div>
+<ol start="3" type="a">
+<li>Drop Rows (‘Income group’) with Missing Values:</li>
+</ol>
+<p>The ‘Income group’ and ‘Continent’ columns still have missing values. Before we proceed with the Naive Bayes classification, we need to address these missing values. Since ‘Income group’ will be our target variable for classification, we cannot impute it as we did with the continuous variables. Instead, we should remove the rows with missing ‘Income group’ labels.</p>
+<p>As for the ‘Continent’ column, it might not be necessary for our classification model if we’re using economic and health indicators as features.(because we can just dont choose the feature in the feature selection). However, if we decide that continent information might be useful, we could either impute the missing values based on the ‘Economy’ column or drop the column if it’s not required.</p>
+<div class="cell" data-execution_count="392">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Dropping rows where 'Income group' is missing since it's our target variable</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>df_mental_health <span class="op">=</span> df_mental_health.dropna(subset<span class="op">=</span>[<span class="st">'Income group'</span>])</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># # Dropping the 'Continent' column</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co"># data_cleaned = df_mental_health.drop('Continent', axis=1)</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Verifying that there are no more missing values</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>missing_values_final <span class="op">=</span> df_mental_health.isnull().<span class="bu">sum</span>()</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>missing_values_final, df_mental_health.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="392">
+<pre><code>(Economy                                  0
+ Code                                     0
+ Year                                     0
+ Schizophrenia (%)                        0
+ Bipolar disorder (%)                     0
+ Eating disorders (%)                     0
+ Anxiety disorders (%)                    0
+ Depression (%)                           0
+ Income group                             0
+ average_learning_Adjusted_of_school      0
+ Continent                              560
+ GDP(2022)                                0
+ dtype: int64,
+ (5432, 12))</code></pre>
+</div>
+</div>
+<p>The dataset is now clean and ready for classification. We can proceed with the next step.</p>
+<div class="cell" data-execution_count="393">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Save the cleaned dataframe to a new CSV file</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>df_mental_health.to_csv(<span class="st">'./mental_health_cleaned_not_encoded.csv'</span>, index<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>3.Encode the ‘Income group’ and ‘Continent’ categorical variables into a numerical format suitable for machine learning models and Split the data into training and test sets</p>
+<div class="cell" data-execution_count="394">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> LabelEncoder</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the cleaned dataset</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>file_path <span class="op">=</span> <span class="st">'./mental_health_cleaned_not_encoded.csv'</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.read_csv(file_path)</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Encoding the 'Income group' column to have numerical labels</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>label_encoder <span class="op">=</span> LabelEncoder()</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'Income group'</span>] <span class="op">=</span> label_encoder.fit_transform(data[<span class="st">'Income group'</span>])</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Selecting features and target variable</span></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> data.drop([<span class="st">'Economy'</span>, <span class="st">'Code'</span>, <span class="st">'Income group'</span>, <span class="st">'Year'</span>, <span class="st">'Continent'</span>], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> data[<span class="st">'Income group'</span>]</span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Splitting the dataset into training (70%), validation (15%), and testing (15%) sets</span></span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>X_train, X_temp, y_train, y_temp <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.3</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>X_val, X_test, y_val, y_test <span class="op">=</span> train_test_split(X_temp, y_temp, test_size<span class="op">=</span><span class="fl">0.5</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Checking the shape of the datasets</span></span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>(X_train.shape, X_val.shape, X_test.shape), (y_train.shape, y_val.shape, y_test.shape)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="394">
+<pre><code>(((3802, 7), (815, 7), (815, 7)), ((3802,), (815,), (815,)))</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="hw-3.2.2-feature-selection" class="level2">
+<h2 class="anchored" data-anchor-id="hw-3.2.2-feature-selection">HW-3.2.2: Feature selection</h2>
+<p>Decide which features are relevant for our classification task(Naive Bayes model) and drop the rest.</p>
+<p>The ‘Income group’ is a categorical variable that could be used as a label for classification, so we predict the ‘Income group’ based on health and economic indicators.</p>
+<p>method: 1. EDA to find the correlation between the features and the target variable (corralation matrix)</p>
+<div class="cell" data-execution_count="395">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>correlation_columns <span class="op">=</span> [</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Schizophrenia (%)'</span>, </span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Bipolar disorder (%)'</span>, </span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Eating disorders (%)'</span>, </span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Anxiety disorders (%)'</span>, </span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Depression (%)'</span>, </span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">'GDP(2022)'</span>,</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">'average_learning_Adjusted_of_school'</span>,</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 'Income group',</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 'Continent',</span></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a><span class="co"># One-hot encoding the 'Income group' and 'Continent' columns to include them in the correlation matrix</span></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>encoded_data <span class="op">=</span> pd.get_dummies(df_mental_health, columns<span class="op">=</span>[<span class="st">'Income group'</span>, <span class="st">'Continent'</span>])</span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(encoded_data.head())</span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>encoded_data.to_csv(<span class="st">'./mental_health_encoded.csv'</span>, index<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Updating the correlation_columns list to include the newly created one-hot encoded columns</span></span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>new_correlation_columns <span class="op">=</span> correlation_columns <span class="op">+</span> <span class="bu">list</span>(encoded_data.columns[encoded_data.columns.<span class="bu">str</span>.startswith(<span class="st">'Income group_'</span>)]) <span class="op">+</span> <span class="bu">list</span>(encoded_data.columns[encoded_data.columns.<span class="bu">str</span>.startswith(<span class="st">'Continent_'</span>)])</span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the new correlation matrix including the one-hot encoded columns</span></span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>new_correlation_matrix <span class="op">=</span> encoded_data[new_correlation_columns].corr()</span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a mask for the upper triangle</span></span>
+<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>mask <span class="op">=</span> np.triu(np.ones_like(new_correlation_matrix, dtype<span class="op">=</span><span class="bu">bool</span>))</span>
+<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Set up the matplotlib figure</span></span>
+<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">10</span>))</span>
+<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Draw the heatmap with the mask</span></span>
+<span id="cb16-31"><a href="#cb16-31" aria-hidden="true" tabindex="-1"></a>sns.heatmap(new_correlation_matrix, mask<span class="op">=</span>mask, annot<span class="op">=</span><span class="va">False</span>, fmt<span class="op">=</span><span class="st">".2f"</span>, cmap<span class="op">=</span><span class="st">'coolwarm'</span>, cbar_kws<span class="op">=</span>{<span class="st">"shrink"</span>: <span class="fl">.5</span>})</span>
+<span id="cb16-32"><a href="#cb16-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-33"><a href="#cb16-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Add title</span></span>
+<span id="cb16-34"><a href="#cb16-34" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Correlation Heatmap for Mental Health Metrics with Categorical Variables'</span>)</span>
+<span id="cb16-35"><a href="#cb16-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-36"><a href="#cb16-36" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the heatmap</span></span>
+<span id="cb16-37"><a href="#cb16-37" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb16-38"><a href="#cb16-38" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(encoded_data.head())</span>
+<span id="cb16-39"><a href="#cb16-39" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(encoded_data))</span>
+<span id="cb16-40"><a href="#cb16-40" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(new_correlation_matrix)</span>
+<span id="cb16-41"><a href="#cb16-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-42"><a href="#cb16-42" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       Economy Code  Year  Schizophrenia (%)  Bipolar disorder (%)  \
+0  Afghanistan  AFG  1990           0.160560              0.697779   
+1  Afghanistan  AFG  1991           0.160312              0.697961   
+2  Afghanistan  AFG  1992           0.160135              0.698107   
+3  Afghanistan  AFG  1993           0.160037              0.698257   
+4  Afghanistan  AFG  1994           0.160022              0.698469   
+
+   Eating disorders (%)  Anxiety disorders (%)  Depression (%)  \
+0              0.101855               4.828830        4.071831   
+1              0.099313               4.829740        4.079531   
+2              0.096692               4.831108        4.088358   
+3              0.094336               4.830864        4.096190   
+4              0.092439               4.829423        4.099582   
+
+   average_learning_Adjusted_of_school  GDP(2022)  Income group_High income  \
+0                             4.957542    14583.0                         0   
+1                             4.957542    14583.0                         0   
+2                             4.957542    14583.0                         0   
+3                             4.957542    14583.0                         0   
+4                             4.957542    14583.0                         0   
+
+   Income group_Low income  Income group_Lower middle income  \
+0                        1                                 0   
+1                        1                                 0   
+2                        1                                 0   
+3                        1                                 0   
+4                        1                                 0   
+
+   Income group_Upper middle income  Continent_Africa  Continent_Asia  \
+0                                 0                 0               1   
+1                                 0                 0               1   
+2                                 0                 0               1   
+3                                 0                 0               1   
+4                                 0                 0               1   
+
+   Continent_Europe  Continent_North America  Continent_Oceania  \
+0                 0                        0                  0   
+1                 0                        0                  0   
+2                 0                        0                  0   
+3                 0                        0                  0   
+4                 0                        0                  0   
+
+   Continent_South America  
+0                        0  
+1                        0  
+2                        0  
+3                        0  
+4                        0  
+       Economy Code  Year  Schizophrenia (%)  Bipolar disorder (%)  \
+0  Afghanistan  AFG  1990           0.160560              0.697779   
+1  Afghanistan  AFG  1991           0.160312              0.697961   
+2  Afghanistan  AFG  1992           0.160135              0.698107   
+3  Afghanistan  AFG  1993           0.160037              0.698257   
+4  Afghanistan  AFG  1994           0.160022              0.698469   
+
+   Eating disorders (%)  Anxiety disorders (%)  Depression (%)  \
+0              0.101855               4.828830        4.071831   
+1              0.099313               4.829740        4.079531   
+2              0.096692               4.831108        4.088358   
+3              0.094336               4.830864        4.096190   
+4              0.092439               4.829423        4.099582   
+
+   average_learning_Adjusted_of_school  GDP(2022)  Income group_High income  \
+0                             4.957542    14583.0                         0   
+1                             4.957542    14583.0                         0   
+2                             4.957542    14583.0                         0   
+3                             4.957542    14583.0                         0   
+4                             4.957542    14583.0                         0   
+
+   Income group_Low income  Income group_Lower middle income  \
+0                        1                                 0   
+1                        1                                 0   
+2                        1                                 0   
+3                        1                                 0   
+4                        1                                 0   
+
+   Income group_Upper middle income  Continent_Africa  Continent_Asia  \
+0                                 0                 0               1   
+1                                 0                 0               1   
+2                                 0                 0               1   
+3                                 0                 0               1   
+4                                 0                 0               1   
+
+   Continent_Europe  Continent_North America  Continent_Oceania  \
+0                 0                        0                  0   
+1                 0                        0                  0   
+2                 0                        0                  0   
+3                 0                        0                  0   
+4                 0                        0                  0   
+
+   Continent_South America  
+0                        0  
+1                        0  
+2                        0  
+3                        0  
+4                        0  
+&lt;class 'pandas.core.frame.DataFrame'&gt;
+                                     Schizophrenia (%)  Bipolar disorder (%)  \
+Schizophrenia (%)                             1.000000              0.240575   
+Bipolar disorder (%)                          0.240575              1.000000   
+Eating disorders (%)                          0.688793              0.704006   
+Anxiety disorders (%)                         0.472522              0.658057   
+Depression (%)                                0.125692              0.114153   
+GDP(2022)                                     0.369815             -0.059046   
+average_learning_Adjusted_of_school           0.636316              0.429033   
+Income group_High income                      0.585802              0.442182   
+Income group_Low income                      -0.405724             -0.216036   
+Income group_Lower middle income             -0.221720             -0.324419   
+Income group_Upper middle income             -0.083432              0.027109   
+Continent_Africa                             -0.524780             -0.269195   
+Continent_Asia                                0.138752             -0.133996   
+Continent_Europe                              0.279973              0.342498   
+Continent_North America                      -0.039523              0.275602   
+Continent_Oceania                             0.209432             -0.190432   
+Continent_South America                      -0.072790              0.226848   
+
+                                     Eating disorders (%)  \
+Schizophrenia (%)                                0.688793   
+Bipolar disorder (%)                             0.704006   
+Eating disorders (%)                             1.000000   
+Anxiety disorders (%)                            0.679320   
+Depression (%)                                   0.195924   
+GDP(2022)                                        0.131819   
+average_learning_Adjusted_of_school              0.648532   
+Income group_High income                         0.739056   
+Income group_Low income                         -0.333568   
+Income group_Lower middle income                -0.397374   
+Income group_Upper middle income                -0.123462   
+Continent_Africa                                -0.393812   
+Continent_Asia                                  -0.122490   
+Continent_Europe                                 0.425994   
+Continent_North America                          0.074215   
+Continent_Oceania                                0.000394   
+Continent_South America                          0.085132   
+
+                                     Anxiety disorders (%)  Depression (%)  \
+Schizophrenia (%)                                 0.472522        0.125692   
+Bipolar disorder (%)                              0.658057        0.114153   
+Eating disorders (%)                              0.679320        0.195924   
+Anxiety disorders (%)                             1.000000        0.338573   
+Depression (%)                                    0.338573        1.000000   
+GDP(2022)                                         0.085053        0.052842   
+average_learning_Adjusted_of_school               0.353867       -0.013123   
+Income group_High income                          0.459848        0.100652   
+Income group_Low income                          -0.156747        0.191008   
+Income group_Lower middle income                 -0.250900        0.015965   
+Income group_Upper middle income                 -0.112419       -0.271149   
+Continent_Africa                                 -0.264615        0.271530   
+Continent_Asia                                   -0.049442       -0.024714   
+Continent_Europe                                  0.187011        0.001411   
+Continent_North America                           0.029437       -0.282403   
+Continent_Oceania                                 0.030380       -0.030521   
+Continent_South America                           0.229374       -0.056769   
+
+                                     GDP(2022)  \
+Schizophrenia (%)                     0.369815   
+Bipolar disorder (%)                 -0.059046   
+Eating disorders (%)                  0.131819   
+Anxiety disorders (%)                 0.085053   
+Depression (%)                        0.052842   
+GDP(2022)                             1.000000   
+average_learning_Adjusted_of_school   0.223242   
+Income group_High income              0.083878   
+Income group_Low income              -0.086646   
+Income group_Lower middle income     -0.105537   
+Income group_Upper middle income      0.085280   
+Continent_Africa                     -0.134962   
+Continent_Asia                        0.179471   
+Continent_Europe                      0.042354   
+Continent_North America              -0.042112   
+Continent_Oceania                    -0.032099   
+Continent_South America              -0.009233   
+
+                                     average_learning_Adjusted_of_school  \
+Schizophrenia (%)                                               0.636316   
+Bipolar disorder (%)                                            0.429033   
+Eating disorders (%)                                            0.648532   
+Anxiety disorders (%)                                           0.353867   
+Depression (%)                                                 -0.013123   
+GDP(2022)                                                       0.223242   
+average_learning_Adjusted_of_school                             1.000000   
+Income group_High income                                        0.640737   
+Income group_Low income                                        -0.504080   
+Income group_Lower middle income                               -0.325065   
+Income group_Upper middle income                                0.039467   
+Continent_Africa                                               -0.570805   
+Continent_Asia                                                  0.061933   
+Continent_Europe                                                0.560514   
+Continent_North America                                        -0.001007   
+Continent_Oceania                                              -0.055448   
+Continent_South America                                         0.031498   
+
+                                     Income group_High income  \
+Schizophrenia (%)                                    0.585802   
+Bipolar disorder (%)                                 0.442182   
+Eating disorders (%)                                 0.739056   
+Anxiety disorders (%)                                0.459848   
+Depression (%)                                       0.100652   
+GDP(2022)                                            0.083878   
+average_learning_Adjusted_of_school                  0.640737   
+Income group_High income                             1.000000   
+Income group_Low income                             -0.272814   
+Income group_Lower middle income                    -0.430693   
+Income group_Upper middle income                    -0.414144   
+Continent_Africa                                    -0.389138   
+Continent_Asia                                      -0.073196   
+Continent_Europe                                     0.437275   
+Continent_North America                             -0.029037   
+Continent_Oceania                                   -0.062101   
+Continent_South America                             -0.027233   
+
+                                     Income group_Low income  \
+Schizophrenia (%)                                  -0.405724   
+Bipolar disorder (%)                               -0.216036   
+Eating disorders (%)                               -0.333568   
+Anxiety disorders (%)                              -0.156747   
+Depression (%)                                      0.191008   
+GDP(2022)                                          -0.086646   
+average_learning_Adjusted_of_school                -0.504080   
+Income group_High income                           -0.272814   
+Income group_Low income                             1.000000   
+Income group_Lower middle income                   -0.244323   
+Income group_Upper middle income                   -0.234936   
+Continent_Africa                                    0.452508   
+Continent_Asia                                     -0.084071   
+Continent_Europe                                   -0.206793   
+Continent_North America                            -0.137062   
+Continent_Oceania                                  -0.091711   
+Continent_South America                            -0.096450   
+
+                                     Income group_Lower middle income  \
+Schizophrenia (%)                                           -0.221720   
+Bipolar disorder (%)                                        -0.324419   
+Eating disorders (%)                                        -0.397374   
+Anxiety disorders (%)                                       -0.250900   
+Depression (%)                                               0.015965   
+GDP(2022)                                                   -0.105537   
+average_learning_Adjusted_of_school                         -0.325065   
+Income group_High income                                    -0.430693   
+Income group_Low income                                     -0.244323   
+Income group_Lower middle income                             1.000000   
+Income group_Upper middle income                            -0.370894   
+Continent_Africa                                             0.230024   
+Continent_Asia                                               0.176326   
+Continent_Europe                                            -0.298539   
+Continent_North America                                     -0.105328   
+Continent_Oceania                                            0.115292   
+Continent_South America                                     -0.102536   
+
+                                     Income group_Upper middle income  \
+Schizophrenia (%)                                           -0.083432   
+Bipolar disorder (%)                                         0.027109   
+Eating disorders (%)                                        -0.123462   
+Anxiety disorders (%)                                       -0.112419   
+Depression (%)                                              -0.271149   
+GDP(2022)                                                    0.085280   
+average_learning_Adjusted_of_school                          0.039467   
+Income group_High income                                    -0.414144   
+Income group_Low income                                     -0.234936   
+Income group_Lower middle income                            -0.370894   
+Income group_Upper middle income                             1.000000   
+Continent_Africa                                            -0.170437   
+Continent_Asia                                              -0.036598   
+Continent_Europe                                            -0.001172   
+Continent_North America                                      0.244202   
+Continent_Oceania                                            0.019655   
+Continent_South America                                      0.208010   
+
+                                     Continent_Africa  Continent_Asia  \
+Schizophrenia (%)                           -0.524780        0.138752   
+Bipolar disorder (%)                        -0.269195       -0.133996   
+Eating disorders (%)                        -0.393812       -0.122490   
+Anxiety disorders (%)                       -0.264615       -0.049442   
+Depression (%)                               0.271530       -0.024714   
+GDP(2022)                                   -0.134962        0.179471   
+average_learning_Adjusted_of_school         -0.570805        0.061933   
+Income group_High income                    -0.389138       -0.073196   
+Income group_Low income                      0.452508       -0.084071   
+Income group_Lower middle income             0.230024        0.176326   
+Income group_Upper middle income            -0.170437       -0.036598   
+Continent_Africa                             1.000000       -0.299560   
+Continent_Asia                              -0.299560        1.000000   
+Continent_Europe                            -0.313921       -0.263675   
+Continent_North America                     -0.208067       -0.174764   
+Continent_Oceania                           -0.139222       -0.116939   
+Continent_South America                     -0.146416       -0.122981   
+
+                                     Continent_Europe  \
+Schizophrenia (%)                            0.279973   
+Bipolar disorder (%)                         0.342498   
+Eating disorders (%)                         0.425994   
+Anxiety disorders (%)                        0.187011   
+Depression (%)                               0.001411   
+GDP(2022)                                    0.042354   
+average_learning_Adjusted_of_school          0.560514   
+Income group_High income                     0.437275   
+Income group_Low income                     -0.206793   
+Income group_Lower middle income            -0.298539   
+Income group_Upper middle income            -0.001172   
+Continent_Africa                            -0.313921   
+Continent_Asia                              -0.263675   
+Continent_Europe                             1.000000   
+Continent_North America                     -0.183143   
+Continent_Oceania                           -0.122545   
+Continent_South America                     -0.128876   
+
+                                     Continent_North America  \
+Schizophrenia (%)                                  -0.039523   
+Bipolar disorder (%)                                0.275602   
+Eating disorders (%)                                0.074215   
+Anxiety disorders (%)                               0.029437   
+Depression (%)                                     -0.282403   
+GDP(2022)                                          -0.042112   
+average_learning_Adjusted_of_school                -0.001007   
+Income group_High income                           -0.029037   
+Income group_Low income                            -0.137062   
+Income group_Lower middle income                   -0.105328   
+Income group_Upper middle income                    0.244202   
+Continent_Africa                                   -0.208067   
+Continent_Asia                                     -0.174764   
+Continent_Europe                                   -0.183143   
+Continent_North America                             1.000000   
+Continent_Oceania                                  -0.081223   
+Continent_South America                            -0.085420   
+
+                                     Continent_Oceania  \
+Schizophrenia (%)                             0.209432   
+Bipolar disorder (%)                         -0.190432   
+Eating disorders (%)                          0.000394   
+Anxiety disorders (%)                         0.030380   
+Depression (%)                               -0.030521   
+GDP(2022)                                    -0.032099   
+average_learning_Adjusted_of_school          -0.055448   
+Income group_High income                     -0.062101   
+Income group_Low income                      -0.091711   
+Income group_Lower middle income              0.115292   
+Income group_Upper middle income              0.019655   
+Continent_Africa                             -0.139222   
+Continent_Asia                               -0.116939   
+Continent_Europe                             -0.122545   
+Continent_North America                      -0.081223   
+Continent_Oceania                             1.000000   
+Continent_South America                      -0.057156   
+
+                                     Continent_South America  
+Schizophrenia (%)                                  -0.072790  
+Bipolar disorder (%)                                0.226848  
+Eating disorders (%)                                0.085132  
+Anxiety disorders (%)                               0.229374  
+Depression (%)                                     -0.056769  
+GDP(2022)                                          -0.009233  
+average_learning_Adjusted_of_school                 0.031498  
+Income group_High income                           -0.027233  
+Income group_Low income                            -0.096450  
+Income group_Lower middle income                   -0.102536  
+Income group_Upper middle income                    0.208010  
+Continent_Africa                                   -0.146416  
+Continent_Asia                                     -0.122981  
+Continent_Europe                                   -0.128876  
+Continent_North America                            -0.085420  
+Continent_Oceania                                  -0.057156  
+Continent_South America                             1.000000  </code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="Naïve Bayes_files/figure-html/cell-10-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Strong Correlation: Values above 0.7 or below -0.7 suggest a strong correlation between the variables. Moderate Correlation: Values between 0.3 and 0.7 (or -0.3 and -0.7) suggest a moderate correlation. Weak Correlation: Values between 0 and 0.3 (or 0 and -0.3) suggest a weak correlation.</p>
+<ol start="2" type="1">
+<li>Pearson Correlation</li>
+</ol>
+<p>The Pearson correlation coefficients you’ve provided show the linear relationship between each feature and the ‘Income group’ target variable. A coefficient close to 1 or -1 indicates a strong positive or negative linear relationship, respectively. A coefficient close to 0 suggests no linear relationship.</p>
+<div class="cell" data-execution_count="396">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming data is already loaded and appropriate for Pearson Correlation</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="co"># For Pearson Correlation, we would ideally have only numeric features and labels</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the Pearson Correlation matrix</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>correlation_matrix <span class="op">=</span> data.corr()</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="co"># print(correlation_matrix)</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Selecting only correlations with the target variable (assuming target is numeric)</span></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>target_correlation <span class="op">=</span> correlation_matrix[<span class="st">'Income group'</span>].sort_values(ascending<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Review the correlations and decide on a threshold for selecting features</span></span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(target_correlation)</span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a><span class="co"># For multicollinearity, we could remove features that have a high correlation with other features</span></span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>threshold <span class="op">=</span> <span class="fl">0.8</span>  <span class="co"># This is an example threshold, it may need to be adjusted</span></span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>high_correlation_pairs <span class="op">=</span> []</span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(correlation_matrix.columns)):</span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(i<span class="op">+</span><span class="dv">1</span>, <span class="bu">len</span>(correlation_matrix.columns)):</span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">abs</span>(correlation_matrix.iloc[i, j]) <span class="op">&gt;</span> threshold:</span>
+<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a>            high_correlation_pairs.append((correlation_matrix.columns[i], correlation_matrix.columns[j]))</span>
+<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Now, you can decide which features to drop based on their correlation with the target</span></span>
+<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a><span class="co"># and their inter-correlations with other features</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Income group                           1.000000e+00
+Year                                   1.892221e-14
+GDP(2022)                             -9.632665e-03
+Depression (%)                        -2.334807e-01
+Bipolar disorder (%)                  -2.752850e-01
+average_learning_Adjusted_of_school   -3.443070e-01
+Anxiety disorders (%)                 -3.575221e-01
+Schizophrenia (%)                     -3.745985e-01
+Eating disorders (%)                  -5.301981e-01
+Name: Income group, dtype: float64</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/var/folders/px/bhxss9d10zs_wzsv0ck6sb200000gn/T/ipykernel_54217/2072872300.py:8: FutureWarning: The default value of numeric_only in DataFrame.corr is deprecated. In a future version, it will default to False. Select only valid columns or specify the value of numeric_only to silence this warning.
+  correlation_matrix = data.corr()</code></pre>
+</div>
+</div>
+<p>Eating disorders (%): With a correlation coefficient of approximately -0.52, this feature has the strongest negative linear relationship with the ‘Income group’ and is likely to be the most informative for predicting income group.</p>
+<p>Anxiety disorders (%), Schizophrenia (%), average_learning_Adjusted_of_school, Bipolar disorder (%), and Depression (%): All of these features have moderate negative correlations with the ‘Income group’, meaning as these percentages increase, the likelihood of being in a higher income group decreases.</p>
+<p>GDP(2022): This feature has a very weak negative correlation with the ‘Income group’, suggesting it might not be very useful for predicting the income group on its own.</p>
+<p>Year: The correlation is effectively zero, indicating no linear relationship with the ‘Income group’.</p>
+<p>3.Chisquare test</p>
+<div class="cell" data-execution_count="397">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.feature_selection <span class="im">import</span> SelectKBest, chi2</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Import the necessary libraries</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.feature_selection <span class="im">import</span> SelectKBest, chi2</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize the SelectKBest with chi-squared score function</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Using 'k='all'' to select all features for now, can change to a specific number based on the chi-squared scores</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>kbest <span class="op">=</span> SelectKBest(score_func<span class="op">=</span>chi2, k<span class="op">=</span><span class="st">'all'</span>)</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit the SelectKBest to the training data and transform it</span></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>X_train_kbest <span class="op">=</span> kbest.fit_transform(X_train, y_train)</span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Transform the validation and test data</span></span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>X_val_kbest <span class="op">=</span> kbest.transform(X_val)</span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>X_test_kbest <span class="op">=</span> kbest.transform(X_test)</span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the scores for each feature</span></span>
+<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a>feature_scores <span class="op">=</span> kbest.scores_</span>
+<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a DataFrame to view the scores and columns</span></span>
+<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a>feature_scores_df <span class="op">=</span> pd.DataFrame({<span class="st">'Feature'</span>: X_train.columns, <span class="st">'Score'</span>: feature_scores})</span>
+<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the feature scores</span></span>
+<span id="cb21-23"><a href="#cb21-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(feature_scores_df.sort_values(by<span class="op">=</span><span class="st">'Score'</span>, ascending<span class="op">=</span><span class="va">False</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                               Feature         Score
+6                            GDP(2022)  4.832444e+08
+5  average_learning_Adjusted_of_school  1.590596e+03
+3                Anxiety disorders (%)  2.765138e+02
+2                 Eating disorders (%)  2.371816e+02
+4                       Depression (%)  5.058270e+01
+1                 Bipolar disorder (%)  3.730221e+01
+0                    Schizophrenia (%)  1.404252e+01</code></pre>
+</div>
+</div>
+<p>In this example, features excluding ‘Year’ and ‘GDP(2022)’ are used for classification. The ‘Year’ column is dropped because it’s not relevant for classification, and ‘GDP(2022)’ is dropped because it has a very weak correlation with the ‘Income group’ and is unlikely to be useful for classification.</p>
+<section id="hw-3.2.3-naïve-bayes-nb-with-labeled-record-data" class="level3">
+<h3 class="anchored" data-anchor-id="hw-3.2.3-naïve-bayes-nb-with-labeled-record-data">HW-3.2.3: Naïve Bayes (NB) with Labeled Record Data</h3>
+<div class="cell" data-execution_count="398">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.naive_bayes <span class="im">import</span> GaussianNB</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> accuracy_score, classification_report, confusion_matrix</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Selecting features and target variable</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="co"># print(X.columns)</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> X.drop([<span class="st">'GDP(2022)'</span>, <span class="st">'average_learning_Adjusted_of_school'</span>], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Splitting the dataset into training (70%), validation (15%), and testing (15%) sets</span></span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>X_train, X_temp, y_train, y_temp <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.3</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>X_val, X_test, y_val, y_test <span class="op">=</span> train_test_split(X_temp, y_temp, test_size<span class="op">=</span><span class="fl">0.5</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a><span class="co"># # Checking the shape of the datasets</span></span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>(X_train.shape, X_val.shape, X_test.shape), (y_train.shape, y_val.shape, y_test.shape)</span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Train the Naïve Bayes model</span></span>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a>nb_classifier <span class="op">=</span> GaussianNB()</span>
+<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a>nb_classifier.fit(X_train, y_train)</span>
+<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Validate the model</span></span>
+<span id="cb23-23"><a href="#cb23-23" aria-hidden="true" tabindex="-1"></a>y_val_pred <span class="op">=</span> nb_classifier.predict(X_val)</span>
+<span id="cb23-24"><a href="#cb23-24" aria-hidden="true" tabindex="-1"></a>val_accuracy <span class="op">=</span> accuracy_score(y_val, y_val_pred)</span>
+<span id="cb23-25"><a href="#cb23-25" aria-hidden="true" tabindex="-1"></a>val_classification_report <span class="op">=</span> classification_report(y_val, y_val_pred)</span>
+<span id="cb23-26"><a href="#cb23-26" aria-hidden="true" tabindex="-1"></a>val_confusion_matrix <span class="op">=</span> confusion_matrix(y_val, y_val_pred)</span>
+<span id="cb23-27"><a href="#cb23-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-28"><a href="#cb23-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize the confusion matrix</span></span>
+<span id="cb23-29"><a href="#cb23-29" aria-hidden="true" tabindex="-1"></a>sns.heatmap(val_confusion_matrix, annot<span class="op">=</span><span class="va">True</span>, fmt<span class="op">=</span><span class="st">'d'</span>, cmap<span class="op">=</span><span class="st">'Blues'</span>)</span>
+<span id="cb23-30"><a href="#cb23-30" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Predicted'</span>)</span>
+<span id="cb23-31"><a href="#cb23-31" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'True'</span>)</span>
+<span id="cb23-32"><a href="#cb23-32" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Confusion Matrix for Validation Set'</span>)</span>
+<span id="cb23-33"><a href="#cb23-33" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb23-34"><a href="#cb23-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-35"><a href="#cb23-35" aria-hidden="true" tabindex="-1"></a><span class="co"># Evaluate the model using the validation set</span></span>
+<span id="cb23-36"><a href="#cb23-36" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Validation Accuracy: </span><span class="sc">{</span>val_accuracy<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb23-37"><a href="#cb23-37" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Classification Report for Validation Set:</span><span class="ch">\n</span><span class="sc">{</span>val_classification_report<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Naïve Bayes_files/figure-html/cell-13-output-1.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Validation Accuracy: 0.5901840490797546
+Classification Report for Validation Set:
+              precision    recall  f1-score   support
+
+           0       0.84      0.58      0.69       272
+           1       0.60      0.83      0.70        94
+           2       0.57      0.58      0.58       227
+           3       0.42      0.50      0.46       222
+
+    accuracy                           0.59       815
+   macro avg       0.61      0.63      0.61       815
+weighted avg       0.62      0.59      0.60       815
+</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="399">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Test the model</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>y_test_pred <span class="op">=</span> nb_classifier.predict(X_test)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>test_accuracy <span class="op">=</span> accuracy_score(y_test, y_test_pred)</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>test_classification_report <span class="op">=</span> classification_report(y_test, y_test_pred)</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>test_confusion_matrix <span class="op">=</span> confusion_matrix(y_test, y_test_pred)</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize the confusion matrix for the test set</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>sns.heatmap(test_confusion_matrix, annot<span class="op">=</span><span class="va">True</span>, fmt<span class="op">=</span><span class="st">'d'</span>, cmap<span class="op">=</span><span class="st">'Blues'</span>)</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Predicted'</span>)</span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'True'</span>)</span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Confusion Matrix for Test Set'</span>)</span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Evaluate the model using the test set</span></span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Test Accuracy: </span><span class="sc">{</span>test_accuracy<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Classification Report for Test Set:</span><span class="ch">\n</span><span class="sc">{</span>test_classification_report<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Naïve Bayes_files/figure-html/cell-14-output-1.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Test Accuracy: 0.6024539877300613
+Classification Report for Test Set:
+              precision    recall  f1-score   support
+
+           0       0.84      0.63      0.72       281
+           1       0.62      0.84      0.71       102
+           2       0.54      0.59      0.56       219
+           3       0.44      0.46      0.45       213
+
+    accuracy                           0.60       815
+   macro avg       0.61      0.63      0.61       815
+weighted avg       0.63      0.60      0.61       815
+</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="hw-3.2.4-naïve-bayes-nb-with-labeled-text-data" class="level2">
+<h2 class="anchored" data-anchor-id="hw-3.2.4-naïve-bayes-nb-with-labeled-text-data">HW-3.2.4: Naïve Bayes (NB) with Labeled Text Data</h2>
+<p>Label the data, either manually or through automated methods, based on your classification goals. Preprocess the text data by cleaning and tokenizing the text, normalizing it, and removing stop words. Extract features using methods like TF-IDF or count vectorization. Train your Naive Bayes model, typically a Multinomial Naive Bayes for text data. Evaluate and refine your model, testing its accuracy and other metrics on a separate test set.</p>
+<p>load the data</p>
+<div class="cell" data-execution_count="400">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the data from the uploaded CSV file</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>df_mental_health <span class="op">=</span> pd.read_csv(<span class="st">"../Data/all_mental_health_symptoms_nb.csv"</span>)</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>df_mental_health.head()  <span class="co"># Display the first few rows to understand the dataset structure</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="400">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Symptoms</th>
+<th data-quarto-table-cell-role="th">Label</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Feelings of sadness, tearfulness, emptiness or...</td>
+<td>Depression</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>Angry outbursts, irritability or frustration, ...</td>
+<td>Depression</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>Loss of interest or pleasure in most or all no...</td>
+<td>Depression</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>Sleep disturbances, including insomnia or slee...</td>
+<td>Depression</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>Tiredness and lack of energy, so even small ta...</td>
+<td>Depression</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>The dataset is structured with two columns: ‘Symptoms’ and ‘Label’. Preprocess the text data in the ‘Symptoms’ column. Encode the ‘Label’ column to numerical values, as Naive Bayes requires numerical input. Split the data into training and testing sets. Train a Naive Bayes classifier on the training set. Evaluate the model on the testing set.</p>
+<div class="cell" data-execution_count="401">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.feature_extraction.text <span class="im">import</span> TfidfVectorizer</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.naive_bayes <span class="im">import</span> MultinomialNB</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> classification_report, accuracy_score</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> LabelEncoder</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Preprocessing the text data</span></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>tfidf_vectorizer <span class="op">=</span> TfidfVectorizer(stop_words<span class="op">=</span><span class="st">'english'</span>, max_features<span class="op">=</span><span class="dv">1000</span>)</span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> tfidf_vectorizer.fit_transform(df_mental_health[<span class="st">'Symptoms'</span>]).toarray()</span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Encoding the 'Label' column</span></span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>label_encoder <span class="op">=</span> LabelEncoder()</span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> label_encoder.fit_transform(df_mental_health[<span class="st">'Label'</span>])</span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Splitting the data into training and testing sets</span></span>
+<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.3</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Training the Naive Bayes classifier</span></span>
+<span id="cb28-19"><a href="#cb28-19" aria-hidden="true" tabindex="-1"></a>nb_classifier <span class="op">=</span> MultinomialNB()</span>
+<span id="cb28-20"><a href="#cb28-20" aria-hidden="true" tabindex="-1"></a>nb_classifier.fit(X_train, y_train)</span>
+<span id="cb28-21"><a href="#cb28-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-22"><a href="#cb28-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Predicting the test set results</span></span>
+<span id="cb28-23"><a href="#cb28-23" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> nb_classifier.predict(X_test)</span>
+<span id="cb28-24"><a href="#cb28-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-25"><a href="#cb28-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Evaluating the model calculating the testing accuracy</span></span>
+<span id="cb28-26"><a href="#cb28-26" aria-hidden="true" tabindex="-1"></a>accuracy <span class="op">=</span> accuracy_score(y_test, y_pred)</span>
+<span id="cb28-27"><a href="#cb28-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-28"><a href="#cb28-28" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'testing accuracy:'</span>,accuracy)</span>
+<span id="cb28-29"><a href="#cb28-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-30"><a href="#cb28-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Predicting the training set results to calculate the training accuracy</span></span>
+<span id="cb28-31"><a href="#cb28-31" aria-hidden="true" tabindex="-1"></a>y_train_pred <span class="op">=</span> nb_classifier.predict(X_train)</span>
+<span id="cb28-32"><a href="#cb28-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-33"><a href="#cb28-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculating the training accuracy</span></span>
+<span id="cb28-34"><a href="#cb28-34" aria-hidden="true" tabindex="-1"></a>training_accuracy <span class="op">=</span> accuracy_score(y_train, y_train_pred)</span>
+<span id="cb28-35"><a href="#cb28-35" aria-hidden="true" tabindex="-1"></a>training_accuracy</span>
+<span id="cb28-36"><a href="#cb28-36" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'training accuracy:'</span>,training_accuracy)</span>
+<span id="cb28-37"><a href="#cb28-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-38"><a href="#cb28-38" aria-hidden="true" tabindex="-1"></a>report <span class="op">=</span> classification_report(y_test, y_pred, target_names<span class="op">=</span>label_encoder.classes_)</span>
+<span id="cb28-39"><a href="#cb28-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-40"><a href="#cb28-40" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(report)</span>
+<span id="cb28-41"><a href="#cb28-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-42"><a href="#cb28-42" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>testing accuracy: 0.3142857142857143
+training accuracy: 0.9873417721518988
+                  precision    recall  f1-score   support
+
+         Anxiety       0.27      0.80      0.40         5
+Bipolar Disorder       0.50      0.25      0.33         8
+      Depression       0.20      0.12      0.15         8
+ Eating Disorder       0.33      0.14      0.20         7
+   Schizophrenia       0.38      0.43      0.40         7
+
+        accuracy                           0.31        35
+       macro avg       0.33      0.35      0.30        35
+    weighted avg       0.34      0.31      0.29        35
+</code></pre>
+</div>
+</div>
+<p>The accuracy of the Naive Bayes model on the mental health symptoms dataset is not high: 0.56. This is likely due to the following factors: Overlap of Symptoms: Many mental health conditions have overlapping symptoms, which can confuse the model. For example, symptoms like “anxiety” or “sleep disturbances” can occur in multiple disorders.</p>
+<p>Preprocess the “Symptoms” text data with vectorization.</p>
+<p>Encode the “Label” column into numerical values.</p>
+<p>Split the data into a training set and a test set.</p>
+<p>Train a Naive Bayes model. Evaluate the model on the test data.</p>
+<div class="cell" data-execution_count="402">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.feature_extraction.text <span class="im">import</span> CountVectorizer</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.naive_bayes <span class="im">import</span> MultinomialNB</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> classification_report, accuracy_score</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> LabelEncoder</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Attempt to read the CSV file while skipping problematic lines</span></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>    new_data <span class="op">=</span> pd.read_csv(<span class="st">'../Data/mental_sports_nb.csv'</span>,on_bad_lines<span class="op">=</span><span class="st">'skip'</span>)</span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Display the first few rows of the dataframe and the number of rows skipped</span></span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>    new_first_rows <span class="op">=</span> new_data.head()</span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>    new_num_rows <span class="op">=</span> new_data.shape[<span class="dv">0</span>]</span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a>    new_exception_message <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a>    new_first_rows, new_num_rows, new_exception_message <span class="op">=</span> <span class="va">None</span>, <span class="va">None</span>, <span class="bu">str</span>(e)</span>
+<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a>new_first_rows, new_num_rows, new_exception_message</span>
+<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize the vectorizer and label encoder</span></span>
+<span id="cb30-19"><a href="#cb30-19" aria-hidden="true" tabindex="-1"></a>vectorizer <span class="op">=</span> CountVectorizer()</span>
+<span id="cb30-20"><a href="#cb30-20" aria-hidden="true" tabindex="-1"></a>label_encoder <span class="op">=</span> LabelEncoder()</span>
+<span id="cb30-21"><a href="#cb30-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-22"><a href="#cb30-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Vectorize the 'Symptoms' text</span></span>
+<span id="cb30-23"><a href="#cb30-23" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> vectorizer.fit_transform(new_data[<span class="st">'Symptoms'</span>])</span>
+<span id="cb30-24"><a href="#cb30-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-25"><a href="#cb30-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Encode the 'Label' column</span></span>
+<span id="cb30-26"><a href="#cb30-26" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> label_encoder.fit_transform(new_data[<span class="st">'Label'</span>])</span>
+<span id="cb30-27"><a href="#cb30-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-28"><a href="#cb30-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Split the data into training and test sets (80% train, 20% test)</span></span>
+<span id="cb30-29"><a href="#cb30-29" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb30-30"><a href="#cb30-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-31"><a href="#cb30-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize a Naive Bayes classifier</span></span>
+<span id="cb30-32"><a href="#cb30-32" aria-hidden="true" tabindex="-1"></a>nb_classifier <span class="op">=</span> MultinomialNB()</span>
+<span id="cb30-33"><a href="#cb30-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-34"><a href="#cb30-34" aria-hidden="true" tabindex="-1"></a><span class="co"># Train the classifier</span></span>
+<span id="cb30-35"><a href="#cb30-35" aria-hidden="true" tabindex="-1"></a>nb_classifier.fit(X_train, y_train)</span>
+<span id="cb30-36"><a href="#cb30-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-37"><a href="#cb30-37" aria-hidden="true" tabindex="-1"></a><span class="co"># Make predictions on the test set</span></span>
+<span id="cb30-38"><a href="#cb30-38" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> nb_classifier.predict(X_test)</span>
+<span id="cb30-39"><a href="#cb30-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-40"><a href="#cb30-40" aria-hidden="true" tabindex="-1"></a><span class="co"># Evaluate the classifier</span></span>
+<span id="cb30-41"><a href="#cb30-41" aria-hidden="true" tabindex="-1"></a>accuracy <span class="op">=</span> accuracy_score(y_test, y_pred)</span>
+<span id="cb30-42"><a href="#cb30-42" aria-hidden="true" tabindex="-1"></a>classification_rep <span class="op">=</span> classification_report(y_test, y_pred, target_names<span class="op">=</span>label_encoder.classes_)</span>
+<span id="cb30-43"><a href="#cb30-43" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(accuracy)</span>
+<span id="cb30-44"><a href="#cb30-44" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(classification_rep)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.9565217391304348
+               precision    recall  f1-score   support
+
+Mental Health       0.92      1.00      0.96        12
+       Sports       1.00      0.91      0.95        11
+
+     accuracy                           0.96        23
+    macro avg       0.96      0.95      0.96        23
+ weighted avg       0.96      0.96      0.96        23
+</code></pre>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

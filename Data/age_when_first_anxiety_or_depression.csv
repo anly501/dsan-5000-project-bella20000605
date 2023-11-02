@@ -1,0 +1,43 @@
+Entity,Age,Percentage
+Africa,Ages <13,1.2718359
+Asia,Ages <13,7.7953706
+Europe,Ages <13,9.083381
+High-income countries,Ages <13,2.473921
+Lower-middle-income countries,Ages <13,8.800553
+Upper-middle-income countries,Ages <13,6.5811706
+World,Ages <13,7.5053473
+Africa,Ages_13_19,14.229228
+Asia,Ages_13_19,9.628078
+Europe,Ages_13_19,22.210781
+High-income countries,Ages_13_19,24.484507
+Lower-middle-income countries,Ages_13_19,8.485406
+Upper-middle-income countries,Ages_13_19,14.341692
+World,Ages_13_19,11.454613
+Africa,Ages_20_29,22.26465
+Asia,Ages_20_29,23.403633
+Europe,Ages_20_29,22.034777
+High-income countries,Ages_20_29,10.832585
+Lower-middle-income countries,Ages_20_29,26.288944
+Upper-middle-income countries,Ages_20_29,16.935555
+World,Ages_20_29,22.213495
+Africa,Ages_30_39,16.80309
+Asia,Ages_30_39,12.663021
+Europe,Ages_30_39,7.6283197
+High-income countries,Ages_30_39,16.975899
+Lower-middle-income countries,Ages_30_39,8.428943
+Upper-middle-income countries,Ages_30_39,18.964176
+World,Ages_30_39,12.515957
+Africa,Ages ≥40,2.7064757
+Asia,Ages ≥40,9.983976
+Europe,Ages ≥40,24.53128
+High-income countries,Ages ≥40,16.11568
+Lower-middle-income countries,Ages ≥40,7.3487206
+Upper-middle-income countries,Ages ≥40,18.10031
+World,Ages ≥40,11.407292
+Africa,Dont_know/Refused,42.724724
+Asia,Dont_know/Refused,36.525925
+Europe,Dont_know/Refused,14.511458
+High-income countries,Dont_know/Refused,29.117413
+Lower-middle-income countries,Dont_know/Refused,40.647434
+Upper-middle-income countries,Dont_know/Refused,25.077103
+World,Dont_know/Refused,34.903294

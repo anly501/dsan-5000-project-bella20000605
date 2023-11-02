@@ -1,0 +1,229 @@
+Code,Ranking,Economy,GDP(2022)
+CHN,2.0,China,17963171.0
+JPN,3.0,Japan,4231141.0
+DEU,4.0,Germany,4072192.0
+IND,5.0,India,3385090.0
+GBR,6.0,United Kingdom,3070668.0
+FRA,7.0,France,2782905.0
+RUS,8.0,Russian Federation,2240422.0
+CAN,9.0,Canada,2139840.0
+ITA,10.0,Italy,2010432.0
+BRA,11.0,Brazil,1920096.0
+AUS,12.0,Australia,1675419.0
+KOR,13.0,"Korea, Rep.",1665246.0
+MEX,14.0,Mexico,1414187.0
+ESP,15.0,Spain,1397509.0
+IDN,16.0,Indonesia,1319100.0
+SAU,17.0,Saudi Arabia,1108149.0
+NLD,18.0,Netherlands,991115.0
+TUR,19.0,Türkiye,905988.0
+CHE,20.0,Switzerland,807706.0
+POL,21.0,Poland,688177.0
+ARG,22.0,Argentina,632770.0
+SWE,23.0,Sweden,585939.0
+NOR,24.0,Norway,579267.0
+BEL,25.0,Belgium,578604.0
+CUB,26.0,Cuba,545218.0
+IRL,27.0,Ireland,529245.0
+ISR,28.0,Israel,522033.0
+ARE,29.0,United Arab Emirates,507535.0
+THA,30.0,Thailand,495341.0
+NGA,31.0,Nigeria,477386.0
+EGY,32.0,"Egypt, Arab Rep.",476748.0
+AUT,33.0,Austria,471400.0
+SGP,34.0,Singapore,466789.0
+BGD,35.0,Bangladesh,460201.0
+VNM,36.0,Vietnam,408802.0
+MYS,37.0,Malaysia,406306.0
+ZAF,38.0,South Africa,405870.0
+PHL,39.0,Philippines,404284.0
+DNK,40.0,Denmark,395404.0
+IRN,41.0,"Iran, Islamic Rep.",388544.0
+PAK,42.0,Pakistan,376533.0
+HKG,43.0,"Hong Kong SAR, China",359839.0
+COL,44.0,Colombia,343939.0
+ROU,45.0,Romania,301262.0
+CHL,46.0,Chile,301025.0
+CZE,47.0,Czech Republic,290924.0
+FIN,48.0,Finland,280826.0
+IRQ,49.0,Iraq,264182.0
+PRT,50.0,Portugal,251945.0
+NZL,51.0,New Zealand,247234.0
+PER,52.0,Peru,242632.0
+QAT,53.0,Qatar,237296.0
+KAZ,54.0,Kazakhstan,220623.0
+GRC,55.0,Greece,219066.0
+DZA,56.0,Algeria,191913.0
+KWT,57.0,Kuwait,184558.0
+HUN,58.0,Hungary,178789.0
+UKR,59.0,Ukraine,160503.0
+MAR,60.0,Morocco,134182.0
+ETH,61.0,Ethiopia,126783.0
+SVK,62.0,Slovak Republic,115469.0
+ECU,63.0,Ecuador,115049.0
+OMN,64.0,Oman,114667.0
+DOM,65.0,Dominican Republic,113642.0
+PRI,66.0,Puerto Rico,113435.0
+KEN,67.0,Kenya,113420.0
+AGO,68.0,Angola,106714.0
+GTM,69.0,Guatemala,95003.0
+BGR,70.0,Bulgaria,89040.0
+LUX,71.0,Luxembourg,82275.0
+UZB,72.0,Uzbekistan,80392.0
+AZE,73.0,Azerbaijan,78721.0
+PAN,74.0,Panama,76523.0
+TZA,75.0,Tanzania,75709.0
+LKA,76.0,Sri Lanka,74404.0
+GHA,77.0,Ghana,72839.0
+BLR,78.0,Belarus,72793.0
+URY,79.0,Uruguay,71177.0
+HRV,80.0,Croatia,70965.0
+LTU,81.0,Lithuania,70334.0
+CIV,82.0,Côte d'Ivoire,70019.0
+CRI,83.0,Costa Rica,68381.0
+SRB,84.0,Serbia,63502.0
+SVN,85.0,Slovenia,62118.0
+MMR,86.0,Myanmar,59364.0
+COD,87.0,"Congo, Dem. Rep.",58066.0
+SDN,88.0,Sudan,51662.0
+JOR,89.0,Jordan,47451.0
+TUN,90.0,Tunisia,46665.0
+LBY,91.0,Libya,45752.0
+TKM,92.0,Turkmenistan,45611.0
+UGA,93.0,Uganda,45559.0
+BHR,94.0,Bahrain,44391.0
+CMR,95.0,Cameroon,44342.0
+BOL,96.0,Bolivia,43069.0
+PRY,97.0,Paraguay,41722.0
+LVA,98.0,Latvia,41154.0
+NPL,99.0,Nepal,40828.0
+EST,100.0,Estonia,38101.0
+SLV,101.0,El Salvador,32489.0
+HND,102.0,Honduras,31718.0
+PNG,103.0,Papua New Guinea,30633.0
+KHM,104.0,Cambodia,29957.0
+ZMB,105.0,Zambia,29784.0
+CYP,106.0,Cyprus,28439.0
+TTO,107.0,Trinidad and Tobago,27899.0
+ISL,108.0,Iceland,27842.0
+SEN,109.0,Senegal,27684.0
+GEO,110.0,Georgia,24605.0
+BIH,111.0,Bosnia and Herzegovina,24528.0
+LBN,112.0,Lebanon,23132.0
+MAC,113.0,"Macao SAR, China",21979.0
+GIN,114.0,Guinea,21228.0
+GAB,115.0,Gabon,21072.0
+ZWE,116.0,Zimbabwe,20678.0
+BWA,117.0,Botswana,20352.0
+HTI,118.0,Haiti,20254.0
+ARM,119.0,Armenia,19503.0
+PSE,120.0,West Bank and Gaza,19112.0
+BFA,121.0,Burkina Faso,18885.0
+ALB,122.0,Albania,18882.0
+MLI,123.0,Mali,18827.0
+MOZ,124.0,Mozambique,17851.0
+MLT,125.0,Malta,17765.0
+BEN,126.0,Benin,17402.0
+JAM,127.0,Jamaica,17098.0
+MNG,128.0,Mongolia,16811.0
+BRN,129.0,Brunei Darussalam,16682.0
+LAO,130.0,Lao PDR,15724.0
+NIC,131.0,Nicaragua,15672.0
+GUY,132.0,Guyana,15358.0
+MDG,133.0,Madagascar,14955.0
+COG,134.0,"Congo, Rep.",14616.0
+AFG,135.0,Afghanistan,14583.0
+MDA,136.0,Moldova,14421.0
+NER,137.0,Niger,13970.0
+MKD,138.0,North Macedonia,13563.0
+RWA,139.0,Rwanda,13313.0
+MWI,140.0,Malawi,13165.0
+MUS,141.0,Mauritius,12898.0
+BHS,142.0,"Bahamas, The",12897.0
+TCD,143.0,Chad,12704.0
+NAM,144.0,Namibia,12607.0
+GNQ,145.0,Equatorial Guinea,11814.0
+CHI,146.0,Channel Islands,11736.0
+SYR,147.0,Syrian Arab Republic,11159.0
+KGZ,148.0,Kyrgyz Republic,10931.0
+TJK,149.0,Tajikistan,10492.0
+MRT,150.0,Mauritania,10375.0
+NCL,151.0,New Caledonia,10071.0
+XKX,152.0,Kosovo,9429.0
+MCO,153.0,Monaco,8596.0
+TGO,154.0,Togo,8126.0
+SOM,155.0,Somalia,8126.0
+BMU,156.0,Bermuda,7551.0
+LIE,157.0,Liechtenstein,7186.0
+IMN,158.0,Isle of Man,6684.0
+MDV,159.0,Maldives,6190.0
+GUM,160.0,Guam,6123.0
+MNE,161.0,Montenegro,6096.0
+PYF,162.0,French Polynesia,6080.0
+CYM,163.0,Cayman Islands,6028.0
+BRB,164.0,Barbados,5638.0
+FJI,165.0,Fiji,4943.0
+SWZ,166.0,Eswatini,4854.0
+VIR,167.0,Virgin Islands (U.S.),4204.0
+LBR,168.0,Liberia,4001.0
+SLE,169.0,Sierra Leone,3970.0
+FRO,170.0,Faroe Islands,3650.0
+SUR,171.0,Suriname,3621.0
+DJI,172.0,Djibouti,3515.0
+AND,173.0,Andorra,3352.0
+GRL,174.0,Greenland,3236.0
+TLS,175.0,Timor-Leste,3163.0
+ABW,176.0,Aruba,3126.0
+BDI,177.0,Burundi,3073.0
+BLZ,178.0,Belize,2824.0
+CUW,179.0,Curaçao,2700.0
+LSO,180.0,Lesotho,2553.0
+BTN,181.0,Bhutan,2540.0
+CAF,182.0,Central African Republic,2383.0
+CPV,183.0,Cabo Verde,2315.0
+GMB,184.0,"Gambia, The",2273.0
+LCA,185.0,St. Lucia,2065.0
+SMR,186.0,San Marino,1855.0
+ATG,187.0,Antigua and Barbuda,1758.0
+GNB,188.0,Guinea-Bissau,1634.0
+SLB,189.0,Solomon Islands,1596.0
+SYC,190.0,Seychelles,1588.0
+SXM,191.0,Sint Maarten (Dutch part),1572.0
+GRD,192.0,Grenada,1256.0
+COM,193.0,Comoros,1243.0
+TCA,194.0,Turks and Caicos Islands,1139.0
+VUT,195.0,Vanuatu,984.0
+KNA,196.0,St. Kitts and Nevis,962.0
+VCT,197.0,St. Vincent and the Grenadines,949.0
+MNP,198.0,Northern Mariana Islands,858.0
+WSM,199.0,Samoa,832.0
+ASM,200.0,American Samoa,709.0
+DMA,201.0,Dominica,612.0
+STP,202.0,São Tomé and Principe,547.0
+TON,203.0,Tonga,469.0
+FSM,204.0,"Micronesia, Fed. Sts.",427.0
+MHL,205.0,Marshall Islands,280.0
+KIR,206.0,Kiribati,223.0
+PLW,207.0,Palau,218.0
+NRU,208.0,Nauru,151.0
+TUV,209.0,Tuvalu,60.0
+VGB,,British Virgin Islands,
+ERI,,Eritrea,
+GIB,,Gibraltar,
+PRK,,"Korea, Dem. People's Rep.",
+SSD,,South Sudan,
+MAF,,St. Martin (French part),
+VEN,,"Venezuela, RB",
+YEM,,"Yemen, Rep.",
+WLD,,World,101002997.0
+EAS,,East Asia & Pacific,30655246.0
+ECS,,Europe & Central Asia,25192038.0
+LCN,,Latin America & Caribbean,6748778.0
+MEA,,Middle East & North Africa,4414423.0
+NAC,,North America,27610091.0
+SAS,,South Asia,4361631.0
+SSF,,Sub-Saharan Africa,2047347.0
+LIC,,Low income,521634.0
+LMC,,Lower middle income,8109650.0
+UMC,,Upper middle income,30495972.0
+HIC,,High income,61535769.0

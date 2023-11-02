@@ -1,9 +1,0 @@
----
-title: "About Me"
----
-
-
-Bella Shi is a currently a student studying in the graduate school of Art and Sciences in Georgetown university. She majored in software engineering and minored in English in undergraduate.In her lesuire time, She likes swimming, going to the gym, hiking as well as other outdoor activities.
-
-
-[Bella's Website](https://bella.georgetown.domains/about/) 

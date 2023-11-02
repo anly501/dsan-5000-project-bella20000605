@@ -1,0 +1,101 @@
+"Economy","Code","Region","Income group","Lending category","Column1"
+"Aruba","ABW","Latin America & Caribbean","High income",NA,NA
+"Afghanistan","AFG","South Asia","Low income","IDA",NA
+"Angola","AGO","Sub-Saharan Africa","Lower middle income","IBRD",NA
+"Albania","ALB","Europe & Central Asia","Upper middle income","IBRD",NA
+"Andorra","AND","Europe & Central Asia","High income",NA,NA
+"United Arab Emirates","ARE","Middle East & North Africa","High income",NA,NA
+"Argentina","ARG","Latin America & Caribbean","Upper middle income","IBRD",NA
+"Armenia","ARM","Europe & Central Asia","Upper middle income","IBRD",NA
+"American Samoa","ASM","East Asia & Pacific","High income",NA,NA
+"Antigua and Barbuda","ATG","Latin America & Caribbean","High income","IBRD",NA
+"Australia","AUS","East Asia & Pacific","High income",NA,NA
+"Austria","AUT","Europe & Central Asia","High income",NA,NA
+"Azerbaijan","AZE","Europe & Central Asia","Upper middle income","IBRD",NA
+"Burundi","BDI","Sub-Saharan Africa","Low income","IDA",NA
+"Belgium","BEL","Europe & Central Asia","High income",NA,NA
+"Benin","BEN","Sub-Saharan Africa","Lower middle income","IDA",NA
+"Burkina Faso","BFA","Sub-Saharan Africa","Low income","IDA",NA
+"Bangladesh","BGD","South Asia","Lower middle income","IDA",NA
+"Bulgaria","BGR","Europe & Central Asia","Upper middle income","IBRD",NA
+"Bahrain","BHR","Middle East & North Africa","High income",NA,NA
+"Bahamas, The","BHS","Latin America & Caribbean","High income",NA,NA
+"Bosnia and Herzegovina","BIH","Europe & Central Asia","Upper middle income","IBRD",NA
+"Belarus","BLR","Europe & Central Asia","Upper middle income","IBRD",NA
+"Belize","BLZ","Latin America & Caribbean","Upper middle income","IBRD",NA
+"Bermuda","BMU","North America","High income",NA,NA
+"Bolivia","BOL","Latin America & Caribbean","Lower middle income","IBRD",NA
+"Brazil","BRA","Latin America & Caribbean","Upper middle income","IBRD",NA
+"Barbados","BRB","Latin America & Caribbean","High income",NA,NA
+"Brunei Darussalam","BRN","East Asia & Pacific","High income",NA,NA
+"Bhutan","BTN","South Asia","Lower middle income","IDA",NA
+"Botswana","BWA","Sub-Saharan Africa","Upper middle income","IBRD",NA
+"Central African Republic","CAF","Sub-Saharan Africa","Low income","IDA",NA
+"Canada","CAN","North America","High income",NA,NA
+"Switzerland","CHE","Europe & Central Asia","High income",NA,NA
+"Channel Islands","CHI","Europe & Central Asia","High income",NA,NA
+"Chile","CHL","Latin America & Caribbean","High income","IBRD",NA
+"China","CHN","East Asia & Pacific","Upper middle income","IBRD",NA
+"Côte d’Ivoire","CIV","Sub-Saharan Africa","Lower middle income","IDA",NA
+"Cameroon","CMR","Sub-Saharan Africa","Lower middle income","Blend",NA
+"Congo, Dem. Rep.","COD","Sub-Saharan Africa","Low income","IDA",NA
+"Congo, Rep.","COG","Sub-Saharan Africa","Lower middle income","Blend",NA
+"Colombia","COL","Latin America & Caribbean","Upper middle income","IBRD",NA
+"Comoros","COM","Sub-Saharan Africa","Lower middle income","IDA",NA
+"Cabo Verde","CPV","Sub-Saharan Africa","Lower middle income","Blend",NA
+"Costa Rica","CRI","Latin America & Caribbean","Upper middle income","IBRD",NA
+"Cuba","CUB","Latin America & Caribbean","Upper middle income",NA,NA
+"Curaçao","CUW","Latin America & Caribbean","High income",NA,NA
+"Cayman Islands","CYM","Latin America & Caribbean","High income",NA,NA
+"Cyprus","CYP","Europe & Central Asia","High income",NA,NA
+"Czechia","CZE","Europe & Central Asia","High income",NA,NA
+"Germany","DEU","Europe & Central Asia","High income",NA,NA
+"Djibouti","DJI","Middle East & North Africa","Lower middle income","IDA",NA
+"Dominica","DMA","Latin America & Caribbean","Upper middle income","Blend",NA
+"Denmark","DNK","Europe & Central Asia","High income",NA,NA
+"Dominican Republic","DOM","Latin America & Caribbean","Upper middle income","IBRD",NA
+"Algeria","DZA","Middle East & North Africa","Lower middle income","IBRD",NA
+"Ecuador","ECU","Latin America & Caribbean","Upper middle income","IBRD",NA
+"Egypt, Arab Rep.","EGY","Middle East & North Africa","Lower middle income","IBRD",NA
+"Eritrea","ERI","Sub-Saharan Africa","Low income","IDA",NA
+"Spain","ESP","Europe & Central Asia","High income",NA,NA
+"Estonia","EST","Europe & Central Asia","High income",NA,NA
+"Ethiopia","ETH","Sub-Saharan Africa","Low income","IDA",NA
+"Finland","FIN","Europe & Central Asia","High income",NA,NA
+"Fiji","FJI","East Asia & Pacific","Upper middle income","Blend",NA
+"France","FRA","Europe & Central Asia","High income",NA,NA
+"Faroe Islands","FRO","Europe & Central Asia","High income",NA,NA
+"Micronesia, Fed. Sts.","FSM","East Asia & Pacific","Lower middle income","IDA",NA
+"Gabon","GAB","Sub-Saharan Africa","Upper middle income","IBRD",NA
+"United Kingdom","GBR","Europe & Central Asia","High income",NA,NA
+"Georgia","GEO","Europe & Central Asia","Upper middle income","IBRD",NA
+"Ghana","GHA","Sub-Saharan Africa","Lower middle income","IDA",NA
+"Gibraltar","GIB","Europe & Central Asia","High income",NA,NA
+"Guinea","GIN","Sub-Saharan Africa","Lower middle income","IDA",NA
+"Gambia, The","GMB","Sub-Saharan Africa","Low income","IDA",NA
+"Guinea-Bissau","GNB","Sub-Saharan Africa","Low income","IDA",NA
+"Equatorial Guinea","GNQ","Sub-Saharan Africa","Upper middle income","IBRD",NA
+"Greece","GRC","Europe & Central Asia","High income",NA,NA
+"Grenada","GRD","Latin America & Caribbean","Upper middle income","Blend",NA
+"Greenland","GRL","Europe & Central Asia","High income",NA,NA
+"Guatemala","GTM","Latin America & Caribbean","Upper middle income","IBRD",NA
+"Guam","GUM","East Asia & Pacific","High income",NA,NA
+"Guyana","GUY","Latin America & Caribbean","High income","IDA",NA
+"Hong Kong SAR, China","HKG","East Asia & Pacific","High income",NA,NA
+"Honduras","HND","Latin America & Caribbean","Lower middle income","IDA",NA
+"Croatia","HRV","Europe & Central Asia","High income","IBRD",NA
+"Haiti","HTI","Latin America & Caribbean","Lower middle income","IDA",NA
+"Hungary","HUN","Europe & Central Asia","High income",NA,NA
+"Indonesia","IDN","East Asia & Pacific","Upper middle income","IBRD",NA
+"Isle of Man","IMN","Europe & Central Asia","High income",NA,NA
+"India","IND","South Asia","Lower middle income","IBRD",NA
+"Ireland","IRL","Europe & Central Asia","High income",NA,NA
+"Iran, Islamic Rep.","IRN","Middle East & North Africa","Lower middle income","IBRD",NA
+"Iraq","IRQ","Middle East & North Africa","Upper middle income","IBRD",NA
+"Iceland","ISL","Europe & Central Asia","High income",NA,NA
+"Israel","ISR","Middle East & North Africa","High income",NA,NA
+"Italy","ITA","Europe & Central Asia","High income",NA,NA
+"Jamaica","JAM","Latin America & Caribbean","Upper middle income","IBRD",NA
+"Jordan","JOR","Middle East & North Africa","Lower middle income","IBRD",NA
+"Japan","JPN","East Asia & Pacific","High income",NA,NA
+"Kazakhstan","KAZ","Europe & Central Asia","Upper middle income","IBRD",NA

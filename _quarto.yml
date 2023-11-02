@@ -5,7 +5,7 @@ website:
   title: "Bella Shi's Website"
   sidebar:
     contents: 
-      - text: Introduction
+      - text: 'Introduction'
         href: index.qmd
       - text: About me
         href: https://bella.georgetown.domains/about/

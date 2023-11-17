@@ -1,0 +1,109 @@
+
+
+# Homework-4 
+
+During module-4, we will focus on partition clustering (k-means), hierarchical clustering (with dendrograms), and density clustering (DBSCAN), as well as dimensionality reduction. There are other clustering options as well and you can, and should, always do more than the baseline requirements! 
+
+We will also explore different distance (or similarity) measures, visualizations, methods for choosing the number of clusters (such as elbow and silhouette methods), and how to interpret the results of clustering analysis.
+
+*Before getting started, recall the following fundamental concepts:*
+
+* **Supervised learning:**
+  * In supervised learning we try to learn some KNOWN mapping from an input feature space $\mathbf X$ to an output target space $Y$ (i.e. regression or classification). 
+
+* **Un-supervised learning:**
+  * Typically when doing unsupervised learning (i.e. clustering or dimensionality reduction) you DO NOT know if any relevant mappings (relationships) in the data.
+  * In this case, there is NO KNOWN "target" space $Y$ containing the "ground truth" labels (targets). 
+  * Instead, you have some features space $\mathbf  X$ and you are trying to systematically figure out if the data in that space forms groups (clusters).
+  * This "un-labeled" nature of the data-set is what makes it "unsupervised". 
+  * It is possible to already have some categorical labels in your data before clustering. In this case, the clustering algorithm may or may-not find clusters corresponding to the existing labels.
+  * If it finds new labels, this suggests that there may be unknown groups in the data which are NOT associated with the existing labels.
+
+## Assignment 
+
+**Software**: For this assignment you MUST use Python. However, you can, and should, also repeat the exercise in R if you want. 
+
+### Dimensionality reduction tab
+
+The project's objective is to explore and demonstrate the effectiveness of PCA and t-SNE in reducing the dimensionality of complex, multimodal data while preserving essential information and enhancing data visualization.
+
+ This project will allow you to apply your knowledge of PCA and t-SNE to a real-world scenario and gain valuable experience in dimensionality reduction and data visualization. It's an opportunity to showcase your skills and creativity in tackling complex data analysis challenges.
+
+**Instructions**:
+
+1. Dimensionality Reduction with PCA:
+   - Apply PCA to your record dataset.
+   - Determine the optimal number of principal components to retain.
+   - Visualize the reduced-dimensional data using PCA.
+   - Analyze and interpret the results.
+2. Dimensionality Reduction with t-SNE:
+   - Implement t-SNE on the same dataset.
+   - Explore different perplexity values and their impact.
+   - Visualize the t-SNE output to reveal patterns and clusters.
+   - Compare t-SNE results with PCA results.
+3. Evaluation and Comparison:
+   - Evaluate the effectiveness of PCA and t-SNE in terms of preserving data structure and information.
+   - Compare the visualization capabilities of PCA and t-SNE.
+   - Discuss the trade-offs and scenarios where one technique may outperform the other.
+
+**Components**:
+
+1. Project Proposal:
+   - A brief proposal outlining your project's objectives, dataset selection, and the tools or libraries you plan to use (e.g., Python, scikit-learn).
+2. Code Implementation:
+   - Python code for implementing PCA and t-SNE on the selected dataset.
+   - Code should include parameter tuning for t-SNE (perplexity) and visualization of the results.
+3. Project Report:
+   - A comprehensive project report detailing the steps taken, results obtained, and your analysis.
+   - Include visualizations, comparisons, and insights gained from the dimensionality reduction techniques.
+
+### Clustering tab
+
+In this homework you will choose appropriate portions of one or more of your datasets and apply k-means, DBSCAN, and Hierarchical clustering.
+
+You can do this for either your record data OR text data, you can choose which data-set you prefer to work with. You can also do both. 
+
+You will also need to document the process on your `clustering` tab on your GU-domains website.  
+
+In the clustering tab please have the following sub-sections
+
+* **Introduction**:
+  * Provided brief summary  (1 to 2 paragraphs) about your feature data $X$, and what you are trying to achieve with your clustering analysis. 
+* **Theory**: 
+  * Write a brief technical write up about how EACH clustering method works (KMEAN, DBSAN, hierarchical clustering). Also include details on model selection methods that you use (elbow, silhouette, etc). 
+  * Don't go "too deep", around 2 to 4 paragraphs, per method, is fine. Write it in a way that a boss with a non-technical background would understand. Describe the method from a "big picture" point of view, how it works and what it is supposed to do.  
+  * Do this "in your own words". DO NOT copy this section from any other source. If you do so you will receive a zero on the assignment and will be referred to the department for further disciplinary action.
+* **Methods:**
+  * In this section, describe your coding workflow;
+    * (1) If you are not using Quarto, then provide links to the relevant code in this section.
+    * (2) If you are using Quarto (recommended), then include your code in-line using the "code folding" option, so that users can toggle the code on/off as needed. The notebook should also be hosted on Github. You can always do the entire thing in .ipynb then render it to HTML using Quarto at the end.
+  * Please use the following workflow 
+    * **Data selection**: If you have not done so already, create either a numeric record feature dataset $\mathbf X$ AND/OR a text feature dataset $\mathbf X$ from your existing data. 
+      * Remove the labels (targets) $Y$ as needed so that it is suitable for clustering. 
+      * If you have labels, you can use them at the end, to check if the clustering predictions coincided with the existing labels in the data-set. In general this may or may-not be true.
+      * But these labels should not be used as part of the clustering analysis. 
+    * **Feature selection**: (optional)
+      * If you want, you can perform filter based feature selection on your data-set $\mathbf X$ as a pre-processing step before clustering 
+      * You can also use optimal feature sets obtained during previous assignments 
+    * **Hyper-parameter tuning**
+      * For each of the three clustering algorithms, perform any relevant parameter tuning in an attempt to achieve the optimal clustering results 
+      * e.g. For k-means,  Use Elbow and Silhouette methods to illustrate the ideal number of clusters.  Visualize your results.
+      * Also, when relevant, explore different choices of distance metric for the algorithm. Which distance metric seems to works best in which cases and why?
+    * **Final results**
+      * Once you have everything "dialed in", re-do the analysis one last time with the optimal parameter choice to get your "final results". 
+* **Results:**
+  * Using your "final results", discuss, illustrate, and compare the results of your various clustering analysis methods. 
+  * Which method seemed to work the best and why, which was easier to use or preferable, etc.
+  * Can you make connections between the optimal cluster predictions, after parameter tuning, with any of the labels in the data set. Do they coincide? Why or why not?
+  * Did the clustering results provide any new insights into your data?
+  * Explore the results, and create as many meaningful visualizations as you need. Be creative, and experiment with different image aesthetics. 
+  * Ensure all visualizations are professional, ascetically pleasing, labeled, captioned, use color, are clear, and support your discussion and goals. 
+* **Conclusions**: 
+  * In this section, the goal is to summarize & wrap-up the report. It explains what was found, in a way that would make sense to a general readership.
+  * This area is non-technical. Technical descriptions of what you did should be in the methods or results sections, not conclusions.
+  * The Conclusions should focus on key and important findings and how these findings affect real-life and real people.
+* **References**: 
+  * Reference all non-original content.
+  * Ideally (but optionally) use `.bibtex` combined with Quarto to provide in-line internal citations 
+  * See the following link for an example:
+    *  https://drive.google.com/open?id=12tYQnDuHS4ZxSTXgwsR4pRLhBYAMy14q&authuser=jh2343%40georgetown.edu&usp=drive_fs

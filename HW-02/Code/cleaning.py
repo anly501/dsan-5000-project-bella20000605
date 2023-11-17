@@ -3,12 +3,11 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-import seaborn as sns
 import glob
 from sklearn.feature_extraction.text import CountVectorizer
 
-#cd HW-02
 
+#cd HW-02
 #load data from csv file
 all_data_frames=glob.glob("./Part2/Data/*.csv")+glob.glob("./Part2/Data/*.xlsx")
 for fname_index, fname in enumerate(all_data_frames):
@@ -149,7 +148,7 @@ df_first_anxiety_or_depression.to_csv("./Part2/Cleaned_Data/age_when_first_anxie
 
 #H.cleaning GDP_per_capita.csv
 df_mental_health=df_mental_health_merge
-df_gdp_per_captita=pd.read_csv('./Part2/Data//GDP_per_captita.csv')
+df_gdp_per_captita=pd.read_csv('./Part2/Data/GDP_per_captita.csv')
 df_gdp_per_captita.head()  
 df_gdp_per_captita.columns
 #make a new dataframe with the column '2017'
@@ -167,6 +166,10 @@ print(df_mental_health_2017.head())
 
 # #merge two dataframes
 df_gdp_mental_health_2017=pd.merge(df_gdp_per_captita_2017,df_mental_health_2017,on='Economy',how='inner')
-print(df_gdp_mental_health_2017.head())
 
-df_gdp_mental_health_2017.to_csv('./Part2/Cleaned_Data/GDP_percaptita_mental_health_2017.csv',index=False)
+#merge df_gdp_mental_health_2017 with df_income_group
+df_gdp_mental_health_2017=pd.merge(df_gdp_mental_health_2017,df_income_group,on='Economy',how='inner')
+print(df_gdp_mental_health_2017.head())
+df_gdp_mental_health_2017.to_csv('./Cleaned_Data/GDP_percaptita_mental_health_2017.csv',index=False)
+
+

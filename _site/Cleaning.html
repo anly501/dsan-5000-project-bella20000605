@@ -181,26 +181,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Clustering.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Clustering</span></a>
+  <a href="./reduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Dimensionality Reduction</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Classfication.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Classification</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./Dimensionality reduction.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Dimensionality reduction</span></a>
+ <span class="menu-text">Classfication</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Regression.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Regresssion</span></a>
+ <span class="menu-text">Regression</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -264,105 +258,275 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="code" class="level2">
 <h2 class="anchored" data-anchor-id="code">Code</h2>
-<p>Code for cleaning the data set<br> <a href="https://github.com/bella20000605/Depression_Project/tree/main/Part2/Code">download link</a></p>
-<p>Raw Data Set<br> <a href="https://github.com/bella20000605/Depression_Project/tree/main/Part2/Code">download link</a></p>
-<p>Cleaned Data Set<br> <a href="https://github.com/bella20000605/Depression_Project/tree/main/Part2/Code">download link</a></p>
+<p>Code for cleaning the data set<br> <a href="https://github.com/anly501/dsan-5000-project-bella20000605/tree/main/HW-02/Code">download link</a></p>
+<p>Raw Data Set<br> <a href="https://github.com/anly501/dsan-5000-project-bella20000605/tree/main/HW-02/Data">download link</a></p>
+<p>Cleaned Data Set<br> <a href="https://github.com/anly501/dsan-5000-project-bella20000605/tree/main/HW-02/Cleaned_Data">download link</a></p>
 </section>
 <section id="python-cleaning-process" class="level2">
 <h2 class="anchored" data-anchor-id="python-cleaning-process">Python Cleaning Process</h2>
 <section id="load-data-set" class="level3">
 <h3 class="anchored" data-anchor-id="load-data-set">Load Data Set</h3>
-<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}">
+<div class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># import seaborn as sns</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> glob</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.feature_extraction.text <span class="im">import</span> CountVectorizer</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">#load data from csv file</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>all_data_frames<span class="op">=</span>glob.glob(<span class="st">"./Part2/Data/*.csv"</span>)<span class="op">+</span>glob.glob(<span class="st">"./Part2/Data/*.xlsx"</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>all_data_frames<span class="op">=</span>glob.glob(<span class="st">"./HW-02/Data/*.csv"</span>)<span class="op">+</span>glob.glob(<span class="st">"./HW-02/Data/*.xlsx"</span>)</span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> fname_index, fname <span class="kw">in</span> <span class="bu">enumerate</span>(all_data_frames):</span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(fname_index, fname)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0 ./HW-02/Data/education.csv
+1 ./HW-02/Data/Countries_Continents.csv
+2 ./HW-02/Data/mental_sports_nb.csv
+3 ./HW-02/Data/age_when_first_had_anxiety_depression.csv
+4 ./HW-02/Data/all_mental_health_symptoms.csv
+5 ./HW-02/Data/GDP_per_captita.csv
+6 ./HW-02/Data/discomfort_speaking_anxiety_depression_2020.csv
+7 ./HW-02/Data/eating_disorders_prevalence_males_vs_females.csv
+8 ./HW-02/Data/most_educated_countries_2023.csv
+9 ./HW-02/Data/GDP.csv
+10 ./HW-02/Data/Income_group.xlsx
+11 ./HW-02/Data/mental_health.xlsx</code></pre>
+</div>
 </div>
 </section>
 <section id="mental-health-data" class="level3">
 <h3 class="anchored" data-anchor-id="mental-health-data">Mental Health Data</h3>
-<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">#A.clean the data named mental_health</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>mental_health <span class="op">=</span> all_data_frames[<span class="dv">9</span>]</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>mental_health_df <span class="op">=</span> pd.read_excel(mental_health)  <span class="co"># Use the 'mental_health' variable</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># show all the columns of the dataframe</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># mental_health_df.columns</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(mental_health_df.head())</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>vectorizer <span class="op">=</span> CountVectorizer()</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>count<span class="op">=</span>vectorizer.fit_transform(mental_health_df[<span class="st">'Entity'</span>].values.astype(<span class="st">'U'</span>))</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(count)</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'vocabulary list:'</span>,vectorizer.vocabulary_)</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'vocabulary size:'</span>,<span class="bu">len</span>(vectorizer.vocabulary_))</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co"># # drop the columns of the dataframes that do not belong to mental health data</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>mental_health_df <span class="op">=</span> mental_health_df.drop(columns<span class="op">=</span>[<span class="st">'Drug use disorders (%)'</span>, <span class="st">'Alcohol use disorders (%)'</span>])</span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(mental_health_df.head())</span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="co">#save the dataframe to csv file</span></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>mental_health_df.to_csv(<span class="st">"./Part2/Code/mental_health_CV.csv"</span>, index<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">#A.clean the data named mental_health</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>mental_health <span class="op">=</span> all_data_frames[<span class="dv">11</span>]</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>mental_health_df <span class="op">=</span> pd.read_excel(mental_health)  <span class="co"># Use the 'mental_health' variable</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># show all the columns of the dataframe</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># mental_health_df.columns</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(mental_health_df.head())</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>vectorizer <span class="op">=</span> CountVectorizer()</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>count<span class="op">=</span>vectorizer.fit_transform(mental_health_df[<span class="st">'Entity'</span>].values.astype(<span class="st">'U'</span>))</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(count)</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'vocabulary list:'</span>,vectorizer.vocabulary_)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'vocabulary size:'</span>,<span class="bu">len</span>(vectorizer.vocabulary_))</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co"># # drop the columns of the dataframes that do not belong to mental health data</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>mental_health_df <span class="op">=</span> mental_health_df.drop(columns<span class="op">=</span>[<span class="st">'Drug use disorders (%)'</span>, <span class="st">'Alcohol use disorders (%)'</span>])</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(mental_health_df.head())</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co">#save the dataframe to csv file</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="co"># mental_health_df.to_csv("./Part2/Code/mental_health_CV.csv", index=False)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        Entity Code  Year  Schizophrenia (%)  Bipolar disorder (%)  \
+0  Afghanistan  AFG  1990           0.160560              0.697779   
+1  Afghanistan  AFG  1991           0.160312              0.697961   
+2  Afghanistan  AFG  1992           0.160135              0.698107   
+3  Afghanistan  AFG  1993           0.160037              0.698257   
+4  Afghanistan  AFG  1994           0.160022              0.698469   
+
+   Eating disorders (%)  Anxiety disorders (%)  Drug use disorders (%)  \
+0              0.101855               4.828830                1.677082   
+1              0.099313               4.829740                1.684746   
+2              0.096692               4.831108                1.694334   
+3              0.094336               4.830864                1.705320   
+4              0.092439               4.829423                1.716069   
+
+   Depression (%)  Alcohol use disorders (%)  
+0        4.071831                   0.672404  
+1        4.079531                   0.671768  
+2        4.088358                   0.670644  
+3        4.096190                   0.669738  
+4        4.099582                   0.669260  
+  (0, 0)    1
+  (1, 0)    1
+  (2, 0)    1
+  (3, 0)    1
+  (4, 0)    1
+  (5, 0)    1
+  (6, 0)    1
+  (7, 0)    1
+  (8, 0)    1
+  (9, 0)    1
+  (10, 0)   1
+  (11, 0)   1
+  (12, 0)   1
+  (13, 0)   1
+  (14, 0)   1
+  (15, 0)   1
+  (16, 0)   1
+  (17, 0)   1
+  (18, 0)   1
+  (19, 0)   1
+  (20, 0)   1
+  (21, 0)   1
+  (22, 0)   1
+  (23, 0)   1
+  (24, 0)   1
+  : :
+  (6443, 247)   1
+  (6444, 247)   1
+  (6445, 247)   1
+  (6446, 247)   1
+  (6447, 247)   1
+  (6448, 247)   1
+  (6449, 247)   1
+  (6450, 247)   1
+  (6451, 247)   1
+  (6452, 247)   1
+  (6453, 247)   1
+  (6454, 247)   1
+  (6455, 247)   1
+  (6456, 247)   1
+  (6457, 247)   1
+  (6458, 247)   1
+  (6459, 247)   1
+  (6460, 247)   1
+  (6461, 247)   1
+  (6462, 247)   1
+  (6463, 247)   1
+  (6464, 247)   1
+  (6465, 247)   1
+  (6466, 247)   1
+  (6467, 247)   1
+vocabulary list: {'afghanistan': 0, 'albania': 3, 'algeria': 4, 'american': 6, 'samoa': 188, 'andean': 8, 'latin': 122, 'america': 5, 'andorra': 9, 'angola': 10, 'antigua': 11, 'and': 7, 'barbuda': 25, 'argentina': 14, 'armenia': 15, 'australasia': 17, 'australia': 18, 'austria': 19, 'azerbaijan': 20, 'bahamas': 21, 'bahrain': 22, 'bangladesh': 23, 'barbados': 24, 'belarus': 26, 'belgium': 27, 'belize': 28, 'benin': 29, 'bermuda': 30, 'bhutan': 31, 'bolivia': 33, 'bosnia': 34, 'herzegovina': 95, 'botswana': 35, 'brazil': 36, 'brunei': 37, 'bulgaria': 38, 'burkina': 39, 'faso': 77, 'burundi': 40, 'cambodia': 41, 'cameroon': 42, 'canada': 43, 'cape': 44, 'verde': 237, 'caribbean': 45, 'central': 46, 'african': 2, 'republic': 179, 'asia': 16, 'europe': 76, 'eastern': 66, 'sub': 208, 'saharan': 185, 'africa': 1, 'chad': 47, 'chile': 48, 'china': 49, 'colombia': 50, 'comoros': 51, 'congo': 52, 'costa': 53, 'rica': 180, 'cote': 54, 'ivoire': 109, 'croatia': 56, 'cuba': 57, 'cyprus': 58, 'czech': 59, 'democratic': 60, 'of': 164, 'denmark': 61, 'djibouti': 62, 'dominica': 63, 'dominican': 64, 'east': 65, 'ecuador': 67, 'egypt': 68, 'el': 69, 'salvador': 187, 'england': 71, 'equatorial': 72, 'guinea': 92, 'eritrea': 73, 'estonia': 74, 'ethiopia': 75, 'fiji': 78, 'finland': 79, 'france': 80, 'gabon': 81, 'gambia': 82, 'georgia': 83, 'germany': 84, 'ghana': 85, 'greece': 86, 'greenland': 87, 'grenada': 88, 'guam': 90, 'guatemala': 91, 'bissau': 32, 'guyana': 93, 'haiti': 94, 'high': 96, 'sdi': 192, 'income': 100, 'pacific': 166, 'middle': 146, 'honduras': 97, 'hungary': 98, 'iceland': 99, 'india': 101, 'indonesia': 102, 'iran': 103, 'iraq': 104, 'ireland': 105, 'israel': 107, 'italy': 108, 'jamaica': 110, 'japan': 111, 'jordan': 112, 'kazakhstan': 113, 'kenya': 114, 'kiribati': 116, 'kuwait': 118, 'kyrgyzstan': 119, 'laos': 121, 'latvia': 123, 'lebanon': 124, 'lesotho': 126, 'liberia': 127, 'libya': 128, 'lithuania': 129, 'low': 130, 'luxembourg': 132, 'macedonia': 133, 'madagascar': 134, 'malawi': 135, 'malaysia': 136, 'maldives': 137, 'mali': 138, 'malta': 139, 'marshall': 141, 'islands': 106, 'mauritania': 142, 'mauritius': 143, 'mexico': 144, 'micronesia': 145, 'country': 55, 'moldova': 147, 'mongolia': 148, 'montenegro': 149, 'morocco': 150, 'mozambique': 151, 'myanmar': 152, 'namibia': 153, 'nepal': 154, 'netherlands': 155, 'new': 156, 'zealand': 246, 'nicaragua': 157, 'niger': 158, 'nigeria': 159, 'north': 160, 'korea': 117, 'northern': 161, 'mariana': 140, 'norway': 162, 'oceania': 163, 'oman': 165, 'pakistan': 167, 'palestine': 168, 'panama': 169, 'papua': 170, 'paraguay': 171, 'peru': 172, 'philippines': 173, 'poland': 174, 'portugal': 175, 'puerto': 177, 'rico': 181, 'qatar': 178, 'romania': 182, 'russia': 183, 'rwanda': 184, 'saint': 186, 'lucia': 131, 'vincent': 239, 'the': 219, 'grenadines': 89, 'sao': 189, 'tome': 223, 'principe': 176, 'saudi': 190, 'arabia': 13, 'scotland': 191, 'senegal': 193, 'serbia': 194, 'seychelles': 195, 'sierra': 196, 'leone': 125, 'singapore': 197, 'slovakia': 198, 'slovenia': 199, 'solomon': 200, 'somalia': 201, 'south': 202, 'sudan': 209, 'southeast': 203, 'southern': 204, 'spain': 205, 'sri': 206, 'lanka': 120, 'suriname': 210, 'swaziland': 211, 'sweden': 212, 'switzerland': 213, 'syria': 214, 'taiwan': 215, 'tajikistan': 216, 'tanzania': 217, 'thailand': 218, 'timor': 220, 'togo': 222, 'tonga': 224, 'trinidad': 225, 'tobago': 221, 'tropical': 226, 'tunisia': 227, 'turkey': 228, 'turkmenistan': 229, 'uganda': 230, 'ukraine': 231, 'united': 232, 'arab': 12, 'emirates': 70, 'kingdom': 115, 'states': 207, 'virgin': 240, 'uruguay': 233, 'uzbekistan': 234, 'vanuatu': 235, 'venezuela': 236, 'vietnam': 238, 'wales': 241, 'western': 242, 'world': 243, 'yemen': 244, 'zambia': 245, 'zimbabwe': 247}
+vocabulary size: 248
+        Entity Code  Year  Schizophrenia (%)  Bipolar disorder (%)  \
+0  Afghanistan  AFG  1990           0.160560              0.697779   
+1  Afghanistan  AFG  1991           0.160312              0.697961   
+2  Afghanistan  AFG  1992           0.160135              0.698107   
+3  Afghanistan  AFG  1993           0.160037              0.698257   
+4  Afghanistan  AFG  1994           0.160022              0.698469   
+
+   Eating disorders (%)  Anxiety disorders (%)  Depression (%)  
+0              0.101855               4.828830        4.071831  
+1              0.099313               4.829740        4.079531  
+2              0.096692               4.831108        4.088358  
+3              0.094336               4.830864        4.096190  
+4              0.092439               4.829423        4.099582  </code></pre>
+</div>
 </div>
 </section>
 <section id="eating-disorders-data" class="level3">
 <h3 class="anchored" data-anchor-id="eating-disorders-data">Eating Disorders Data</h3>
-<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>eating_disorder <span class="op">=</span> all_data_frames[<span class="dv">3</span>]</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(eating_disorder)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>eating_disorder_df <span class="op">=</span> pd.read_csv(eating_disorder) <span class="co"># Use the 'eating_disorder' variablev</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># show all the columns of the dataframe</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(eating_disorder_df.columns)</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(eating_disorder_df.head())</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># drop the columns Continent</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>eating_disorder_df <span class="op">=</span> eating_disorder_df.drop(columns<span class="op">=</span>[<span class="st">'Continent'</span>,<span class="st">'Population (historical estimates)'</span>])</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(eating_disorder_df.shape)</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co"># only keep the rows of the dataframe when the column 'Year' is between 1990-2021</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co"># eating_disorder_df = eating_disorder_df.loc[eating_disorder_df['Year'] == range(1990,2022)]</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>eating_disorder_df <span class="op">=</span> eating_disorder_df[eating_disorder_df[<span class="st">'Year'</span>].isin(<span class="bu">range</span>(<span class="dv">1990</span>,<span class="dv">2022</span>))]</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(eating_disorder_df.shape)</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>rename_map<span class="op">=</span>{</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Entity'</span>:<span class="st">'Country'</span>,</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Code'</span>:<span class="st">'Country Code'</span>,</span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Year'</span>:<span class="st">'Year'</span>,</span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Eating disorders (share of population) - Sex: Male - Age: Age-standardized'</span>: <span class="st">'Male'</span>,</span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Eating disorders (share of population) - Sex: Female - Age: Age-standardized'</span>:<span class="st">'Female'</span>,</span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>eating_disorder_df.rename(columns<span class="op">=</span>rename_map, inplace<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(eating_disorder_df.head())</span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="co">#caculate the mean of the column Male and Female of the dataframe and save it to a new column named All_gender</span></span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>eating_disorder_df[<span class="st">'All_gender'</span>] <span class="op">=</span> eating_disorder_df[[<span class="st">'Male'</span>, <span class="st">'Female'</span>]].mean(axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(eating_disorder_df.head())</span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="co">#save the dataframe to csv file</span></span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>eating_disorder_df.to_csv(<span class="st">"./Part2/Code/eating_disorder.csv"</span>, index<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>eating_disorder <span class="op">=</span> all_data_frames[<span class="dv">7</span>]</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(eating_disorder)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>eating_disorder_df <span class="op">=</span> pd.read_csv(eating_disorder) <span class="co"># Use the 'eating_disorder' variablev</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># show all the columns of the dataframe</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(eating_disorder_df.columns)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(eating_disorder_df.head())</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># drop the columns Continent</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>eating_disorder_df <span class="op">=</span> eating_disorder_df.drop(columns<span class="op">=</span>[<span class="st">'Continent'</span>,<span class="st">'Population (historical estimates)'</span>])</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(eating_disorder_df.shape)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co"># only keep the rows of the dataframe when the column 'Year' is between 1990-2021</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co"># eating_disorder_df = eating_disorder_df.loc[eating_disorder_df['Year'] == range(1990,2022)]</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>eating_disorder_df <span class="op">=</span> eating_disorder_df[eating_disorder_df[<span class="st">'Year'</span>].isin(<span class="bu">range</span>(<span class="dv">1990</span>,<span class="dv">2022</span>))]</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(eating_disorder_df.shape)</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>rename_map<span class="op">=</span>{</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Entity'</span>:<span class="st">'Country'</span>,</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Code'</span>:<span class="st">'Country Code'</span>,</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Year'</span>:<span class="st">'Year'</span>,</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Eating disorders (share of population) - Sex: Male - Age: Age-standardized'</span>: <span class="st">'Male'</span>,</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Eating disorders (share of population) - Sex: Female - Age: Age-standardized'</span>:<span class="st">'Female'</span>,</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>eating_disorder_df.rename(columns<span class="op">=</span>rename_map, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(eating_disorder_df.head())</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="co">#caculate the mean of the column Male and Female of the dataframe and save it to a new column named All_gender</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>eating_disorder_df[<span class="st">'All_gender'</span>] <span class="op">=</span> eating_disorder_df[[<span class="st">'Male'</span>, <span class="st">'Female'</span>]].mean(axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(eating_disorder_df.head())</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a><span class="co">#save the dataframe to csv file</span></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a><span class="co"># eating_disorder_df.to_csv("./Part2/Code/eating_disorder.csv", index=False)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>./HW-02/Data/eating_disorders_prevalence_males_vs_females.csv
+Index(['Entity', 'Code', 'Year', 'Eating_disorders_Male',
+       'Eating_disorders_Female', 'Population', 'Continent'],
+      dtype='object')
+        Entity      Code  Year  Eating_disorders_Male  \
+0     Abkhazia  OWID_ABK  2015                    NaN   
+1  Afghanistan       AFG  1990               0.088487   
+2  Afghanistan       AFG  1991               0.086048   
+3  Afghanistan       AFG  1992               0.083625   
+4  Afghanistan       AFG  1993               0.081628   
+
+   Eating_disorders_Female  Population Continent  
+0                      NaN         NaN      Asia  
+1                 0.161867  10694804.0       NaN  
+2                 0.156910  10745168.0       NaN  
+3                 0.152412  12057436.0       NaN  
+4                 0.147938  14003764.0       NaN  </code></pre>
+</div>
+<div class="cell-output cell-output-error">
+<pre><code>KeyError: "['Population (historical estimates)'] not found in axis"</code></pre>
+</div>
 </div>
 </section>
 <section id="discomfort-seaking-anxiety-depression_2020-contries-continents" class="level3">
 <h3 class="anchored" data-anchor-id="discomfort-seaking-anxiety-depression_2020-contries-continents">Discomfort Seaking Anxiety depression_2020 &amp; Contries Continents</h3>
-<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#C.clean the data named discomfort_speaking_anxiety_depression_2020 and Contries_Continents</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>Contries_Continents<span class="op">=</span>all_data_frames[<span class="dv">0</span>]</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>Contries_Continents_df <span class="op">=</span> pd.read_csv(Contries_Continents) </span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(Contries_Continents_df.head())</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(Contries_Continents_df.shape)</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>discomfort_speaking_anxiety_depression_2020<span class="op">=</span>all_data_frames[<span class="dv">1</span>]</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>discomfort_speaking_anxiety_depression_2020_df <span class="op">=</span> pd.read_csv(discomfort_speaking_anxiety_depression_2020)</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(discomfort_speaking_anxiety_depression_2020_df.head())</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(discomfort_speaking_anxiety_depression_2020_df.columns)</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(discomfort_speaking_anxiety_depression_2020_df.shape)</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co">#rename the column 'Entity' to 'Country' and 'Share - Question: mh5 - Someone local comfortable speaking about anxiety/depression with someone they know - Answer: Not at all comfortable - Gender: all - Age_group: all' to 'Not_Comfortable'</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>discomfort_speaking_anxiety_depression_2020_df.rename(columns<span class="op">=</span>{<span class="st">'Entity'</span>:<span class="st">'Country'</span>,<span class="st">'Share - Question: mh5 - Someone local comfortable speaking about anxiety/depression with someone they know - Answer: Not at all comfortable - Gender: all - Age_group: all'</span>:<span class="st">'Not_Comfortable'</span>}, inplace<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co"># merge the two dataframes</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>discomfort_in_continent<span class="op">=</span> discomfort_speaking_anxiety_depression_2020_df.merge(Contries_Continents_df, how<span class="op">=</span><span class="st">'left'</span>, left_on<span class="op">=</span><span class="st">'Country'</span>, right_on<span class="op">=</span><span class="st">'Country'</span>)</span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(discomfort_in_continent.head())</span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="co">##save the dataframe to csv file</span></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>discomfort_in_continent.to_csv(<span class="st">"./Part2/Code/discomfort_in_continent.csv"</span>, index<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#C.clean the data named discomfort_speaking_anxiety_depression_2020 and Contries_Continents</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>Contries_Continents<span class="op">=</span>all_data_frames[<span class="dv">1</span>]</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>Contries_Continents_df <span class="op">=</span> pd.read_csv(Contries_Continents) </span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(Contries_Continents_df.head())</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(Contries_Continents_df.shape)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>discomfort_speaking_anxiety_depression_2020<span class="op">=</span>all_data_frames[<span class="dv">6</span>]</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>discomfort_speaking_anxiety_depression_2020_df <span class="op">=</span> pd.read_csv(discomfort_speaking_anxiety_depression_2020)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(discomfort_speaking_anxiety_depression_2020_df.head())</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(discomfort_speaking_anxiety_depression_2020_df.columns)</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(discomfort_speaking_anxiety_depression_2020_df.shape)</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co">#rename the column 'Entity' to 'Country' and 'Share - Question: mh5 - Someone local comfortable speaking about anxiety/depression with someone they know - Answer: Not at all comfortable - Gender: all - Age_group: all' to 'Not_Comfortable'</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>discomfort_speaking_anxiety_depression_2020_df.rename(columns<span class="op">=</span>{<span class="st">'Entity'</span>:<span class="st">'Country'</span>,<span class="st">'Share - Question: mh5 - Someone local comfortable speaking about anxiety/depression with someone they know - Answer: Not at all comfortable - Gender: all - Age_group: all'</span>:<span class="st">'Not_Comfortable'</span>}, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="co"># merge the two dataframes</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>discomfort_in_continent<span class="op">=</span> discomfort_speaking_anxiety_depression_2020_df.merge(Contries_Continents_df, how<span class="op">=</span><span class="st">'left'</span>, left_on<span class="op">=</span><span class="st">'Country'</span>, right_on<span class="op">=</span><span class="st">'Country'</span>)</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(discomfort_in_continent.head())</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="co">##save the dataframe to csv file</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="co"># discomfort_in_continent.to_csv("./Part2/Code/discomfort_in_continent.csv", index=False)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Continent   Country
+0    Africa   Algeria
+1    Africa    Angola
+2    Africa     Benin
+3    Africa  Botswana
+4    Africa   Burkina
+(194, 2)
+      Entity Code  Year  \
+0    Albania  ALB  2020   
+1    Algeria  DZA  2020   
+2  Argentina  ARG  2020   
+3       Asia  NaN  2020   
+4  Australia  AUS  2020   
+
+   not_at_all_comfortable_speaking_anxiety_or_depression_percent  
+0                                          27.573915              
+1                                          11.403895              
+2                                          26.333920              
+3                                          26.522500              
+4                                          30.768505              
+Index(['Entity', 'Code', 'Year',
+       'not_at_all_comfortable_speaking_anxiety_or_depression_percent'],
+      dtype='object')
+(122, 4)
+     Country Code  Year  \
+0    Albania  ALB  2020   
+1    Algeria  DZA  2020   
+2  Argentina  ARG  2020   
+3       Asia  NaN  2020   
+4  Australia  AUS  2020   
+
+   not_at_all_comfortable_speaking_anxiety_or_depression_percent  \
+0                                          27.573915               
+1                                          11.403895               
+2                                          26.333920               
+3                                          26.522500               
+4                                          30.768505               
+
+       Continent  
+0         Europe  
+1         Africa  
+2  South America  
+3            NaN  
+4        Oceania  </code></pre>
+</div>
 </div>
 </section>
 </section>
@@ -370,31 +534,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="r-cleaning-process">R Cleaning Process</h2>
 <section id="load-data-set-1" class="level3">
 <h3 class="anchored" data-anchor-id="load-data-set-1">Load Data Set</h3>
-<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the required libraries</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>library(readxl)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>library(dplyr)</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># List all data files</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>data_files <span class="op">&lt;-</span> <span class="bu">list</span>.files(path <span class="op">=</span> <span class="st">"./Part2/Data"</span>, full.names <span class="op">=</span> TRUE)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the required libraries</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>library(readxl)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>library(dplyr)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co"># List all data files</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>data_files <span class="op">&lt;-</span> <span class="bu">list</span>.files(path <span class="op">=</span> <span class="st">"./Part2/Data"</span>, full.names <span class="op">=</span> TRUE)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="mental-health-data-1" class="level3">
 <h3 class="anchored" data-anchor-id="mental-health-data-1">Mental Health Data</h3>
-<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Load mental_health data</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>mental_health_file <span class="op">&lt;-</span> data_files[<span class="dv">10</span>] <span class="co"># Assuming mental health data is at index 10</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>mental_health_df <span class="op">&lt;-</span> read_excel(mental_health_file)</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>head(mental_health_df)</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Drop columns not related to mental health</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>mental_health_df <span class="op">&lt;-</span> mental_health_df <span class="op">%&gt;%</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  select(<span class="op">-</span>c(`Drug use disorders (<span class="op">%</span>)`, `Alcohol use disorders (<span class="op">%</span>)`))</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>head(mental_health_df)</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Save the cleaned data to CSV</span></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>write.csv(mental_health_df, <span class="bu">file</span> <span class="op">=</span> <span class="st">"./Part2/Code/mental_health_r.csv"</span>, row.names <span class="op">=</span> FALSE)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Load mental_health data</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>mental_health_file <span class="op">&lt;-</span> data_files[<span class="dv">11</span>] <span class="co"># Assuming mental health data is at index 10</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>mental_health_df <span class="op">&lt;-</span> read_excel(mental_health_file)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>head(mental_health_df)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Drop columns not related to mental health</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>mental_health_df <span class="op">&lt;-</span> mental_health_df <span class="op">%&gt;%</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>  select(<span class="op">-</span>c(`Drug use disorders (<span class="op">%</span>)`, `Alcohol use disorders (<span class="op">%</span>)`))</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>head(mental_health_df)</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Save the cleaned data to CSV</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="co"># write.csv(mental_health_df, file = "./Part2/Code/mental_health_r.csv", row.names = FALSE)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>

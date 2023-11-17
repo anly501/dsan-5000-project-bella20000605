@@ -1,6 +1,6 @@
 ---
 title: "Mental Health Disorder"
-bibliography: reference.bib
+bibliography: references.bib
 ---
 
 # Significance
@@ -31,28 +31,28 @@ In summary, population health management is important because it shifts the heal
 
 # Questions
 
-1. What are the range of mental health disorder types, and how prevalent are they in the population?
+1.  What are the range of mental health disorder types, and how prevalent are they in the population?
 
-2. How has this prevalence changed over time in the population?
+2.  How has this prevalence changed over time in the population?
 
-3. What is the relationship between socialeconimic factors(income(high-income, lower-middle-income, upper-middle-income), GDP, average outcomes, and employment status) correlate with mental health outcomes (depression,anxiety,eating disorders, bipolar disorder)?
+3.  What is the relationship between socialeconimic factors(income(high-income, lower-middle-income, upper-middle-income), GDP, average outcomes, and employment status) correlate with mental health outcomes (depression,anxiety,eating disorders, bipolar disorder)?
 
-4. How does comfort talking about mental health vary by country and continent (Africa, Asia, Europe)?
+4.  How does comfort talking about mental health vary by country and continent (Africa, Asia, Europe)?
 
-5. How does comfort talking about mental health vary by education level?
+5.  How does comfort talking about mental health vary by education level?
 
-6. How does the prevalence of eating disorders vary by country and income level(high-income, lower-middle-income, upper-middle-income)?
+6.  How does the prevalence of eating disorders vary by country and income level(high-income, lower-middle-income, upper-middle-income)?
 
-7. Which set of factors "better" explains mental health outcomes: socioeconomic or geographic or educational factors?
+7.  Which set of factors "better" explains mental health outcomes: socioeconomic or geographic or educational factors?
 
-8. Is this true for all mental health disorders, and if not, which disorders are "most talked about" in which countries?
+8.  Is this true for all mental health disorders, and if not, which disorders are "most talked about" in which countries?
 
-9. How is the data actually gathered? Is it gathered using surveys? Or is it medical diagnoses? Or both?
+9.  How is the data actually gathered? Is it gathered using surveys? Or is it medical diagnoses? Or both?
 
 10. Are there issues with using the survey data available? Similarly, are there issues with using the medical data available?
 
-
-
 # Publication
 
-[@MERCHANT2016455] [@JHAMB2023107269]
+[@pedrelli2015]
+
+[@fergusson2015]

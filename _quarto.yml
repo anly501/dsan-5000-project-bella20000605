@@ -16,8 +16,8 @@ website:
       - Exploration.ipynb
       - Naive Bayes.ipynb
       - reduction.ipynb
-      - Clustering.ipynb
-      - Classfication.qmd
+      - clustering.qmd
+      - DT.ipynb
       - Regression.qmd
       - ARM.qmd
       - Conclusions.qmd

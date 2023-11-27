@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -59,6 +93,25 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+<script type="text/javascript">
+window.PlotlyConfig = {MathJaxConfig: 'local'};
+if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}
+if (typeof require !== 'undefined') {
+require.undef("plotly");
+requirejs.config({
+    paths: {
+        'plotly': ['https://cdn.plot.ly/plotly-2.12.1.min']
+    }
+});
+require(['plotly'], function(Plotly) {
+    window._Plotly = Plotly;
+});
+}
+</script>
+
 
 
 </head>
@@ -72,7 +125,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Clustering.html">Clustering</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./clustering.html">Clustering</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -153,14 +206,14 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Clustering.html" class="sidebar-item-text sidebar-link active">
+  <a href="./clustering.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Clustering</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Classfication.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Classfication</span></a>
+  <a href="./DT.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Decision Trees</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -187,7 +240,19 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#k-means-clustering" id="toc-k-means-clustering" class="nav-link active" data-scroll-target="#k-means-clustering">K-Means Clustering</a></li>
+  <li><a href="#hyper-parameter-tuning" id="toc-hyper-parameter-tuning" class="nav-link" data-scroll-target="#hyper-parameter-tuning">Hyper-parameter tuning</a></li>
+  <li><a href="#dbscan-clustering" id="toc-dbscan-clustering" class="nav-link" data-scroll-target="#dbscan-clustering">DBSCAN Clustering</a></li>
+  <li><a href="#hierarchical-clustering" id="toc-hierarchical-clustering" class="nav-link" data-scroll-target="#hierarchical-clustering">Hierarchical Clustering</a></li>
+  <li><a href="#final-results" id="toc-final-results" class="nav-link" data-scroll-target="#final-results">Final results</a></li>
+  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a></li>
+  <li><a href="#conclusions" id="toc-conclusions" class="nav-link" data-scroll-target="#conclusions">Conclusions:</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -209,8 +274,491 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<p>Introduction Dimentional reduction happens before clusering My feature data includes 2017(which is the gdp-per-capita in the year of 2017 of all economies),Schizophrenia (%), Bipolar disorder (%),Eating disorders (%),Anxiety disorders (%),Depression (%), average_learning_Adjusted_of_school,and the goal of the project is to cluster the economies into different groups(like Income group) based on the feature data.</p>
+<p>Theory KMEANS</p>
+<p>It is a popular unsupervised machine learning algorithm, which is used to divide a given unlabeled dataset into a certain number of clusters, denoted as k. One example of this is imagine you are at a farmer’s market and you have a variety of fruits and you want to organize these fruits. And k-means clustering is you sorting these fruits into different bags according to their charactersitics, like color, size, shape, etc. So the first step is you need to determine the number of bags you want to sort these fruits(the number means K in K-means,which stands for the number of clusters). Then you randomly place these bags among the fruits and you put every friut to its cloest bag. After all the fruits are put into bags, you find the average characteristics of each bag and move the bag to the average position of the fruits in the bag. Then you repeat the process until the bags stop moving(The fruits no longer switch bags) And the result is you have a certain number of bags and each bag contains a certain number of fruits with similar characteristics. The goal is to have bags(clusters) where the fruits inside are more like each other than they are like fruits in other bags. And we use Elbow method, Silhouette method, Gap statistic to determine the number of bags we want to sort the fruits into.</p>
+<p>Elbow method we increase the number of bags and get relavent scores of how close fruits are within bags, and in the plot we will look for the point where adding another bags doesn’t significantly improve the closeness - this point is the ‘elbow’. 2. Silhouette method It is like each fruit can whisper tou you and tell you that how happy it is in its bag by give score. The Silhouette method is like listening to all those whispers to figure out if you’ve sorted the fruits into bags well by taking all these scores and averaging them to give an overall score. The score close to +1 means that the fruit is very happy because it’s surrounded by similar fruits, and the socre about 0 means the fruit is cool and don’t care about whcih bag it is in, and the score close to -1 means the fruit is very sad because it’s surrounded by very different fruits. if many fruits are sad or cool, the he overall score will be low, you may need to reorganize the fruits into different bags by adjusting the number of bags or considering different fruit characteristics.</p>
+<p>DBSCAN (Density-Based Spatial Clustering of Applications with Noise)</p>
+<p>It is like organizing a group of children playing in a park into clusters based on how close they are to each other. we don’t need to decide how many groups you want beforehand, you set rules for what makes a group. Like a group needs at least five children, and all members of the group need to be within arm’s reach of someone else in the group. Children who are close enough to a group join it, and groups might merge if they get close enough to each other. Some children who prefer playing alone and don’t reach out to others are not part of any group(It is like the noise in the DBSCAN). DBSCAN works similarly. It groups points that are closely packed together, and points in low-density regions are marked as ‘noise’. This method is gvery ood when you don’t know how many clusters to expect, or when your data might have outliers. The silhouette score helps to evaluate how well the points are clustered, with higher scores indicating better-defined clusters.</p>
+<p>Hierarchical Clustering It is like building a family tree for a set of ancient artifacts found at an archaeological site. Instead of sorting them into separate bages, you try to understand how these artifacts are related to each other, from the oldest to the newest. Hierarchical clustering starts by assuming every artifact is its own family (cluster). Then, it gradually links artifacts into families by their similarities, like materials or designs, until all artifacts are united into one big family (cluster). This method creates a tree diagram called a dendrogram, which shows the ‘family’ relationships. It allows us to choose the level of similarity at which we want to stop combining artifacts into families, which in turn determines the number of clusters. We can use the dendrogram to visually identify where to ‘cut’ the tree to get a sensible number of families,with the elbow method or silhouette score serving as tools to help decide on the best ‘cut’, ensuring that artifacts in the same family are as similar as possible.</p>
+<div class="cell" data-execution_count="1">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.impute <span class="im">import</span> SimpleImputer</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> LabelEncoder</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>df_reduction<span class="op">=</span>pd.read_csv(<span class="st">'./Data/Reduction.csv'</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># print(df_reduction.isnull().sum())</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace non-numeric entries with NaN</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>df_reduction.iloc[:, <span class="dv">1</span>:<span class="dv">8</span>] <span class="op">=</span> df_reduction.iloc[:, <span class="dv">1</span>:<span class="dv">8</span>].<span class="bu">apply</span>(pd.to_numeric, errors<span class="op">=</span><span class="st">'coerce'</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># [1:8] means from column 1 to column 7 because column 0 and 8 are not numeric</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co"># The apply(pd.to_numeric, errors='coerce') method attempts to convert all entries in the specified columns to numeric values.</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co"># If it encounters any entry that cannot be converted (like a string 'no data'), it replaces it with NaN (Not a Number), a standard missing dat</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Impute missing values with the mean of the column</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>imputer <span class="op">=</span> SimpleImputer(strategy<span class="op">=</span><span class="st">'mean'</span>)</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>df_reduction.iloc[:, <span class="dv">1</span>:<span class="dv">8</span>] <span class="op">=</span> imputer.fit_transform(df_reduction.iloc[:, <span class="dv">1</span>:<span class="dv">8</span>])</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="co">#impute missing values with the mode</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>df_reduction[<span class="st">'Income group'</span>] <span class="op">=</span> df_reduction[<span class="st">'Income group'</span>].fillna(df_reduction[<span class="st">'Income group'</span>].mode()[<span class="dv">0</span>])</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>df_reduction.isnull().<span class="bu">sum</span>()</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="co">#lable encoding: encode the categorical data into numeric </span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>label_encoder <span class="op">=</span> LabelEncoder()</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>df_reduction[<span class="st">'Income group'</span>] <span class="op">=</span> label_encoder.fit_transform(df_reduction[<span class="st">'Income group'</span>])</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="co"># df_reduction['Economy']=label_encoder.fit_transform(df_reduction['Economy'])</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>df_reduction.isnull().<span class="bu">sum</span>()</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Feature Scaling</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>scaler <span class="op">=</span> StandardScaler()</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>scaled_features <span class="op">=</span> scaler.fit_transform(df_reduction.iloc[:, <span class="dv">1</span>:])</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a new DataFrame for the scaled features</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>scaled_df <span class="op">=</span> pd.DataFrame(scaled_features, columns<span class="op">=</span>df_reduction.columns[<span class="dv">1</span>:])</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>scaled_df.drop([<span class="st">'Income group'</span>], axis<span class="op">=</span><span class="dv">1</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="co">#after dimentional reduction, we drop the columns that are not important 'average_learning_Adjusted_of_school'and 'scaled_df.drop(['Depression (%)'], axis=1, inplace=True)'</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>scaled_df.drop([<span class="st">'average_learning_Adjusted_of_school'</span>], axis<span class="op">=</span><span class="dv">1</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>scaled_df.drop([<span class="st">'Depression (%)'</span>], axis<span class="op">=</span><span class="dv">1</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>scaled_df.head()  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>/var/folders/px/bhxss9d10zs_wzsv0ck6sb200000gn/T/ipykernel_32044/8429475.py:11: DeprecationWarning:
+
+In a future version, `df.iloc[:, i] = newvals` will attempt to set the values inplace instead of always setting a new array. To retain the old behavior, use either `df[df.columns[i]] = newvals` or, if columns are non-unique, `df.isetitem(i, newvals)`
+</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<div>
 
 
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">2017</th>
+<th data-quarto-table-cell-role="th">Schizophrenia (%)</th>
+<th data-quarto-table-cell-role="th">Bipolar disorder (%)</th>
+<th data-quarto-table-cell-role="th">Eating disorders (%)</th>
+<th data-quarto-table-cell-role="th">Anxiety disorders (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>-0.702995</td>
+<td>-1.079808</td>
+<td>-0.179703</td>
+<td>-0.920185</td>
+<td>0.731688</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>-0.501116</td>
+<td>-0.221633</td>
+<td>-0.202660</td>
+<td>-0.519143</td>
+<td>-0.544877</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>-0.527644</td>
+<td>-0.298235</td>
+<td>0.523775</td>
+<td>-0.281972</td>
+<td>0.888053</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>1.340754</td>
+<td>1.316321</td>
+<td>1.443806</td>
+<td>2.301250</td>
+<td>1.092253</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>-0.526368</td>
+<td>-0.916482</td>
+<td>-0.715177</td>
+<td>-0.521562</td>
+<td>-0.620196</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<section id="k-means-clustering" class="level3">
+<h3 class="anchored" data-anchor-id="k-means-clustering">K-Means Clustering</h3>
+</section>
+<section id="hyper-parameter-tuning" class="level3">
+<h3 class="anchored" data-anchor-id="hyper-parameter-tuning">Hyper-parameter tuning</h3>
+<div class="cell" data-execution_count="2">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.cluster <span class="im">import</span> KMeans</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> silhouette_score</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Determining the optimal number of clusters for K-Means using Elbow Method and Silhouette Score</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>inertia <span class="op">=</span> [] <span class="co"># inertia values for different clusters of K-Means</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co">#Inertia is the sum of squared distances of samples to their closest cluster center.</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>silhouette_scores <span class="op">=</span> []  <span class="co"># silhouette scores for different clusters</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>K_range <span class="op">=</span> <span class="bu">range</span>(<span class="dv">2</span>, <span class="dv">11</span>) <span class="co"># defining the range of clusters to try(2-10)</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> K <span class="kw">in</span> K_range:</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    kmeans <span class="op">=</span> KMeans(n_clusters<span class="op">=</span>K, random_state<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    kmeans.fit(scaled_df)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    inertia.append( kmeans.inertia_) <span class="co">#iertia is the sum of squared distances of samples to their closest cluster center.</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    silhouette_scores.append(silhouette_score(scaled_df, kmeans.labels_)) <span class="co">#The silhouette score is a measure of how similar an object is to its own cluster compared to other clusters.</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting the Elbow Method results</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">6</span>))</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>)</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>plt.plot(K_range, inertia, marker<span class="op">=</span><span class="st">'o'</span>)</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Number of clusters'</span>)</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Inertia'</span>)</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Elbow Method For Optimal K'</span>)</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting the Silhouette Scores</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>plt.plot(K_range, silhouette_scores, marker<span class="op">=</span><span class="st">'o'</span>)</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Number of clusters'</span>)</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Silhouette Score'</span>)</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Silhouette Scores For K-Means'</span>)</span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(inertia)</span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(silhouette_scores)</span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a><span class="co"># Finding the 'elbow' point in the inertia plot</span></span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a><span class="co"># This is typically done by visual inspection, but you can try an algorithmic approach</span></span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>elbow_point <span class="op">=</span> K_range[inertia.index(<span class="bu">min</span>(inertia, key<span class="op">=</span><span class="kw">lambda</span> x: <span class="bu">abs</span>(x <span class="op">-</span> inertia[<span class="dv">0</span>]<span class="op">/</span><span class="dv">2</span>)))]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>/Users/bella/anaconda3/lib/python3.11/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning:
+
+The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
+
+/Users/bella/anaconda3/lib/python3.11/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning:
+
+The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
+
+/Users/bella/anaconda3/lib/python3.11/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning:
+
+The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
+
+/Users/bella/anaconda3/lib/python3.11/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning:
+
+The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
+
+/Users/bella/anaconda3/lib/python3.11/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning:
+
+The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
+
+/Users/bella/anaconda3/lib/python3.11/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning:
+
+The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
+
+/Users/bella/anaconda3/lib/python3.11/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning:
+
+The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
+
+/Users/bella/anaconda3/lib/python3.11/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning:
+
+The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
+
+/Users/bella/anaconda3/lib/python3.11/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning:
+
+The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
+</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="clustering_files/figure-html/cell-3-output-2.png" width="1333" height="564"></p>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[395.6264643765347, 270.73403477419953, 221.27963486826846, 191.75725981806818, 164.810662792652, 147.53986259365348, 132.15740733843762, 117.00102367563264, 111.14912391808826]
+[0.5323995929991122, 0.41255351593599066, 0.41295197246033155, 0.40113679560741355, 0.38519758564180123, 0.3885688102388548, 0.3904223089727881, 0.40040302538406963, 0.3982387901808518]</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="3">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Finding the highest silhouette score</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>highest_silhouette_score <span class="op">=</span> <span class="bu">max</span>(silhouette_scores)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>optimal_clusters_silhouette <span class="op">=</span> silhouette_scores.index(highest_silhouette_score) <span class="op">+</span> <span class="dv">2</span>  <span class="co"># Adding 2 because range starts from 2</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>elbow_point, highest_silhouette_score, optimal_clusters_silhouette</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<pre><code>(5, 0.5323995929991122, 2)</code></pre>
+</div>
+</div>
+<p>Elbow Method: The inertia plot again shows the sum of squared distances to the closest cluster center. The ‘elbow’ in this plot suggests the optimal number of clusters. inertia decreases with increasing k, however, after which the rate of decrease slows down and the point is called the elbow, and in this case, it is 4</p>
+<p>Silhouette Score: The silhouette score plot measures the quality of the clusters formed. Higher scores indicate more clearly defined clusters. The highest silhouette score is obtained with 2 clusters.</p>
+<p>These two methods suggest different optimal numbers of clusters. This is not uncommon, as different methods can highlight different aspects of the data’s structure.</p>
+</section>
+<section id="dbscan-clustering" class="level3">
+<h3 class="anchored" data-anchor-id="dbscan-clustering">DBSCAN Clustering</h3>
+<section id="hyper-parameter-tuning-1" class="level4">
+<h4 class="anchored" data-anchor-id="hyper-parameter-tuning-1">Hyper-parameter tuning</h4>
+<div class="cell" data-execution_count="4">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> silhouette_score</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.cluster <span class="im">import</span> KMeans, AgglomerativeClustering, MeanShift, Birch, DBSCAN</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">##eps_values will be tested as the eps parameter of the DBSCAN</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co">#algorithm to determine the optimal distance within which points are considered neighbors.</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>eps_values <span class="op">=</span> np.arange(<span class="fl">0.1</span>, <span class="fl">2.0</span>, <span class="fl">0.1</span>) <span class="co"># eps_values is the maximum distance between two samples for one to be considered as in the neighborhood of the other,</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize the results list</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> []</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Iterate over all the combinations of eps and min_samples</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> eps <span class="kw">in</span> eps_values:</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    db <span class="op">=</span> DBSCAN(eps<span class="op">=</span>eps, min_samples<span class="op">=</span>scaled_df.shape[<span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>) <span class="co"># min_samples must be be higher than the number of features at the very least(nd min_samples is the number of samples in a neighborhood for a point to be considered as a core point.)</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>    clusters <span class="op">=</span> db.fit_predict(scaled_df)</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Only calculate the silhouette score if there is more than one cluster</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># DBSCAN can sometimes mark all or nearly all points as noise, especially if eps is to</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">len</span>(np.unique(clusters)) <span class="op">&gt;</span> <span class="dv">1</span>:</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>        score <span class="op">=</span> silhouette_score(scaled_df, clusters)</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>        results.append((eps, scaled_df.shape[<span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>, <span class="bu">len</span>(np.unique(clusters)), score))</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert the results list to a Pandas DataFrame</span></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(results, columns<span class="op">=</span>[<span class="st">'eps'</span>, <span class="st">'min_samples'</span>, <span class="st">'number of clusters'</span>, <span class="st">'silhouett score'</span>])</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df)</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>df.columns <span class="op">=</span> df.columns.<span class="bu">str</span>.strip()</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df.columns)</span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the silhouette score vs the number of clusters</span></span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>sns.barplot(data<span class="op">=</span>df, x <span class="op">=</span> <span class="st">'number of clusters'</span>, y <span class="op">=</span> <span class="st">'silhouett score'</span>)</span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Silhouett score'</span>)</span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Clusters'</span>)</span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Number of Clusters vs Silhouette Score'</span>)</span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>    eps  min_samples  number of clusters  silhouett score
+0   0.1            6                   2        -0.129657
+1   0.2            6                   3        -0.028703
+2   0.3            6                   4        -0.141168
+3   0.4            6                   4        -0.062172
+4   0.5            6                   6         0.157742
+5   0.6            6                   4         0.291174
+6   0.7            6                   4         0.345045
+7   0.8            6                   4         0.365894
+8   0.9            6                   3         0.325856
+9   1.0            6                   3         0.434721
+10  1.1            6                   3         0.450710
+11  1.2            6                   3         0.472156
+12  1.3            6                   2         0.425741
+13  1.4            6                   2         0.446892
+14  1.5            6                   2         0.487558
+15  1.6            6                   2         0.508582
+16  1.7            6                   2         0.508582
+17  1.8            6                   2         0.508582
+18  1.9            6                   2         0.531263
+Index(['eps', 'min_samples', 'number of clusters', 'silhouett score'], dtype='object')</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="clustering_files/figure-html/cell-5-output-2.png" width="589" height="449"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="hierarchical-clustering" class="level3">
+<h3 class="anchored" data-anchor-id="hierarchical-clustering">Hierarchical Clustering</h3>
+<section id="hyper-parameter-tuning-2" class="level4">
+<h4 class="anchored" data-anchor-id="hyper-parameter-tuning-2">Hyper-parameter tuning</h4>
+<div class="cell" data-execution_count="5">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform Agglomerative Clustering</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>Agg <span class="op">=</span> AgglomerativeClustering</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>si_scores <span class="op">=</span> []</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> n <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>,<span class="dv">11</span>):</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    agglomerative <span class="op">=</span> Agg(n_clusters <span class="op">=</span> n)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    agglomerative.fit(scaled_df)</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    si_scores.append((n, silhouette_score(scaled_df, agglomerative.labels_)))</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># The silhouette score is a measure of how similar an object is to its own cluster com</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(si_scores, columns<span class="op">=</span>[<span class="st">"Clusters"</span>,<span class="st">"Silhouette score"</span>])</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df)</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>sns.barplot(data<span class="op">=</span>df, x <span class="op">=</span> <span class="st">'Clusters'</span>, y <span class="op">=</span> <span class="st">'Silhouette score'</span>)</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Silhouette Score'</span>)</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Clusters'</span>)</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Number of Clusters vs Silhouette Score'</span>)</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Clusters  Silhouette score
+0         2          0.550779
+1         3          0.409917
+2         4          0.413450
+3         5          0.398937
+4         6          0.364482
+5         7          0.370408
+6         8          0.377807
+7         9          0.386036
+8        10          0.368499</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="clustering_files/figure-html/cell-6-output-2.png" width="589" height="449"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="6">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">### Plot the clusters for Agglomerative Clustering</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># create linkage for agglomerative clustering, and the dendrogram for the linkage.</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">#  Suggest the optimal number of clusters based on the dendrogram.</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.cluster.hierarchy <span class="im">import</span> dendrogram, linkage</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>linkage_matrix <span class="op">=</span> linkage(scaled_df, <span class="st">'ward'</span>)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>dendrogram(linkage_matrix)</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Dendrogram'</span>)</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Income group'</span>)</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Euclidean Distance'</span>)</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<p><img src="clustering_files/figure-html/cell-7-output-1.png" width="587" height="449"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="final-results" class="level3">
+<h3 class="anchored" data-anchor-id="final-results">Final results</h3>
+<p>Re-do the analysis with the optimal parameter 2 using K-means, DBSCAN, and Hierarchical clustering.</p>
+<div class="cell" data-execution_count="7">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Applying K-Means clustering with 2 clusters</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>kmeans <span class="op">=</span> KMeans(n_clusters<span class="op">=</span><span class="dv">2</span>, random_state<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>kmeans.fit(scaled_df)  <span class="co">## This line fits the KMeans model to your scaled dataset </span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Cluster labels</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>cluster_labels <span class="op">=</span> kmeans.labels_ <span class="co">## This line extracts the cluster labels from the KMeans model</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Adding the cluster labels to the original DataFrame</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>df_clustered <span class="op">=</span> df_reduction.copy()</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>df_clustered[<span class="st">'Cluster'</span>] <span class="op">=</span> cluster_labels</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Analyzing the distribution of data points among the clusters</span></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>cluster_distribution <span class="op">=</span> df_clustered[<span class="st">'Cluster'</span>].value_counts() <span class="co">## This line counts the number of data points in each cluster</span></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Displaying the cluster centroids and distribution</span></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>centroids <span class="op">=</span> kmeans.cluster_centers_ <span class="co"># This line retrieves the centroids of the clusters</span></span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_clustered.head())</span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(centroids)</span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(cluster_distribution)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>       Economy       2017  Schizophrenia (%)  Bipolar disorder (%)  \
+0  Afghanistan    635.789           0.166158              0.708089   
+1      Albania   4525.887           0.201025              0.704480   
+2      Algeria   4014.707           0.197913              0.818687   
+3      Andorra  40017.741           0.263512              0.963331   
+4       Angola   4039.300           0.172794              0.623904   
+
+   Eating disorders (%)  Anxiety disorders (%)  Depression (%)  \
+0              0.107142               4.882481        4.136347   
+1              0.174046               3.385245        2.208414   
+2              0.213612               5.065876        3.661094   
+3              0.644559               5.305375        3.729532   
+4              0.173643               3.296906        4.160484   
+
+   average_learning_Adjusted_of_school  Income group  Cluster  
+0                             4.957542             1        0  
+1                             8.526723             3        0  
+2                             7.045445             2        0  
+3                             7.828811             0        1  
+4                             4.193318             2        0  
+[[-0.42293209 -0.34972141 -0.3352707  -0.45381881 -0.36193107]
+ [ 1.47454702  1.21929895  1.16891675  1.58223313  1.26186779]]
+0    129
+1     37
+Name: Cluster, dtype: int64</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/Users/bella/anaconda3/lib/python3.11/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning:
+
+The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
+</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="8">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming df_clustered is your DataFrame that includes PCA components and cluster assignments</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace 'PC1' and 'PC2' with the names of your principal component columns</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace 'Cluster' with the name of your cluster label column</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace 'country' with the name of the column you want to show on hover</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> px.scatter(df_clustered, x<span class="op">=</span><span class="st">'Schizophrenia (%)'</span>, y<span class="op">=</span><span class="st">'Eating disorders (%)'</span>, color<span class="op">=</span><span class="st">'Cluster'</span>, hover_data<span class="op">=</span>[<span class="st">'Economy'</span>], template<span class="op">=</span><span class="st">'simple_white'</span>)</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="co">## Remove the colorbar</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>fig.update(layout_coloraxis_showscale<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Make the points larger</span></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>fig.update_traces(marker<span class="op">=</span><span class="bu">dict</span>(size<span class="op">=</span><span class="dv">12</span>),selector<span class="op">=</span><span class="bu">dict</span>(mode<span class="op">=</span><span class="st">'markers'</span>))</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Update layout if necessary</span></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>fig.update_layout(</span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="st">'K-Means Clustering with PCA Components'</span>,</span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>    xaxis_title<span class="op">=</span><span class="st">'PC1'</span>,</span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>    yaxis_title<span class="op">=</span><span class="st">'PC2'</span>,</span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>    legend_title<span class="op">=</span><span class="st">'Cluster'</span></span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>fig.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+
+<div>                            <div id="d12230c6-9a61-4f57-b6ba-bddcdc228388" class="plotly-graph-div" style="height:525px; width:100%;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("d12230c6-9a61-4f57-b6ba-bddcdc228388")) {                    Plotly.newPlot(                        "d12230c6-9a61-4f57-b6ba-bddcdc228388",                        [{"customdata":[["Afghanistan"],["Albania"],["Algeria"],["Andorra"],["Angola"],["Antigua and Barbuda"],["Argentina"],["Armenia"],["Australia"],["Austria"],["Azerbaijan"],["Bahrain"],["Bangladesh"],["Barbados"],["Belarus"],["Belgium"],["Belize"],["Benin"],["Bhutan"],["Bolivia"],["Bosnia and Herzegovina"],["Botswana"],["Brazil"],["Bulgaria"],["Burkina Faso"],["Burundi"],["Cambodia"],["Cameroon"],["Canada"],["Central African Republic"],["Chad"],["Chile"],["Colombia"],["Comoros"],["Costa Rica"],["Croatia"],["Cyprus"],["Czech Republic"],["Denmark"],["Djibouti"],["Dominica"],["Dominican Republic"],["Ecuador"],["Egypt"],["El Salvador"],["Equatorial Guinea"],["Eritrea"],["Estonia"],["Ethiopia"],["Fiji"],["Finland"],["France"],["Gabon"],["Georgia"],["Germany"],["Ghana"],["Greece"],["Grenada"],["Guatemala"],["Guinea"],["Guinea-Bissau"],["Guyana"],["Haiti"],["Honduras"],["Hungary"],["Iceland"],["India"],["Indonesia"],["Iran"],["Iraq"],["Ireland"],["Israel"],["Italy"],["Jamaica"],["Japan"],["Jordan"],["Kazakhstan"],["Kenya"],["Kiribati"],["Kuwait"],["Latvia"],["Lebanon"],["Lesotho"],["Liberia"],["Libya"],["Lithuania"],["Luxembourg"],["Madagascar"],["Malawi"],["Malaysia"],["Maldives"],["Mali"],["Malta"],["Marshall Islands"],["Mauritania"],["Mauritius"],["Mexico"],["Moldova"],["Mongolia"],["Montenegro"],["Morocco"],["Mozambique"],["Myanmar"],["Namibia"],["Nepal"],["Netherlands"],["New Zealand"],["Nicaragua"],["Niger"],["Nigeria"],["Norway"],["Oman"],["Pakistan"],["Panama"],["Papua New Guinea"],["Paraguay"],["Peru"],["Philippines"],["Poland"],["Portugal"],["Puerto Rico"],["Qatar"],["Romania"],["Rwanda"],["Saint Lucia"],["Saint Vincent and the Grenadines"],["Samoa"],["Saudi Arabia"],["Senegal"],["Serbia"],["Seychelles"],["Sierra Leone"],["Singapore"],["Slovenia"],["Solomon Islands"],["Somalia"],["South Africa"],["Spain"],["Sri Lanka"],["Sudan"],["Suriname"],["Sweden"],["Switzerland"],["Syria"],["Tajikistan"],["Tanzania"],["Thailand"],["Togo"],["Tonga"],["Trinidad and Tobago"],["Tunisia"],["Turkmenistan"],["Uganda"],["Ukraine"],["United Arab Emirates"],["United Kingdom"],["United States"],["Uruguay"],["Uzbekistan"],["Vanuatu"],["Venezuela"],["Vietnam"],["Yemen"],["Zambia"],["Zimbabwe"],["World"]],"hovertemplate":"Schizophrenia (%)=%{x}<br>Eating disorders (%)=%{y}<br>Economy=%{customdata[0]}<br>Cluster=%{marker.color}<extra></extra>","legendgroup":"","marker":{"color":[0,0,0,1,0,0,1,0,1,1,0,0,0,1,0,1,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,1,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,1,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,1,1,1,0,1,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,1,0,0,0,0,1,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,1,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0],"coloraxis":"coloraxis","symbol":"circle","size":12},"mode":"markers","name":"","orientation":"v","showlegend":false,"x":[0.166157851965,0.201025478973,0.197913139914999,0.263512450809,0.17279380396,0.206408818879999,0.19809369227,0.197364768091,0.363326333425,0.256957852233,0.199997827826,0.206968624015999,0.252599547699,0.229385586889,0.197650078792999,0.258072602791,0.194921776429,0.170321752983999,0.267637210022,0.193935503544,0.20070295069,0.181927802991,0.205534039798,0.202455336778,0.164744558656,0.154394080898,0.208266148232,0.170795518611,0.315588104492,0.149087097362,0.168019370423,0.201430396901,0.207210793076,0.170251722541,0.213890053455,0.207565417697999,0.252271953776,0.20998906177,0.254016902974,0.175443945619,0.199904066276,0.199461740299,0.202911590059,0.188117075278999,0.197831002875,0.18533360608,0.158711073736,0.203977642902,0.164823052944,0.238571847376,0.257444377924,0.256237904708,0.181545884718,0.196775607848999,0.252269313545,0.175605914654,0.252700836389,0.199821963506,0.193343638198,0.166392762237999,0.163117115414999,0.186468100603,0.172298258053,0.189815205978,0.205524223022,0.257616535208,0.257864000572999,0.230297325067,0.201307454514,0.1897286051,0.328007666524999,0.25913933072,0.236197452312,0.199270486805999,0.295577743427,0.19388561947,0.199892478404,0.17083626393,0.208107779709,0.214850667734,0.199509601255,0.198375561913,0.161376284077,0.161454262144,0.192848517603,0.200982414615,0.263622240872,0.164280108974999,0.154532582813,0.252984360679,0.244707357051,0.167750884959,0.257631743485,0.218616059586,0.179205385342999,0.242184799683,0.211765456029,0.183710487522,0.190647636897,0.203247600082,0.186616021106,0.156176372581,0.21391517103,0.177365159223,0.246394000873,0.358487187971999,0.341050948856,0.199562758242,0.163844826257,0.182126448626,0.211483839907,0.202474315485,0.256441676608999,0.213259242938,0.209554725405,0.202425561991999,0.203293010207,0.224422402379,0.207809899983,0.249372352701,0.212346567195,0.215139530228,0.201194504404,0.163688249993,0.199945007781999,0.196204451426,0.234876448168,0.205707390981,0.173616152452,0.200264020274999,0.247689163047999,0.165455342335,0.2740898744,0.211823740181999,0.210462281761,0.153911904955,0.181937295399,0.281538914044,0.238044780907,0.176166977769,0.186999332463,0.270391824818,0.262486901768,0.188965548959,0.182117006992999,0.165215400013,0.234878534731,0.164575407164,0.235881120892,0.177600289326,0.198098809372,0.197340311887,0.160207615714,0.190965773273,0.2107177342,0.262952341558,0.333889942363,0.198965427947999,0.188464037303,0.214734298653999,0.205536618376,0.244662787417,0.171690746660999,0.16586619176,0.157963235821,0.254055151307],"xaxis":"x","y":[0.107142265558,0.174046095006,0.213612216088,0.644558566578,0.173642511006,0.350367843984,0.404033163099,0.167047141359999,0.943081003971999,0.675111961603,0.204891197681,0.273714301731,0.137974267122,0.320598997921,0.210693402008,0.603868895678,0.258710442087,0.120290320775999,0.172339624531,0.305250563203999,0.172474446404,0.227732855648,0.277050765272,0.202411206361,0.113354225407,0.0908023408812,0.108378572317,0.133790101708,0.477304277231,0.0891832048568,0.122128893812999,0.416122857107999,0.260257216714,0.110911467084999,0.289341841884,0.217975135979,0.506721279036,0.242372761022,0.540025324966,0.136660105677,0.277126535179,0.303058121152,0.363732807614,0.19294203792,0.243873188283,0.277336567698,0.102502520428,0.250270742469,0.109816928768,0.147252649755,0.594937626869,0.573755286605,0.226577373688,0.171640059024,0.522066337436999,0.147451582312999,0.559323569808,0.288173878252,0.232110380606,0.112388230779,0.110998627272,0.237636118540999,0.160789636446,0.20333887837,0.237686389914,0.558013746386,0.157758124999,0.148781505161,0.231894488144,0.208672060932,0.55999469536,0.461175310548,0.626783642641999,0.259650413718,0.45437860865,0.188925295652,0.227917724331,0.135004852566999,0.0936135103393,0.34657953292,0.225275373673,0.219049411138,0.136800869544,0.0915913234458,0.195726048930999,0.234094900677999,0.737916535924,0.106417184832,0.100349371553999,0.20146154356,0.157213639846,0.116674521249,0.519139981796,0.111895399416,0.145275716491,0.184432747958,0.316975449214,0.141700867982,0.180157029855,0.194161147929,0.175569110624,0.103227218784,0.125738282771,0.200987330717,0.128494755201,0.467844098788999,0.67329002752,0.205876035268999,0.0961159064726999,0.163373451865,0.570362636085,0.254958104663,0.154582740589,0.316650159126,0.104959860846,0.238288430861,0.369215968601,0.134855317973,0.229484902870999,0.513078804556,0.412628264067,0.318165202676,0.200699607577999,0.115817094932,0.286340742496,0.274837148978,0.126132451514,0.289615222745,0.125290134054,0.18714734744,0.197452039361999,0.109798763944,0.553711598487,0.239635828094,0.0941887907665,0.0798960978525,0.214718050332999,0.730626188558,0.159144309374,0.147024605158,0.307738346379,0.574608279695,0.57396869509,0.159348883888,0.118225809187,0.129856670927,0.173201970407,0.108107371501999,0.125706097245,0.389695652593999,0.200171736786,0.20147664564,0.119309486967999,0.172715421693,0.262206645696,0.543053614094,0.512844329383,0.40550153492,0.153735023976,0.106462399086,0.2826904166,0.128466466411,0.132623130414,0.142767575682,0.124443427153,0.211304286703],"yaxis":"y","type":"scatter"}],                        {"template":{"data":{"barpolar":[{"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"rgb(36,36,36)"},"error_y":{"color":"rgb(36,36,36)"},"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"rgb(36,36,36)","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"rgb(36,36,36)"},"baxis":{"endlinecolor":"rgb(36,36,36)","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"rgb(36,36,36)"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":1,"tickcolor":"rgb(36,36,36)","ticks":"outside"},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":1,"tickcolor":"rgb(36,36,36)","ticks":"outside"},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":1,"tickcolor":"rgb(36,36,36)","ticks":"outside"},"colorscale":[[0.0,"#440154"],[0.1111111111111111,"#482878"],[0.2222222222222222,"#3e4989"],[0.3333333333333333,"#31688e"],[0.4444444444444444,"#26828e"],[0.5555555555555556,"#1f9e89"],[0.6666666666666666,"#35b779"],[0.7777777777777778,"#6ece58"],[0.8888888888888888,"#b5de2b"],[1.0,"#fde725"]],"type":"contour"}],"heatmapgl":[{"colorbar":{"outlinewidth":1,"tickcolor":"rgb(36,36,36)","ticks":"outside"},"colorscale":[[0.0,"#440154"],[0.1111111111111111,"#482878"],[0.2222222222222222,"#3e4989"],[0.3333333333333333,"#31688e"],[0.4444444444444444,"#26828e"],[0.5555555555555556,"#1f9e89"],[0.6666666666666666,"#35b779"],[0.7777777777777778,"#6ece58"],[0.8888888888888888,"#b5de2b"],[1.0,"#fde725"]],"type":"heatmapgl"}],"heatmap":[{"colorbar":{"outlinewidth":1,"tickcolor":"rgb(36,36,36)","ticks":"outside"},"colorscale":[[0.0,"#440154"],[0.1111111111111111,"#482878"],[0.2222222222222222,"#3e4989"],[0.3333333333333333,"#31688e"],[0.4444444444444444,"#26828e"],[0.5555555555555556,"#1f9e89"],[0.6666666666666666,"#35b779"],[0.7777777777777778,"#6ece58"],[0.8888888888888888,"#b5de2b"],[1.0,"#fde725"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":1,"tickcolor":"rgb(36,36,36)","ticks":"outside"},"colorscale":[[0.0,"#440154"],[0.1111111111111111,"#482878"],[0.2222222222222222,"#3e4989"],[0.3333333333333333,"#31688e"],[0.4444444444444444,"#26828e"],[0.5555555555555556,"#1f9e89"],[0.6666666666666666,"#35b779"],[0.7777777777777778,"#6ece58"],[0.8888888888888888,"#b5de2b"],[1.0,"#fde725"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":1,"tickcolor":"rgb(36,36,36)","ticks":"outside"},"colorscale":[[0.0,"#440154"],[0.1111111111111111,"#482878"],[0.2222222222222222,"#3e4989"],[0.3333333333333333,"#31688e"],[0.4444444444444444,"#26828e"],[0.5555555555555556,"#1f9e89"],[0.6666666666666666,"#35b779"],[0.7777777777777778,"#6ece58"],[0.8888888888888888,"#b5de2b"],[1.0,"#fde725"]],"type":"histogram2d"}],"histogram":[{"marker":{"line":{"color":"white","width":0.6}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":1,"tickcolor":"rgb(36,36,36)","ticks":"outside"},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":1,"tickcolor":"rgb(36,36,36)","ticks":"outside"}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":1,"tickcolor":"rgb(36,36,36)","ticks":"outside"}},"marker":{"colorbar":{"outlinewidth":1,"tickcolor":"rgb(36,36,36)","ticks":"outside"}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":1,"tickcolor":"rgb(36,36,36)","ticks":"outside"}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":1,"tickcolor":"rgb(36,36,36)","ticks":"outside"}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":1,"tickcolor":"rgb(36,36,36)","ticks":"outside"}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":1,"tickcolor":"rgb(36,36,36)","ticks":"outside"}},"type":"scattermapbox"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":1,"tickcolor":"rgb(36,36,36)","ticks":"outside"}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":1,"tickcolor":"rgb(36,36,36)","ticks":"outside"}},"type":"scatterpolar"}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":1,"tickcolor":"rgb(36,36,36)","ticks":"outside"}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":1,"tickcolor":"rgb(36,36,36)","ticks":"outside"},"colorscale":[[0.0,"#440154"],[0.1111111111111111,"#482878"],[0.2222222222222222,"#3e4989"],[0.3333333333333333,"#31688e"],[0.4444444444444444,"#26828e"],[0.5555555555555556,"#1f9e89"],[0.6666666666666666,"#35b779"],[0.7777777777777778,"#6ece58"],[0.8888888888888888,"#b5de2b"],[1.0,"#fde725"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"rgb(237,237,237)"},"line":{"color":"white"}},"header":{"fill":{"color":"rgb(217,217,217)"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":1,"tickcolor":"rgb(36,36,36)","ticks":"outside"}},"colorscale":{"diverging":[[0.0,"rgb(103,0,31)"],[0.1,"rgb(178,24,43)"],[0.2,"rgb(214,96,77)"],[0.3,"rgb(244,165,130)"],[0.4,"rgb(253,219,199)"],[0.5,"rgb(247,247,247)"],[0.6,"rgb(209,229,240)"],[0.7,"rgb(146,197,222)"],[0.8,"rgb(67,147,195)"],[0.9,"rgb(33,102,172)"],[1.0,"rgb(5,48,97)"]],"sequential":[[0.0,"#440154"],[0.1111111111111111,"#482878"],[0.2222222222222222,"#3e4989"],[0.3333333333333333,"#31688e"],[0.4444444444444444,"#26828e"],[0.5555555555555556,"#1f9e89"],[0.6666666666666666,"#35b779"],[0.7777777777777778,"#6ece58"],[0.8888888888888888,"#b5de2b"],[1.0,"#fde725"]],"sequentialminus":[[0.0,"#440154"],[0.1111111111111111,"#482878"],[0.2222222222222222,"#3e4989"],[0.3333333333333333,"#31688e"],[0.4444444444444444,"#26828e"],[0.5555555555555556,"#1f9e89"],[0.6666666666666666,"#35b779"],[0.7777777777777778,"#6ece58"],[0.8888888888888888,"#b5de2b"],[1.0,"#fde725"]]},"colorway":["#1F77B4","#FF7F0E","#2CA02C","#D62728","#9467BD","#8C564B","#E377C2","#7F7F7F","#BCBD22","#17BECF"],"font":{"color":"rgb(36,36,36)"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"white","showlakes":true,"showland":true,"subunitcolor":"white"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"light"},"paper_bgcolor":"white","plot_bgcolor":"white","polar":{"angularaxis":{"gridcolor":"rgb(232,232,232)","linecolor":"rgb(36,36,36)","showgrid":false,"showline":true,"ticks":"outside"},"bgcolor":"white","radialaxis":{"gridcolor":"rgb(232,232,232)","linecolor":"rgb(36,36,36)","showgrid":false,"showline":true,"ticks":"outside"}},"scene":{"xaxis":{"backgroundcolor":"white","gridcolor":"rgb(232,232,232)","gridwidth":2,"linecolor":"rgb(36,36,36)","showbackground":true,"showgrid":false,"showline":true,"ticks":"outside","zeroline":false,"zerolinecolor":"rgb(36,36,36)"},"yaxis":{"backgroundcolor":"white","gridcolor":"rgb(232,232,232)","gridwidth":2,"linecolor":"rgb(36,36,36)","showbackground":true,"showgrid":false,"showline":true,"ticks":"outside","zeroline":false,"zerolinecolor":"rgb(36,36,36)"},"zaxis":{"backgroundcolor":"white","gridcolor":"rgb(232,232,232)","gridwidth":2,"linecolor":"rgb(36,36,36)","showbackground":true,"showgrid":false,"showline":true,"ticks":"outside","zeroline":false,"zerolinecolor":"rgb(36,36,36)"}},"shapedefaults":{"fillcolor":"black","line":{"width":0},"opacity":0.3},"ternary":{"aaxis":{"gridcolor":"rgb(232,232,232)","linecolor":"rgb(36,36,36)","showgrid":false,"showline":true,"ticks":"outside"},"baxis":{"gridcolor":"rgb(232,232,232)","linecolor":"rgb(36,36,36)","showgrid":false,"showline":true,"ticks":"outside"},"bgcolor":"white","caxis":{"gridcolor":"rgb(232,232,232)","linecolor":"rgb(36,36,36)","showgrid":false,"showline":true,"ticks":"outside"}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"rgb(232,232,232)","linecolor":"rgb(36,36,36)","showgrid":false,"showline":true,"ticks":"outside","title":{"standoff":15},"zeroline":false,"zerolinecolor":"rgb(36,36,36)"},"yaxis":{"automargin":true,"gridcolor":"rgb(232,232,232)","linecolor":"rgb(36,36,36)","showgrid":false,"showline":true,"ticks":"outside","title":{"standoff":15},"zeroline":false,"zerolinecolor":"rgb(36,36,36)"}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"PC1"}},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"PC2"}},"coloraxis":{"colorbar":{"title":{"text":"Cluster"}},"colorscale":[[0.0,"#440154"],[0.1111111111111111,"#482878"],[0.2222222222222222,"#3e4989"],[0.3333333333333333,"#31688e"],[0.4444444444444444,"#26828e"],[0.5555555555555556,"#1f9e89"],[0.6666666666666666,"#35b779"],[0.7777777777777778,"#6ece58"],[0.8888888888888888,"#b5de2b"],[1.0,"#fde725"]],"showscale":false},"legend":{"tracegroupgap":0,"title":{"text":"Cluster"}},"margin":{"t":60},"title":{"text":"K-Means Clustering with PCA Components"}},                        {"responsive": true}                    ).then(function(){
+                            
+var gd = document.getElementById('d12230c6-9a61-4f57-b6ba-bddcdc228388');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })                };                });            </script>        </div>
+</div>
+</div>
+</section>
+<section id="results" class="level2">
+<h2 class="anchored" data-anchor-id="results">Results</h2>
+<p>ALl clustering analysis methods. They all sugested that the data can be clustered into 2 groups is the best after the parameter tuning,except for the elbow method in K-means clustering, which suggested that the data can be clustered into 5 groups is the best.</p>
+<p>Using unsupervised learning methods(clustering), we can see the underlying information is discovered from the mental health data, whch is the unexpected groupings (cluster is 2)</p>
+<p>When clustering algorithms with K-Means, DBSCAN, or Hierarchical Clustering consistently yield a certain number of clusters that doesn’t match the expected number based on known labels (like my four income groups), it suggests a few possibilities: my data naturally falls into two distinct group, maybe there is a inherent data distribution, These groups might not align with predefined income categories, suggesting that the selected features do not differentiate the income groups as clearly as expected.</p>
+</section>
+<section id="conclusions" class="level2">
+<h2 class="anchored" data-anchor-id="conclusions">Conclusions:</h2>
+<p>In my investigation into the patterns and structures within our dataset, we applied various clustering techniques to uncover hidden groupings that may reflect real-world distinctions among the subjects. The essence of our findings reveals that the complexities of mental health indicators and educational outcomes do not necessarily align neatly with economic categories such as income levels.</p>
+<p>Unexpectedly, rather than observing four distinct groupings corresponding to high, upper-middle, lower-middle, and low income levels, our analysis consistently highlighted two predominant clusters. This suggests that the features we examined—ranging from schizophrenia to depression rates, and the average learning adjustments in schools—might interplay in ways that transcend traditional economic divisions.</p>
+<p>This has profound implications for policymakers, educators, and healthcare providers. It suggests that strategies aimed at addressing mental health and education should not be overly tailored to economic status alone, as these issues are not confined to any one financial demographic. Instead, more universal approaches that cross these boundaries may be necessary to effectively address the needs highlighted by our findings.</p>
+<p>Moreover, my analysis serves as a reminder of the complex human stories behind the data. Numbers and categories can only tell us so much; the lived experiences of individuals often defy simple categorization. This study underlines the importance of considering the full tapestry of human experience when crafting policies and interventions aimed at improving mental health and educational outcomes.</p>
+<p>In conclusion, my exploration into the dataset has illuminated the intricate relationship between mental health, education, and income, underscoring the need for broad-spectrum solutions that are sensitive to the nuanced ways these domains interact. These insights can guide us toward more inclusive and effective approaches to supporting well-being and educational achievement across all economic strata.</p>
+
+
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

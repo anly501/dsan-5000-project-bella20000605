@@ -20,7 +20,60 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -59,6 +112,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 </head>
@@ -153,7 +209,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./clustering.html" class="sidebar-item-text sidebar-link">
+  <a href="./Clustering1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Clustering</span></a>
   </div>
 </li>
@@ -165,8 +221,8 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Regression.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Regression</span></a>
+  <a href="./Conclusions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Conclusions</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -175,19 +231,25 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">ARM</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./Conclusions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Conclusions</span></a>
-  </div>
-</li>
     </ul>
     </div>
 </nav>
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#prepare-the-data" id="toc-prepare-the-data" class="nav-link active" data-scroll-target="#prepare-the-data">Prepare the data:</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction:</a></li>
+  <li><a href="#theory" id="toc-theory" class="nav-link" data-scroll-target="#theory">Theory:</a></li>
+  <li><a href="#method" id="toc-method" class="nav-link" data-scroll-target="#method">Method:</a></li>
+  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a></li>
+  <li><a href="#conclusions" id="toc-conclusions" class="nav-link" data-scroll-target="#conclusions">Conclusions</a></li>
+  <li><a href="#pubilication" id="toc-pubilication" class="nav-link" data-scroll-target="#pubilication">Pubilication</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -209,10 +271,339 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<section id="prepare-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="prepare-the-data">Prepare the data:</h2>
+<p>We are using the all_mental_health_symptoms_nb.csv data and Our goal is to find associations between different symptoms, like which symptoms often occur together. First, we will convert the continuous variables into three categories: ‘Low’, ‘Middle’, and ‘High’. The categorization is based on the lower and upper quartiles of the data. Values below the lower quartile are labeled ‘Low’, values between the lower and upper quartile are labeled ‘Middle’, and values above the upper quartile are labeled ‘High’. so this sectioning is well-suited for ARM as it transforms the dataset into a format where patterns can be more easily discovered.</p>
+<div class="cell" data-execution_count="1">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to convert continuous variables into three categories ('High', 'Middle', 'Low')</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> trinarize_data(df, columns):</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">    Trinarizes the specified columns of the dataframe based on percentiles.</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">    Args:</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">    df (DataFrame): The dataframe to trinarize.</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">    columns (list of str): The columns to trinarize.</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns:</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co">    DataFrame: The dataframe with the trinarized columns.</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    trinarized_df <span class="op">=</span> df.copy()</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> col <span class="kw">in</span> columns:</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Define the lower and upper quartiles</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>        lower_quartile <span class="op">=</span> df[col].quantile(<span class="fl">0.25</span>)</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>        upper_quartile <span class="op">=</span> df[col].quantile(<span class="fl">0.75</span>)</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Trinarize the column</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>        trinarized_df[col] <span class="op">=</span> pd.cut(df[col], bins<span class="op">=</span>[<span class="op">-</span><span class="bu">float</span>(<span class="st">'inf'</span>), lower_quartile, upper_quartile, <span class="bu">float</span>(<span class="st">'inf'</span>)],</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>                                    labels<span class="op">=</span>[<span class="st">'Low'</span>, <span class="st">'Middle'</span>, <span class="st">'High'</span>])</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> trinarized_df</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the dataset</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>file_path <span class="op">=</span> <span class="st">'./Data/mental_health_DT.csv'</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.read_csv(file_path)</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="co"># List of columns to trinarize</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>columns_to_trinarize <span class="op">=</span> [<span class="st">'Schizophrenia (%)'</span>, <span class="st">'Bipolar disorder (%)'</span>, </span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>                        <span class="st">'Eating disorders (%)'</span>, <span class="st">'Anxiety disorders (%)'</span>, </span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>                        <span class="st">'Depression (%)'</span>, <span class="st">'average_learning_Adjusted_of_school'</span>, <span class="st">'GDP(2022)'</span>]</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply trinarization</span></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>trinarized_data <span class="op">=</span> trinarize_data(data, columns_to_trinarize)</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="co"># Save the trinarized dataframe</span></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>trinarized_data.to_csv(<span class="st">'./Data/mental_health_DT_trinarized_ARM.csv'</span>, index<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the first few rows of the trinarized dataframe</span></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>trinarized_data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Economy</th>
+<th data-quarto-table-cell-role="th">Code</th>
+<th data-quarto-table-cell-role="th">Year</th>
+<th data-quarto-table-cell-role="th">Schizophrenia (%)</th>
+<th data-quarto-table-cell-role="th">Bipolar disorder (%)</th>
+<th data-quarto-table-cell-role="th">Eating disorders (%)</th>
+<th data-quarto-table-cell-role="th">Anxiety disorders (%)</th>
+<th data-quarto-table-cell-role="th">Depression (%)</th>
+<th data-quarto-table-cell-role="th">Income group</th>
+<th data-quarto-table-cell-role="th">average_learning_Adjusted_of_school</th>
+<th data-quarto-table-cell-role="th">GDP(2022)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Afghanistan</td>
+<td>AFG</td>
+<td>1990</td>
+<td>Low</td>
+<td>Middle</td>
+<td>Low</td>
+<td>High</td>
+<td>High</td>
+<td>Low income</td>
+<td>Low</td>
+<td>Middle</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>Afghanistan</td>
+<td>AFG</td>
+<td>1991</td>
+<td>Low</td>
+<td>Middle</td>
+<td>Low</td>
+<td>High</td>
+<td>High</td>
+<td>Low income</td>
+<td>Low</td>
+<td>Middle</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>Afghanistan</td>
+<td>AFG</td>
+<td>1992</td>
+<td>Low</td>
+<td>Middle</td>
+<td>Low</td>
+<td>High</td>
+<td>High</td>
+<td>Low income</td>
+<td>Low</td>
+<td>Middle</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>Afghanistan</td>
+<td>AFG</td>
+<td>1993</td>
+<td>Low</td>
+<td>Middle</td>
+<td>Low</td>
+<td>High</td>
+<td>High</td>
+<td>Low income</td>
+<td>Low</td>
+<td>Middle</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>Afghanistan</td>
+<td>AFG</td>
+<td>1994</td>
+<td>Low</td>
+<td>Middle</td>
+<td>Low</td>
+<td>High</td>
+<td>High</td>
+<td>Low income</td>
+<td>Low</td>
+<td>Middle</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction:</h2>
+<p>Our dataset encapsulates a range of mental health indicators across various economies, categorized into ‘Low’, ‘Middle’, and ‘High’ based on their reported percentages. These indicators provide a holistic view of mental health status in correlation with economic factors such as GDP and income groups. The ARM analysis on this dataset is designed to unearth associations between different mental health conditions and these economic indicators. By applying ARM, we aim to reveal potential patterns that could inform healthcare policy, indicating, for example, if higher GDP correlates with lower rates of certain mental health conditions, or if specific disorders are more prevalent in certain economic classes.</p>
+</section>
+<section id="theory" class="level2">
+<h2 class="anchored" data-anchor-id="theory">Theory:</h2>
+<p>Association Rule Mining (ARM)is akin to finding a needle in a haystack, except instead of a needle, we’re searching for golden threads that connect different pieces of hay. In data terms, these threads are the rules that link various items within our dataset. ARM operates by looking for these rules within large volumes of data, where the presence of one set of items may influence the presence of another. It’s how, for instance, a supermarket might notice that people who buy pasta also often buy tomato sauce. The ‘support’ tells us how often these item combinations appear, the ‘confidence’ gives the likelihood that the items are purchased together, and the ‘lift’ compares the observed frequency of the combination with the frequency we’d expect if the items were independent. It’s through these metrics that ARM provides a glimpse into the hidden patterns of our behaviors, preferences, and even health.</p>
+</section>
+<section id="method" class="level2">
+<h2 class="anchored" data-anchor-id="method">Method:</h2>
+<p>Our methodology involved first preparing the data by categorizing continuous variables into ‘Low’, ‘Middle’, and ‘High’ categories. This trinarization was carried out using Python’s Pandas library, which enabled us to manipulate the data effectively. Following this, we utilized the Apriori algorithm to identify frequent itemsets within the data. These itemsets were then used to generate association rules, which were subsequently evaluated based on their support, confidence, and lift.</p>
+<div class="cell" data-execution_count="2">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mlxtend.frequent_patterns <span class="im">import</span> apriori, association_rules</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mlxtend.preprocessing <span class="im">import</span> TransactionEncoder</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">## Since ARM requires a list of lists where each inner list is a transaction, we will convert the DataFrame</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># First, we'll create a new DataFrame where each row represents a transaction and each cell represents a categorical item</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a list of lists from the DataFrame transactions</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>transactions <span class="op">=</span> trinarized_data.<span class="bu">apply</span>(<span class="kw">lambda</span> x: [col<span class="op">+</span><span class="st">'_'</span><span class="op">+</span><span class="bu">str</span>(x[col]) <span class="cf">for</span> col <span class="kw">in</span> trinarized_data.columns], axis<span class="op">=</span><span class="dv">1</span>).tolist()</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Instantiating the TransactionEncoder</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>te <span class="op">=</span> TransactionEncoder()</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>te_ary <span class="op">=</span> te.fit(transactions).transform(transactions)</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(te_ary, columns<span class="op">=</span>te.columns_)</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Applying Apriori algorithm to find frequent itemsets with a minimum support of 0.01</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>frequent_itemsets <span class="op">=</span> apriori(df, min_support<span class="op">=</span><span class="fl">0.01</span>, use_colnames<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Generating association rules with a minimum confidence of 0.6</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>rules <span class="op">=</span> association_rules(frequent_itemsets, metric<span class="op">=</span><span class="st">"confidence"</span>, min_threshold<span class="op">=</span><span class="fl">0.6</span>)</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Displaying the first few association rules</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>rules.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">antecedents</th>
+<th data-quarto-table-cell-role="th">consequents</th>
+<th data-quarto-table-cell-role="th">antecedent support</th>
+<th data-quarto-table-cell-role="th">consequent support</th>
+<th data-quarto-table-cell-role="th">support</th>
+<th data-quarto-table-cell-role="th">confidence</th>
+<th data-quarto-table-cell-role="th">lift</th>
+<th data-quarto-table-cell-role="th">leverage</th>
+<th data-quarto-table-cell-role="th">conviction</th>
+<th data-quarto-table-cell-role="th">zhangs_metric</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>(Anxiety disorders (%)_High)</td>
+<td>(Eating disorders (%)_High)</td>
+<td>0.25</td>
+<td>0.250000</td>
+<td>0.164396</td>
+<td>0.657585</td>
+<td>2.630339</td>
+<td>0.101896</td>
+<td>2.190323</td>
+<td>0.826428</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>(Eating disorders (%)_High)</td>
+<td>(Anxiety disorders (%)_High)</td>
+<td>0.25</td>
+<td>0.250000</td>
+<td>0.164396</td>
+<td>0.657585</td>
+<td>2.630339</td>
+<td>0.101896</td>
+<td>2.190323</td>
+<td>0.826428</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>(Anxiety disorders (%)_High)</td>
+<td>(Income group_High income)</td>
+<td>0.25</td>
+<td>0.324742</td>
+<td>0.167526</td>
+<td>0.670103</td>
+<td>2.063492</td>
+<td>0.086340</td>
+<td>2.046875</td>
+<td>0.687179</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>(Anxiety disorders (%)_Low)</td>
+<td>(Bipolar disorder (%)_Middle)</td>
+<td>0.25</td>
+<td>0.500000</td>
+<td>0.210236</td>
+<td>0.840943</td>
+<td>1.681885</td>
+<td>0.085236</td>
+<td>3.143519</td>
+<td>0.540572</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>(Anxiety disorders (%)_Low)</td>
+<td>(GDP(2022)_Middle)</td>
+<td>0.25</td>
+<td>0.500000</td>
+<td>0.152982</td>
+<td>0.611929</td>
+<td>1.223859</td>
+<td>0.027982</td>
+<td>1.288425</td>
+<td>0.243883</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="results" class="level2">
+<h2 class="anchored" data-anchor-id="results">Results</h2>
+<p>Results: The Association Rule Mining (ARM) analysis of our dataset revealed intriguing associations between various mental health conditions and socio-economic factors. These insights go beyond simple correlations, illustrating complex relationships within the data.</p>
+<p>A key finding is the strong association between high levels of anxiety disorders and eating disorders. This suggests that in environments where anxiety disorders are prevalent, there’s a significant likelihood of concurrent high levels of eating disorders. This pattern, indicated by a lift value greater than 2, provides a clear indication of interlinked mental health challenges.</p>
+<p>Another interesting rule shows the connection between anxiety disorders and income groups. Notably, high levels of anxiety disorders are more commonly associated with high-income groups. This counters a common misconception that higher income always correlates with better mental health outcomes.</p>
+<p>We also observed a pronounced relationship between low levels of anxiety disorders and a middle range of bipolar disorders. This could suggest a nuanced interaction between these two conditions that warrants further investigation.</p>
+<p>In terms of socio-economic indicators, the association between low levels of anxiety disorders and middle-level GDP for 2022 was moderate, suggesting other factors might play a more significant role in determining GDP levels.</p>
+<div class="cell" data-execution_count="3">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>pivot_table <span class="op">=</span> rules.pivot(<span class="st">"antecedents"</span>, <span class="st">"consequents"</span>, <span class="st">"lift"</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating the heatmap</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">8</span>))</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>sns.heatmap(pivot_table, annot<span class="op">=</span><span class="va">True</span>, cmap<span class="op">=</span><span class="st">"YlGnBu"</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Heatmap of Lift Values for Mental Health Conditions'</span>)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Consequents'</span>)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Antecedents'</span>)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>/var/folders/px/bhxss9d10zs_wzsv0ck6sb200000gn/T/ipykernel_58805/517098744.py:4: FutureWarning:
+
+In a future version of pandas all arguments of DataFrame.pivot will be keyword-only.
+</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="ARM_files/figure-html/cell-4-output-2.png" width="2228" height="1842"></p>
+</div>
+</div>
+</section>
+<section id="conclusions" class="level2">
+<h2 class="anchored" data-anchor-id="conclusions">Conclusions</h2>
+<p>The ARM analysis of our mental health dataset has unearthed patterns that have real-world implications. The strong association between anxiety and eating disorders, particularly in high-income groups, challenges the conventional understanding of mental health as purely a medical issue, suggesting a more complex interplay of psychological, environmental, and socio-economic factors.</p>
+<p>These findings highlight the need for a holistic approach to mental health policy and intervention strategies. The recognition of these interdependencies can guide healthcare providers and policymakers in designing targeted interventions and preventive measures. For instance, mental health programs in high-income areas might benefit from integrating strategies that address both anxiety and eating disorders concurrently.</p>
+<p>Moreover, the connection between lower anxiety levels and moderate bipolar disorder prevalence suggests that mental health conditions manifest in various forms across different socio-economic spectrums. This underlines the importance of personalized and context-sensitive mental health care.</p>
+<p>In essence, my analysis not only sheds light on the intricate relationship between mental health and socio-economic factors but also underscores the importance of a nuanced approach to mental health issues, considering the multifaceted nature of these challenges.</p>
+</section>
+<section id="pubilication" class="level2">
+<h2 class="anchored" data-anchor-id="pubilication">Pubilication</h2>
+<p><span class="citation" data-cites="kumbhare2014">(<a href="#ref-kumbhare2014" role="doc-biblioref">Kumbhare and Chobe 2014</a>)</span></p>
 
 
 
-</main> <!-- /main -->
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-kumbhare2014" class="csl-entry" role="listitem">
+Kumbhare, Trupti A, and Santosh V Chobe. 2014. <span>“An Overview of Association Rule Mining Algorithms”</span> 5.
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

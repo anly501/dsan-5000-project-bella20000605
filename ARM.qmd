@@ -1,3 +1,137 @@
 ---
-title: "ARM"
+title: ARM
+format:
+  html:
+    code-fold: true
+jupyter: python3
+bibliography: references.bib
 ---
+
+## Prepare the data:
+
+We are using the all_mental_health_symptoms_nb.csv data and Our goal is to find associations between different symptoms, like which symptoms often occur together. First, we will convert the continuous variables into three categories: 'Low', 'Middle', and 'High'. The categorization is based on the lower and upper quartiles of the data. Values below the lower quartile are labeled 'Low', values between the lower and upper quartile are labeled 'Middle', and values above the upper quartile are labeled 'High'. so this sectioning is well-suited for ARM as it transforms the dataset into a format where patterns can be more easily discovered.
+
+```{python}
+import pandas as pd
+
+# Function to convert continuous variables into three categories ('High', 'Middle', 'Low')
+def trinarize_data(df, columns):
+    """
+    Trinarizes the specified columns of the dataframe based on percentiles.
+
+    Args:
+    df (DataFrame): The dataframe to trinarize.
+    columns (list of str): The columns to trinarize.
+
+    Returns:
+    DataFrame: The dataframe with the trinarized columns.
+    """
+    trinarized_df = df.copy()
+    for col in columns:
+        # Define the lower and upper quartiles
+        lower_quartile = df[col].quantile(0.25)
+        upper_quartile = df[col].quantile(0.75)
+        
+        # Trinarize the column
+        trinarized_df[col] = pd.cut(df[col], bins=[-float('inf'), lower_quartile, upper_quartile, float('inf')],
+                                    labels=['Low', 'Middle', 'High'])
+    return trinarized_df
+
+# Load the dataset
+file_path = './Data/mental_health_DT.csv'
+data = pd.read_csv(file_path)
+
+# List of columns to trinarize
+columns_to_trinarize = ['Schizophrenia (%)', 'Bipolar disorder (%)', 
+                        'Eating disorders (%)', 'Anxiety disorders (%)', 
+                        'Depression (%)', 'average_learning_Adjusted_of_school', 'GDP(2022)']
+
+# Apply trinarization
+trinarized_data = trinarize_data(data, columns_to_trinarize)
+
+
+# Save the trinarized dataframe
+trinarized_data.to_csv('./Data/mental_health_DT_trinarized_ARM.csv', index=False)
+
+# Display the first few rows of the trinarized dataframe
+trinarized_data.head()
+```
+
+## Introduction:
+
+Our dataset encapsulates a range of mental health indicators across various economies, categorized into 'Low', 'Middle', and 'High' based on their reported percentages. These indicators provide a holistic view of mental health status in correlation with economic factors such as GDP and income groups. The ARM analysis on this dataset is designed to unearth associations between different mental health conditions and these economic indicators. By applying ARM, we aim to reveal potential patterns that could inform healthcare policy, indicating, for example, if higher GDP correlates with lower rates of certain mental health conditions, or if specific disorders are more prevalent in certain economic classes.
+
+## Theory:
+
+Association Rule Mining (ARM)is akin to finding a needle in a haystack, except instead of a needle, we're searching for golden threads that connect different pieces of hay. In data terms, these threads are the rules that link various items within our dataset. ARM operates by looking for these rules within large volumes of data, where the presence of one set of items may influence the presence of another. It's how, for instance, a supermarket might notice that people who buy pasta also often buy tomato sauce. The 'support' tells us how often these item combinations appear, the 'confidence' gives the likelihood that the items are purchased together, and the 'lift' compares the observed frequency of the combination with the frequency we'd expect if the items were independent. It's through these metrics that ARM provides a glimpse into the hidden patterns of our behaviors, preferences, and even health.
+
+## Method:
+
+Our methodology involved first preparing the data by categorizing continuous variables into 'Low', 'Middle', and 'High' categories. This trinarization was carried out using Python's Pandas library, which enabled us to manipulate the data effectively. Following this, we utilized the Apriori algorithm to identify frequent itemsets within the data. These itemsets were then used to generate association rules, which were subsequently evaluated based on their support, confidence, and lift.
+
+```{python}
+import pandas as pd
+from mlxtend.frequent_patterns import apriori, association_rules
+from mlxtend.preprocessing import TransactionEncoder
+
+## Since ARM requires a list of lists where each inner list is a transaction, we will convert the DataFrame
+# First, we'll create a new DataFrame where each row represents a transaction and each cell represents a categorical item
+
+# Creating a list of lists from the DataFrame transactions
+transactions = trinarized_data.apply(lambda x: [col+'_'+str(x[col]) for col in trinarized_data.columns], axis=1).tolist()
+
+# Instantiating the TransactionEncoder
+te = TransactionEncoder()
+te_ary = te.fit(transactions).transform(transactions)
+df = pd.DataFrame(te_ary, columns=te.columns_)
+
+# Applying Apriori algorithm to find frequent itemsets with a minimum support of 0.01
+frequent_itemsets = apriori(df, min_support=0.01, use_colnames=True)
+
+# Generating association rules with a minimum confidence of 0.6
+rules = association_rules(frequent_itemsets, metric="confidence", min_threshold=0.6)
+
+# Displaying the first few association rules
+rules.head()
+
+```
+
+## Results
+
+Results: The Association Rule Mining (ARM) analysis of our dataset revealed intriguing associations between various mental health conditions and socio-economic factors. These insights go beyond simple correlations, illustrating complex relationships within the data.
+
+A key finding is the strong association between high levels of anxiety disorders and eating disorders. This suggests that in environments where anxiety disorders are prevalent, there's a significant likelihood of concurrent high levels of eating disorders. This pattern, indicated by a lift value greater than 2, provides a clear indication of interlinked mental health challenges.
+
+Another interesting rule shows the connection between anxiety disorders and income groups. Notably, high levels of anxiety disorders are more commonly associated with high-income groups. This counters a common misconception that higher income always correlates with better mental health outcomes.
+
+We also observed a pronounced relationship between low levels of anxiety disorders and a middle range of bipolar disorders. This could suggest a nuanced interaction between these two conditions that warrants further investigation.
+
+In terms of socio-economic indicators, the association between low levels of anxiety disorders and middle-level GDP for 2022 was moderate, suggesting other factors might play a more significant role in determining GDP levels.
+
+```{python}
+# import pandas as pd
+# import matplotlib.pyplot as plt
+# import seaborn as sns
+# pivot_table = rules.pivot("antecedents", "consequents", "lift")
+# # Creating the heatmap
+# plt.figure(figsize=(10, 8))
+# sns.heatmap(pivot_table, annot=True, cmap="YlGnBu")
+# plt.title('Heatmap of Lift Values for Mental Health Conditions')
+# plt.xlabel('Consequents')
+# plt.ylabel('Antecedents')
+# plt.show()
+```
+
+## Conclusions
+
+The ARM analysis of our mental health dataset has unearthed patterns that have real-world implications. The strong association between anxiety and eating disorders, particularly in high-income groups, challenges the conventional understanding of mental health as purely a medical issue, suggesting a more complex interplay of psychological, environmental, and socio-economic factors.
+
+These findings highlight the need for a holistic approach to mental health policy and intervention strategies. The recognition of these interdependencies can guide healthcare providers and policymakers in designing targeted interventions and preventive measures. For instance, mental health programs in high-income areas might benefit from integrating strategies that address both anxiety and eating disorders concurrently.
+
+Moreover, the connection between lower anxiety levels and moderate bipolar disorder prevalence suggests that mental health conditions manifest in various forms across different socio-economic spectrums. This underlines the importance of personalized and context-sensitive mental health care.
+
+In essence, my analysis not only sheds light on the intricate relationship between mental health and socio-economic factors but also underscores the importance of a nuanced approach to mental health issues, considering the multifaceted nature of these challenges.
+
+## Pubilication
+
+[@kumbhare2014]

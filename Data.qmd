@@ -8,4 +8,4 @@ bella20000605
 
 ## Github project Repo URL
 
-\[link\][download link](https://github.com/anly501/dsan-5000-project-bella20000605)
+[Link to Github](https://github.com/anly501/dsan-5000-project-bella20000605/tree/main/Data)

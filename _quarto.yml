@@ -7,24 +7,26 @@ website:
     contents: 
       - text: Introduction
         href: index.qmd
-      - text: About me
-        href: https://bella.georgetown.domains/about/
-      - Code.qmd
+      - about.qmd
+      # - text: About me
+      #   href: https://bella.georgetown.domains/about/my_website/
+      - text : Code
+        href: https://github.com/anly501/dsan-5000-project-bella20000605
       - Data.qmd
       - Gathering.ipynb
       - Cleaning.ipynb
       - Exploration.ipynb
       - Naive Bayes.ipynb
       - reduction.ipynb
-      - Clustering1.ipynb
+      - Clustering.ipynb
       - DT.ipynb
       - ARM.qmd
       - Conclusions.qmd
-
+      - References.ipynb
 
 format:
   html:
-    theme: cosmo
+    theme: [quartz, theme.scss]
     toc: true
 
 

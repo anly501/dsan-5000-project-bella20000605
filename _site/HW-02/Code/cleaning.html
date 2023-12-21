@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Bella Shi’s Website - Load data</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
+      Bella Shi's Website
+      </li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../../">Bella Shi’s Website</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../about.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About me</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://github.com/anly501/dsan-5000-project-bella20000605" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Code</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Gathering.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Gathering</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Cleaning.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Cleaning</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Exploration.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exploration</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Naive Bayes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Naive Bayes</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../reduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Dimensionality Reduction</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Clustering.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Clustering</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../DT.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Decision Trees</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ARM.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ARM and Networking</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Conclusions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Conclusions</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../References.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#clean-data" id="toc-clean-data" class="nav-link active" data-scroll-target="#clean-data">clean data</a>
+  <ul class="collapse">
+  <li><a href="#eating_disorders" id="toc-eating_disorders" class="nav-link" data-scroll-target="#eating_disorders">Eating_disorders</a></li>
+  <li><a href="#discomfort_speaking_anxiety_depression_2020" id="toc-discomfort_speaking_anxiety_depression_2020" class="nav-link" data-scroll-target="#discomfort_speaking_anxiety_depression_2020">Discomfort_speaking_anxiety_depression_2020</a></li>
+  <li><a href="#gdp" id="toc-gdp" class="nav-link" data-scroll-target="#gdp">GDP</a></li>
+  <li><a href="#countries_continents" id="toc-countries_continents" class="nav-link" data-scroll-target="#countries_continents">Countries_Continents</a></li>
+  <li><a href="#education" id="toc-education" class="nav-link" data-scroll-target="#education">Education</a></li>
+  <li><a href="#age_when_first_anxiety_depression" id="toc-age_when_first_anxiety_depression" class="nav-link" data-scroll-target="#age_when_first_anxiety_depression">Age_when_first_anxiety_depression</a></li>
+  <li><a href="#gdp_per_capita" id="toc-gdp_per_capita" class="nav-link" data-scroll-target="#gdp_per_capita">GDP_per_capita</a></li>
+  <li><a href="#mental_health" id="toc-mental_health" class="nav-link" data-scroll-target="#mental_health">Mental_health</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Load data</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<div class="cell" data-execution_count="369">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#https://pdas.samhsa.gov/saes/substate#</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> glob</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.feature_extraction.text <span class="im">import</span> CountVectorizer</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="370">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">#cd HW-02</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">#load data from csv file</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>all_data_frames<span class="op">=</span>glob.glob(<span class="st">"../Data/*.csv"</span>)<span class="op">+</span>glob.glob(<span class="st">"../Data/*.xlsx"</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> fname_index, fname <span class="kw">in</span> <span class="bu">enumerate</span>(all_data_frames):</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(fname_index, fname)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>df_GDP <span class="op">=</span> pd.read_csv(<span class="st">"../Data/GDP.csv"</span>) </span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>df_income_group <span class="op">=</span> pd.read_excel(<span class="st">"../Data/Income_group.xlsx"</span>)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>df_Countries_Continents <span class="op">=</span> pd.read_csv(<span class="st">"../Data/Countries_Continents.csv"</span>)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>df_education <span class="op">=</span> pd.read_csv(<span class="st">"../Data/education.csv"</span>)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>df_discomfort_speaking_anxiety_depression_2020 <span class="op">=</span> pd.read_csv(<span class="st">"../Data/discomfort_speaking_anxiety_depression_2020.csv"</span>)</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>df_eating_disorder <span class="op">=</span> pd.read_csv(<span class="st">"../Data/eating_disorders_prevalence_males_vs_females.csv"</span>)</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>df_first_anxiety_or_depression <span class="op">=</span> pd.read_csv(<span class="st">"../Data/age_when_first_had_anxiety_depression.csv"</span>)</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0 ../Data/education.csv
+1 ../Data/Countries_Continents.csv
+2 ../Data/age_when_first_had_anxiety_depression.csv
+3 ../Data/all_mental_health_symptoms.csv
+4 ../Data/GDP_per_captita.csv
+5 ../Data/discomfort_speaking_anxiety_depression_2020.csv
+6 ../Data/eating_disorders_prevalence_males_vs_females.csv
+7 ../Data/GDP.csv
+8 ../Data/Income_group.xlsx
+9 ../Data/mental_health.xlsx</code></pre>
+</div>
+</div>
+<section id="clean-data" class="level1">
+<h1>clean data</h1>
+<section id="eating_disorders" class="level3">
+<h3 class="anchored" data-anchor-id="eating_disorders">Eating_disorders</h3>
+<div class="cell" data-execution_count="371">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#A.clean the data named eating_disorders</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># show all the columns of the dataframe</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Before : '</span>,df_eating_disorder.head())</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># print(df_eating_disorder.head())</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># drop the columns Continent and Population because they are meaningless to the analysis</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>df_eating_disorder <span class="op">=</span> df_eating_disorder.drop(columns<span class="op">=</span>[<span class="st">'Continent'</span>,<span class="st">'Population'</span>])</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># print(df_eating_disorder.shape)</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co"># only keep the rows of the dataframe when the column 'Year' is between 1990-2021</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co"># eating_disorder_df = eating_disorder_df.loc[eating_disorder_df['Year'] == range(1990,2022)]</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>df_eating_disorder <span class="op">=</span> df_eating_disorder[df_eating_disorder[<span class="st">'Year'</span>].isin(<span class="bu">range</span>(<span class="dv">1990</span>,<span class="dv">2022</span>))]</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>rename_map<span class="op">=</span>{</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Entity'</span>:<span class="st">'Economy'</span>,</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Year'</span>:<span class="st">'Year'</span>,</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>df_eating_disorder.rename(columns<span class="op">=</span>rename_map, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="co">#drop the rows when the column named Eating_disorders_Male is null in the dataframe df_eating_disorder</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>df_eating_disorder<span class="op">=</span> df_eating_disorder.dropna(subset<span class="op">=</span>[<span class="st">'Eating_disorders_Male'</span>])</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="co">#caculate the mean of the column Male and Female of the dataframe and save it to a new column named All_gender</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>df_eating_disorder[<span class="st">'All_gender'</span>] <span class="op">=</span> df_eating_disorder[[<span class="st">'Eating_disorders_Male'</span>, <span class="st">'Eating_disorders_Female'</span>]].mean(axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'After: '</span>,df_eating_disorder.head())</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a><span class="co">#save the dataframe to csv file</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>df_eating_disorder.to_csv(<span class="st">"../Cleaned_Data/eating_disorder_male_female.csv"</span>, index<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Before :          Entity      Code  Year  Eating_disorders_Male  \
+0     Abkhazia  OWID_ABK  2015                    NaN   
+1  Afghanistan       AFG  1990               0.088487   
+2  Afghanistan       AFG  1991               0.086048   
+3  Afghanistan       AFG  1992               0.083625   
+4  Afghanistan       AFG  1993               0.081628   
+
+   Eating_disorders_Female  Population Continent  
+0                      NaN         NaN      Asia  
+1                 0.161867  10694804.0       NaN  
+2                 0.156910  10745168.0       NaN  
+3                 0.152412  12057436.0       NaN  
+4                 0.147938  14003764.0       NaN  
+After:         Economy Code  Year  Eating_disorders_Male  Eating_disorders_Female  \
+1  Afghanistan  AFG  1990               0.088487                 0.161867   
+2  Afghanistan  AFG  1991               0.086048                 0.156910   
+3  Afghanistan  AFG  1992               0.083625                 0.152412   
+4  Afghanistan  AFG  1993               0.081628                 0.147938   
+5  Afghanistan  AFG  1994               0.079439                 0.143980   
+
+   All_gender  
+1    0.125177  
+2    0.121479  
+3    0.118018  
+4    0.114783  
+5    0.111710  </code></pre>
+</div>
+</div>
+</section>
+<section id="discomfort_speaking_anxiety_depression_2020" class="level3">
+<h3 class="anchored" data-anchor-id="discomfort_speaking_anxiety_depression_2020">Discomfort_speaking_anxiety_depression_2020</h3>
+<div class="cell" data-execution_count="372">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#B.clean the data named discomfort_speaking_anxiety_depression_2020</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Before : '</span>,df_discomfort_speaking_anxiety_depression_2020.head())</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>df_discomfort_speaking_anxiety_depression_2020 <span class="op">=</span> pd.read_csv(<span class="st">"../Data/discomfort_speaking_anxiety_depression_2020.csv"</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co">#rename the column 'Entity' to 'Country' and 'Share - Question: mh5 - Someone local comfortable speaking about anxiety/depression with someone they know - Answer: Not at all comfortable - Gender: all - Age_group: all' to 'Not_Comfortable'</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>df_discomfort_speaking_anxiety_depression_2020.rename(columns<span class="op">=</span>{<span class="st">'Entity'</span>:<span class="st">'Economy'</span>}, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'After '</span>, df_discomfort_speaking_anxiety_depression_2020.head())</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>df_discomfort_speaking_anxiety_depression_2020.to_csv(<span class="st">"../Data/discomfort_speaking_anxiety_depression_2020.csv"</span>, index<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Before :       Economy Code  Year  \
+0    Albania  ALB  2020   
+1    Algeria  DZA  2020   
+2  Argentina  ARG  2020   
+3       Asia  NaN  2020   
+4  Australia  AUS  2020   
+
+   not_at_all_comfortable_speaking_anxiety_or_depression_percent  
+0                                          27.573915              
+1                                          11.403895              
+2                                          26.333920              
+3                                          26.522500              
+4                                          30.768505              
+After       Economy Code  Year  \
+0    Albania  ALB  2020   
+1    Algeria  DZA  2020   
+2  Argentina  ARG  2020   
+3       Asia  NaN  2020   
+4  Australia  AUS  2020   
+
+   not_at_all_comfortable_speaking_anxiety_or_depression_percent  
+0                                          27.573915              
+1                                          11.403895              
+2                                          26.333920              
+3                                          26.522500              
+4                                          30.768505              </code></pre>
+</div>
+</div>
+</section>
+<section id="gdp" class="level3">
+<h3 class="anchored" data-anchor-id="gdp">GDP</h3>
+<div class="cell" data-execution_count="373">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#C.clean the data named GDP</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co">#add column names to the dataframe df_GDP</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Before: '</span>,df_GDP.head())</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>df_GDP.columns<span class="op">=</span>[<span class="st">'Code'</span>, <span class="st">'Ranking'</span>,<span class="st">'unnamed:2'</span>,<span class="st">'Economy'</span>,<span class="st">'GDP(2022)'</span>,<span class="st">'unnamed:5'</span>]</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>df_GDP<span class="op">=</span>df_GDP.drop(columns<span class="op">=</span>[<span class="st">'unnamed:2'</span>,<span class="st">'unnamed:5'</span>])</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co">#check the data type of the column GDP</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co"># print(df_GDP.dtypes)</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co">#convert the column GDP to numeric type</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>df_GDP[<span class="st">'GDP(2022)'</span>]<span class="op">=</span>df_GDP[<span class="st">'GDP(2022)'</span>].<span class="bu">str</span>.replace(<span class="st">','</span>,<span class="st">''</span>)</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co">#convert the column GDP from object type to numeric type</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>df_GDP[<span class="st">'GDP(2022)'</span>]<span class="op">=</span>pd.to_numeric(df_GDP[<span class="st">'GDP(2022)'</span>],errors<span class="op">=</span><span class="st">'coerce'</span>)</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'After: '</span>,df_GDP.head())</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>df_GDP.to_csv(<span class="st">"../Cleaned_Data/GDP.csv"</span>, index<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Before:     USA    1  Unnamed: 2   United States   25,462,700   Unnamed: 5
+0  CHN  2.0         NaN           China   17,963,171          NaN
+1  JPN  3.0         NaN           Japan    4,231,141          NaN
+2  DEU  4.0         NaN         Germany    4,072,192          NaN
+3  IND  5.0         NaN           India    3,385,090          NaN
+4  GBR  6.0         NaN  United Kingdom    3,070,668          NaN
+After:    Code  Ranking         Economy   GDP(2022)
+0  CHN      2.0           China  17963171.0
+1  JPN      3.0           Japan   4231141.0
+2  DEU      4.0         Germany   4072192.0
+3  IND      5.0           India   3385090.0
+4  GBR      6.0  United Kingdom   3070668.0</code></pre>
+</div>
+</div>
+</section>
+<section id="countries_continents" class="level3">
+<h3 class="anchored" data-anchor-id="countries_continents">Countries_Continents</h3>
+<div class="cell" data-execution_count="374">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#D.clean the data named Countries_Continents</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co">#rename the column Country to Economy</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Before: '</span>,df_Countries_Continents.head())</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>df_Countries_Continents.rename(columns<span class="op">=</span>{<span class="st">'Country'</span>:<span class="st">'Economy'</span>},inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'After: '</span>,df_Countries_Continents.head())</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>df_Countries_Continents.to_csv(<span class="st">"../Cleaned_Data/Countries_Continents.csv"</span>, index<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Before:    Continent   Country
+0    Africa   Algeria
+1    Africa    Angola
+2    Africa     Benin
+3    Africa  Botswana
+4    Africa   Burkina
+After:    Continent   Economy
+0    Africa   Algeria
+1    Africa    Angola
+2    Africa     Benin
+3    Africa  Botswana
+4    Africa   Burkina</code></pre>
+</div>
+</div>
+</section>
+<section id="education" class="level3">
+<h3 class="anchored" data-anchor-id="education">Education</h3>
+<div class="cell" data-execution_count="375">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">#E.clean the data named education</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Before: '</span>,df_education.head())</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co">#create a new column named 'average_learning_Adjusted_of_school' to calculate the average of the columns 'Average years of schooling' of each Entity</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>df_education[<span class="st">'average_learning_Adjusted_of_school'</span>] <span class="op">=</span> df_education.groupby(<span class="st">'Entity'</span>)[<span class="st">'Learning-Adjusted Years of School'</span>].transform(<span class="st">'mean'</span>)</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co"># This method keeps the first occurrence of each entity and drops the subsequent duplicates.</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>df_education <span class="op">=</span> df_education.drop_duplicates(subset<span class="op">=</span><span class="st">'Entity'</span>, keep<span class="op">=</span><span class="st">'first'</span>)</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="co"># rename the column entity to Economy</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>df_education.rename(columns<span class="op">=</span>{<span class="st">'Entity'</span>:<span class="st">'Economy'</span>},inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'After: '</span>,df_education.head())</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>df_education.to_csv(<span class="st">"../Cleaned_Data/education.csv"</span>, index<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Before:          Entity Code  Year  Learning-Adjusted Years of School
+0  Afghanistan  AFG  2017                           4.870000
+1  Afghanistan  AFG  2018                           4.949788
+2  Afghanistan  AFG  2020                           5.052838
+3       Africa  NaN  2017                           4.931378
+4       Africa  NaN  2018                           5.123904
+After:          Economy Code  Year  Learning-Adjusted Years of School  \
+0   Afghanistan  AFG  2017                           4.870000   
+3        Africa  NaN  2017                           4.931378   
+6       Albania  ALB  2010                           7.382478   
+10      Algeria  DZA  2010                           7.202200   
+14       Angola  AGO  2017                           4.110000   
+
+    average_learning_Adjusted_of_school  
+0                              4.957542  
+3                              5.058634  
+6                              8.526723  
+10                             7.045445  
+14                             4.193318  </code></pre>
+</div>
+</div>
+</section>
+<section id="age_when_first_anxiety_depression" class="level3">
+<h3 class="anchored" data-anchor-id="age_when_first_anxiety_depression">Age_when_first_anxiety_depression</h3>
+<div class="cell" data-execution_count="376">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#G.clean the data named age_when_first_anxiety_depression.csv</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Before: '</span>,df_first_anxiety_or_depression.head())</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>df_first_anxiety_or_depression<span class="op">=</span>df_first_anxiety_or_depression.drop(columns<span class="op">=</span>[<span class="st">'Code'</span>])</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># print(df_first_anxiety_or_depression.columns)</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co">#melt the dataframe</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>df_first_anxiety_or_depression<span class="op">=</span>pd.melt(df_first_anxiety_or_depression, id_vars<span class="op">=</span>[<span class="st">'Entity'</span>], value_vars<span class="op">=</span>[<span class="st">'Ages &lt;13'</span>,<span class="st">'Ages_13_19'</span>,<span class="st">'Ages_20_29'</span>,<span class="st">'Ages_30_39'</span>,<span class="st">'Ages ≥40'</span>,<span class="st">'Dont_know/Refused'</span>], var_name<span class="op">=</span><span class="st">'Age'</span>, value_name<span class="op">=</span><span class="st">'Percentage'</span>)</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'After: '</span>,df_first_anxiety_or_depression.head())</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>df_first_anxiety_or_depression.to_csv(<span class="st">"../Cleaned_Data/age_when_first_anxiety_or_depression.csv"</span>, index<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="co"># # Sample dataframe</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="co"># df = pd.DataFrame({</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="co">#     'A': ['a1', 'a2', 'a3'],</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="co">#     'B': [1, 2, 3],</span></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="co">#     'C': [4, 5, 6],</span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="co">#     'D': [7, 8, 9]</span></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a><span class="co"># })</span></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a><span class="co"># print("Original DataFrame:")</span></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a><span class="co"># print(df)</span></span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a><span class="co"># # Use melt to transform the dataframe</span></span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a><span class="co"># melted_df = pd.melt(df, id_vars=['A'], value_vars=['B', 'C', 'D'], var_name='Variable', value_name='Value')</span></span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a><span class="co"># print("\nMelted DataFrame:")</span></span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a><span class="co"># print(melted_df)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Before:                            Entity Code  Year  Ages &lt;13  Ages_13_19  Ages_20_29  \
+0                         Africa  NaN  2020  1.271836   14.229228   22.264650   
+1                           Asia  NaN  2020  7.795371    9.628078   23.403633   
+2                         Europe  NaN  2020  9.083381   22.210781   22.034777   
+3          High-income countries  NaN  2020  2.473921   24.484507   10.832585   
+4  Lower-middle-income countries  NaN  2020  8.800553    8.485406   26.288944   
+
+   Ages_30_39   Ages ≥40  Dont_know/Refused  
+0   16.803090   2.706476          42.724724  
+1   12.663021   9.983976          36.525925  
+2    7.628320  24.531280          14.511458  
+3   16.975899  16.115680          29.117413  
+4    8.428943   7.348721          40.647434  
+After:                            Entity       Age  Percentage
+0                         Africa  Ages &lt;13    1.271836
+1                           Asia  Ages &lt;13    7.795371
+2                         Europe  Ages &lt;13    9.083381
+3          High-income countries  Ages &lt;13    2.473921
+4  Lower-middle-income countries  Ages &lt;13    8.800553</code></pre>
+</div>
+</div>
+</section>
+<section id="gdp_per_capita" class="level3">
+<h3 class="anchored" data-anchor-id="gdp_per_capita">GDP_per_capita</h3>
+<div class="cell" data-execution_count="377">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#H.cleaning GDP_per_capita.csv</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>df_gdp_per_captita<span class="op">=</span>pd.read_csv(<span class="st">'../Data/GDP_per_captita.csv'</span>)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Before: '</span>,df_gdp_per_captita.head())</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co">#make a new dataframe with the column from 1990 to 2017</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>df_gdp_per_captita_subset<span class="op">=</span>df_gdp_per_captita[[<span class="st">'GDP per capita, current prices(U.S. dollars per capita)'</span>,<span class="st">'1990'</span>,<span class="st">'1991'</span>,<span class="st">'1992'</span>,<span class="st">'1993'</span>,<span class="st">'1994'</span>,<span class="st">'1995'</span>,<span class="st">'1996'</span>,<span class="st">'1997'</span>,<span class="st">'1998'</span>,<span class="st">'1999'</span>, </span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="st">'2000'</span>,<span class="st">'2001'</span>,<span class="st">'2002'</span>,<span class="st">'2003'</span>,<span class="st">'2004'</span>,<span class="st">'2005'</span>,<span class="st">'2006'</span>,<span class="st">'2007'</span>,<span class="st">'2008'</span>,<span class="st">'2009'</span>,  </span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="st">'2010'</span>,<span class="st">'2011'</span>,<span class="st">'2012'</span>,<span class="st">'2013'</span>,<span class="st">'2014'</span>,<span class="st">'2015'</span>,<span class="st">'2016'</span>,<span class="st">'2017'</span>]]</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>df_gdp_per_captita_subset<span class="op">=</span>df_gdp_per_captita_subset.rename(columns<span class="op">=</span>{<span class="st">'GDP per capita, current prices(U.S. dollars per capita)'</span>:<span class="st">'Economy'</span>})</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="co">#melt the dataframe</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>df_gdp_per_captita_subset<span class="op">=</span>pd.melt(df_gdp_per_captita_subset, id_vars<span class="op">=</span>[<span class="st">'Economy'</span>], value_vars<span class="op">=</span>[<span class="st">'1990'</span>,<span class="st">'1991'</span>,<span class="st">'1992'</span>,<span class="st">'1993'</span>,<span class="st">'1994'</span>,<span class="st">'1995'</span>,<span class="st">'1996'</span>,<span class="st">'1997'</span>,<span class="st">'1998'</span>,<span class="st">'1999'</span>,    </span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="st">'2000'</span>,<span class="st">'2001'</span>,<span class="st">'2002'</span>,<span class="st">'2003'</span>,<span class="st">'2004'</span>,<span class="st">'2005'</span>,<span class="st">'2006'</span>,<span class="st">'2007'</span>,<span class="st">'2008'</span>,<span class="st">'2009'</span>,</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="st">'2010'</span>,<span class="st">'2011'</span>,<span class="st">'2012'</span>,<span class="st">'2013'</span>,<span class="st">'2014'</span>,<span class="st">'2015'</span>,<span class="st">'2016'</span>,<span class="st">'2017'</span>], var_name<span class="op">=</span><span class="st">'Year'</span>, value_name<span class="op">=</span><span class="st">'GDP_per_capita'</span>)</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'After: '</span>,df_gdp_per_captita_subset.head())</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a><span class="co"># print the data type of the column GDP_per_capita</span></span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a><span class="co"># print(df_gdp_per_captita_subset.dtypes)</span></span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a><span class="co">#convert the column GDP_per_capita and Year from object type to numeric type</span></span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>df_gdp_per_captita_subset[<span class="st">'GDP_per_capita'</span>]<span class="op">=</span>pd.to_numeric(df_gdp_per_captita_subset[<span class="st">'GDP_per_capita'</span>],errors<span class="op">=</span><span class="st">'coerce'</span>)</span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>df_gdp_per_captita_subset[<span class="st">'Year'</span>]<span class="op">=</span>pd.to_numeric(df_gdp_per_captita_subset[<span class="st">'Year'</span>],errors<span class="op">=</span><span class="st">'coerce'</span>)</span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a><span class="co"># df_gdp_per_captita_subset.to_csv('../Cleaned_Data/GDP_percaptita.csv',index=False)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Before:    GDP per capita, current prices(U.S. dollars per capita)      1980      1981  \
+0                                        Afghanistan        no data   no data   
+1                                            Albania        728.359   817.734   
+2                                            Algeria       2268.607  2305.505   
+3                                            Andorra        no data   no data   
+4                                             Angola        802.627   731.427   
+
+       1982      1983      1984      1985      1986      1987      1988  ...  \
+0   no data   no data   no data   no data   no data   no data   no data  ...   
+1   824.542   815.529   788.332   788.801   855.724   832.245   805.046  ...   
+2  2254.328  2316.679  2432.717  2753.697  2698.915  2705.111  2143.742  ...   
+3   no data   no data   no data   no data   no data   no data   no data  ...   
+4   712.576   723.654   747.325   817.068   743.735   828.958   875.526  ...   
+
+        2019       2020       2021       2022       2023       2024  \
+0    586.204    611.268    443.385    no data    no data    no data   
+1   5345.058   5278.986   6259.762   6657.637    8057.49   8877.337   
+2   3953.402   3321.601   3659.709    4306.82   4874.706    5130.36   
+3  40688.491  36973.845  41806.876  41084.874  44107.317  45642.103   
+4   2612.246   1709.283   2169.648   3438.147   2550.001   2452.737   
+
+        2025       2026       2027       2028  
+0    no data    no data    no data    no data  
+1   9280.572   9818.569   10470.18  11187.728  
+2   5243.056   5335.671   5355.284    5365.19  
+3  46215.307  46546.578  46713.341  46920.949  
+4   2483.027    2507.49   2570.826   2622.394  
+
+[5 rows x 50 columns]
+After:         Economy  Year GDP_per_capita
+0  Afghanistan  1990        no data
+1      Albania  1990        675.736
+2      Algeria  1990       2473.512
+3      Andorra  1990        no data
+4       Angola  1990       1062.788</code></pre>
+</div>
+</div>
+</section>
+<section id="mental_health" class="level3">
+<h3 class="anchored" data-anchor-id="mental_health">Mental_health</h3>
+<div class="cell" data-execution_count="378">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">#F.clean the data named mental_health.xlsx and merge the dataframes</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>df_mental_health <span class="op">=</span> pd.read_excel(<span class="st">'../Data/mental_health.xlsx'</span>)</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># show all the columns of the dataframe</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="co"># mental_health_df.columns</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_mental_health.head())</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="co"># # drop the columns of the dataframes that do not belong to mental health disorders</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>df_mental_health <span class="op">=</span> df_mental_health.drop(columns<span class="op">=</span>[<span class="st">'Drug use disorders (%)'</span>, <span class="st">'Alcohol use disorders (%)'</span>])</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="co">#rename the column Entity to Economy</span></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>df_mental_health.rename(columns<span class="op">=</span>{<span class="st">'Entity'</span>:<span class="st">'Economy'</span>},inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a><span class="co">#drop the code column when the column Code is null</span></span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>df_mental_health<span class="op">=</span>df_mental_health.dropna(subset<span class="op">=</span>[<span class="st">'Code'</span>])</span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a><span class="co">#merge the dataframe df_mental_health to df_income_group</span></span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>df_mental_health_merge<span class="op">=</span> df_mental_health.merge(df_income_group[[<span class="st">'Code'</span>,<span class="st">'Income group'</span>]], on<span class="op">=</span><span class="st">'Code'</span>, how<span class="op">=</span><span class="st">'left'</span>)</span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a><span class="co">#merge the dataframe df_education to df_mental_health_merge</span></span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>df_mental_health_merge<span class="op">=</span>df_mental_health_merge.merge(df_education[[<span class="st">'Code'</span>,<span class="st">'average_learning_Adjusted_of_school'</span>]], on<span class="op">=</span><span class="st">'Code'</span>, how<span class="op">=</span><span class="st">'left'</span>)</span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a><span class="co"># merge the two dataframes countries_continents and mental_health_merge</span></span>
+<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a>df_mental_health_merge<span class="op">=</span>df_mental_health_merge.merge(df_Countries_Continents[[<span class="st">'Economy'</span>,<span class="st">'Continent'</span>]], on<span class="op">=</span><span class="st">'Economy'</span>, how<span class="op">=</span><span class="st">'left'</span>)</span>
+<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_mental_health_merge.head())</span>
+<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a><span class="co">#merge the dataframe df_GDP to df_mental_health_merge</span></span>
+<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a>df_mental_health_merge<span class="op">=</span>df_mental_health_merge.merge(df_GDP[[<span class="st">'Code'</span>,<span class="st">'GDP(2022)'</span>]], on<span class="op">=</span><span class="st">'Code'</span>, how<span class="op">=</span><span class="st">'left'</span>)</span>
+<span id="cb18-28"><a href="#cb18-28" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_discomfort_speaking_anxiety_depression_2020.head())</span>
+<span id="cb18-29"><a href="#cb18-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-30"><a href="#cb18-30" aria-hidden="true" tabindex="-1"></a><span class="co">#merge the dataframe df_discomfort_speaking_anxiety_depression_2020 to df_mental_health_merge</span></span>
+<span id="cb18-31"><a href="#cb18-31" aria-hidden="true" tabindex="-1"></a>df_mental_health_merge<span class="op">=</span>df_mental_health_merge.merge(df_discomfort_speaking_anxiety_depression_2020[[<span class="st">'Code'</span>,<span class="st">'not_at_all_comfortable_speaking_anxiety_or_depression_percent'</span>]], on<span class="op">=</span><span class="st">'Code'</span>, how<span class="op">=</span><span class="st">'left'</span>)</span>
+<span id="cb18-32"><a href="#cb18-32" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_mental_health_merge.head())</span>
+<span id="cb18-33"><a href="#cb18-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-34"><a href="#cb18-34" aria-hidden="true" tabindex="-1"></a><span class="co"># print the shape of the dataframe df_mental_health_merge</span></span>
+<span id="cb18-35"><a href="#cb18-35" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_mental_health_merge.shape)</span>
+<span id="cb18-36"><a href="#cb18-36" aria-hidden="true" tabindex="-1"></a><span class="co">#merge the dafaqframe df_gdp_per_captita_subset with df_mental_health_merge based on the column Economy and Year</span></span>
+<span id="cb18-37"><a href="#cb18-37" aria-hidden="true" tabindex="-1"></a>df_mental_health_merge<span class="op">=</span>df_mental_health_merge.merge(df_gdp_per_captita_subset[[<span class="st">'Economy'</span>,<span class="st">'Year'</span>,<span class="st">'GDP_per_capita'</span>]], on<span class="op">=</span>[<span class="st">'Economy'</span>,<span class="st">'Year'</span>], how<span class="op">=</span><span class="st">'left'</span>)</span>
+<span id="cb18-38"><a href="#cb18-38" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_mental_health_merge.head())</span>
+<span id="cb18-39"><a href="#cb18-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-40"><a href="#cb18-40" aria-hidden="true" tabindex="-1"></a><span class="co"># print the shape of the dataframe df_mental_health_merge</span></span>
+<span id="cb18-41"><a href="#cb18-41" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_mental_health_merge.shape)</span>
+<span id="cb18-42"><a href="#cb18-42" aria-hidden="true" tabindex="-1"></a><span class="co">#save the dataframe to csv file</span></span>
+<span id="cb18-43"><a href="#cb18-43" aria-hidden="true" tabindex="-1"></a>df_mental_health_merge.to_csv(<span class="st">"../Cleaned_Data/mental_health.csv"</span>, index<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb18-44"><a href="#cb18-44" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        Entity Code  Year  Schizophrenia (%)  Bipolar disorder (%)  \
+0  Afghanistan  AFG  1990           0.160560              0.697779   
+1  Afghanistan  AFG  1991           0.160312              0.697961   
+2  Afghanistan  AFG  1992           0.160135              0.698107   
+3  Afghanistan  AFG  1993           0.160037              0.698257   
+4  Afghanistan  AFG  1994           0.160022              0.698469   
+
+   Eating disorders (%)  Anxiety disorders (%)  Drug use disorders (%)  \
+0              0.101855               4.828830                1.677082   
+1              0.099313               4.829740                1.684746   
+2              0.096692               4.831108                1.694334   
+3              0.094336               4.830864                1.705320   
+4              0.092439               4.829423                1.716069   
+
+   Depression (%)  Alcohol use disorders (%)  
+0        4.071831                   0.672404  
+1        4.079531                   0.671768  
+2        4.088358                   0.670644  
+3        4.096190                   0.669738  
+4        4.099582                   0.669260  
+       Economy Code  Year  Schizophrenia (%)  Bipolar disorder (%)  \
+0  Afghanistan  AFG  1990           0.160560              0.697779   
+1  Afghanistan  AFG  1991           0.160312              0.697961   
+2  Afghanistan  AFG  1992           0.160135              0.698107   
+3  Afghanistan  AFG  1993           0.160037              0.698257   
+4  Afghanistan  AFG  1994           0.160022              0.698469   
+
+   Eating disorders (%)  Anxiety disorders (%)  Depression (%) Income group  \
+0              0.101855               4.828830        4.071831   Low income   
+1              0.099313               4.829740        4.079531   Low income   
+2              0.096692               4.831108        4.088358   Low income   
+3              0.094336               4.830864        4.096190   Low income   
+4              0.092439               4.829423        4.099582   Low income   
+
+   average_learning_Adjusted_of_school Continent  
+0                             4.957542      Asia  
+1                             4.957542      Asia  
+2                             4.957542      Asia  
+3                             4.957542      Asia  
+4                             4.957542      Asia  
+     Economy Code  Year  \
+0    Albania  ALB  2020   
+1    Algeria  DZA  2020   
+2  Argentina  ARG  2020   
+3       Asia  NaN  2020   
+4  Australia  AUS  2020   
+
+   not_at_all_comfortable_speaking_anxiety_or_depression_percent  
+0                                          27.573915              
+1                                          11.403895              
+2                                          26.333920              
+3                                          26.522500              
+4                                          30.768505              
+       Economy Code  Year  Schizophrenia (%)  Bipolar disorder (%)  \
+0  Afghanistan  AFG  1990           0.160560              0.697779   
+1  Afghanistan  AFG  1991           0.160312              0.697961   
+2  Afghanistan  AFG  1992           0.160135              0.698107   
+3  Afghanistan  AFG  1993           0.160037              0.698257   
+4  Afghanistan  AFG  1994           0.160022              0.698469   
+
+   Eating disorders (%)  Anxiety disorders (%)  Depression (%) Income group  \
+0              0.101855               4.828830        4.071831   Low income   
+1              0.099313               4.829740        4.079531   Low income   
+2              0.096692               4.831108        4.088358   Low income   
+3              0.094336               4.830864        4.096190   Low income   
+4              0.092439               4.829423        4.099582   Low income   
+
+   average_learning_Adjusted_of_school Continent  GDP(2022)  \
+0                             4.957542      Asia    14583.0   
+1                             4.957542      Asia    14583.0   
+2                             4.957542      Asia    14583.0   
+3                             4.957542      Asia    14583.0   
+4                             4.957542      Asia    14583.0   
+
+   not_at_all_comfortable_speaking_anxiety_or_depression_percent  
+0                                                NaN              
+1                                                NaN              
+2                                                NaN              
+3                                                NaN              
+4                                                NaN              
+(5488, 13)
+       Economy Code  Year  Schizophrenia (%)  Bipolar disorder (%)  \
+0  Afghanistan  AFG  1990           0.160560              0.697779   
+1  Afghanistan  AFG  1991           0.160312              0.697961   
+2  Afghanistan  AFG  1992           0.160135              0.698107   
+3  Afghanistan  AFG  1993           0.160037              0.698257   
+4  Afghanistan  AFG  1994           0.160022              0.698469   
+
+   Eating disorders (%)  Anxiety disorders (%)  Depression (%) Income group  \
+0              0.101855               4.828830        4.071831   Low income   
+1              0.099313               4.829740        4.079531   Low income   
+2              0.096692               4.831108        4.088358   Low income   
+3              0.094336               4.830864        4.096190   Low income   
+4              0.092439               4.829423        4.099582   Low income   
+
+   average_learning_Adjusted_of_school Continent  GDP(2022)  \
+0                             4.957542      Asia    14583.0   
+1                             4.957542      Asia    14583.0   
+2                             4.957542      Asia    14583.0   
+3                             4.957542      Asia    14583.0   
+4                             4.957542      Asia    14583.0   
+
+   not_at_all_comfortable_speaking_anxiety_or_depression_percent  \
+0                                                NaN               
+1                                                NaN               
+2                                                NaN               
+3                                                NaN               
+4                                                NaN               
+
+   GDP_per_capita  
+0             NaN  
+1             NaN  
+2             NaN  
+3             NaN  
+4             NaN  
+(5488, 14)</code></pre>
+</div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

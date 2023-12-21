@@ -1,9 +1,22 @@
 ---
-title: "About Me"
+title: About me
+jupyter: python3
 ---
 
+![](images/paste-4.png)
 
-Bella Shi is a currently a student studying in the graduate school of Art and Sciences in Georgetown university. She majored in software engineering and minored in English in undergraduate.In her lesuire time, She likes swimming, going to the gym, hiking as well as other outdoor activities.
+## About me
 
+Bella Shi is a currently a student studying in the graduate school of Art and Sciences in Georgetown university. She majored in software engineering and minored in English in undergraduate. In her lesuire time, She likes swimming, going to the gym, hiking as well as other outdoor activities.
 
-[Bella's Website](https://bella.georgetown.domains/about/) 
+## Academic Interests
+
+-   Data Science and Analytics
+
+-   Computer Science
+
+## Education
+
+-   2018-2022: Taiyuan University Of Technology
+
+-   2023-Present: Georgetown University

@@ -1,7 +1,0 @@
----
-title: Code
----
-
-Link to Bella Shi’s GitHub repository for DSAN 5000 Project:
-
-[Link to Github](https://github.com/anly501/dsan-5000-project-bella20000605)

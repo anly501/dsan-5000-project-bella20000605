@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Bella Shi’s Website - ARM</title>
+<title>Bella Shi’s Website - ARM and Networking</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -128,7 +128,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ARM.html">ARM</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ARM.html">ARM and Networking</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -161,13 +161,13 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="https://bella.georgetown.domains/about/" class="sidebar-item-text sidebar-link">
+  <a href="./about.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">About me</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Code.html" class="sidebar-item-text sidebar-link">
+  <a href="https://github.com/anly501/dsan-5000-project-bella20000605" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Code</span></a>
   </div>
 </li>
@@ -209,7 +209,7 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Clustering1.html" class="sidebar-item-text sidebar-link">
+  <a href="./Clustering.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Clustering</span></a>
   </div>
 </li>
@@ -221,14 +221,20 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./ARM.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">ARM and Networking</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./Conclusions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Conclusions</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ARM.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">ARM</span></a>
+  <a href="./References.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
   </div>
 </li>
     </ul>
@@ -241,13 +247,13 @@ div.csl-indent {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#prepare-the-data" id="toc-prepare-the-data" class="nav-link active" data-scroll-target="#prepare-the-data">Prepare the data:</a></li>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction:</a></li>
-  <li><a href="#theory" id="toc-theory" class="nav-link" data-scroll-target="#theory">Theory:</a></li>
-  <li><a href="#method" id="toc-method" class="nav-link" data-scroll-target="#method">Method:</a></li>
+  <li><a href="#prepare-the-data" id="toc-prepare-the-data" class="nav-link active" data-scroll-target="#prepare-the-data">Prepare the data</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#theory" id="toc-theory" class="nav-link" data-scroll-target="#theory">Theory</a></li>
+  <li><a href="#method" id="toc-method" class="nav-link" data-scroll-target="#method">Method</a></li>
   <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a></li>
   <li><a href="#conclusions" id="toc-conclusions" class="nav-link" data-scroll-target="#conclusions">Conclusions</a></li>
-  <li><a href="#pubilication" id="toc-pubilication" class="nav-link" data-scroll-target="#pubilication">Pubilication</a></li>
+  <li><a href="#publication" id="toc-publication" class="nav-link" data-scroll-target="#publication">Publication</a></li>
   </ul>
 </nav>
     </div>
@@ -256,7 +262,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">ARM</h1>
+<h1 class="title">ARM and Networking</h1>
 </div>
 
 
@@ -272,7 +278,7 @@ div.csl-indent {
 </header>
 
 <section id="prepare-the-data" class="level2">
-<h2 class="anchored" data-anchor-id="prepare-the-data">Prepare the data:</h2>
+<h2 class="anchored" data-anchor-id="prepare-the-data">Prepare the data</h2>
 <p>We are using the all_mental_health_symptoms_nb.csv data and Our goal is to find associations between different symptoms, like which symptoms often occur together. First, we will convert the continuous variables into three categories: ‘Low’, ‘Middle’, and ‘High’. The categorization is based on the lower and upper quartiles of the data. Values below the lower quartile are labeled ‘Low’, values between the lower and upper quartile are labeled ‘Middle’, and values above the upper quartile are labeled ‘High’. so this sectioning is well-suited for ARM as it transforms the dataset into a format where patterns can be more easily discovered.</p>
 <div class="cell" data-execution_count="1">
 <details>
@@ -303,7 +309,7 @@ div.csl-indent {
 <span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> trinarized_df</span>
 <span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the dataset</span></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>file_path <span class="op">=</span> <span class="st">'./Data/mental_health_DT.csv'</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>file_path <span class="op">=</span> <span class="st">'./Data_cleaned/mental_health_DR.csv'</span></span>
 <span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.read_csv(file_path)</span>
 <span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="co"># List of columns to trinarize</span></span>
@@ -316,7 +322,7 @@ div.csl-indent {
 <span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="co"># Save the trinarized dataframe</span></span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>trinarized_data.to_csv(<span class="st">'./Data/mental_health_DT_trinarized_ARM.csv'</span>, index<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="co"># trinarized_data.to_csv('../mental_health_DT_trinarized_ARM.csv', index=False)</span></span>
 <span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the first few rows of the trinarized dataframe</span></span>
 <span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>trinarized_data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -339,7 +345,9 @@ div.csl-indent {
 <th data-quarto-table-cell-role="th">Depression (%)</th>
 <th data-quarto-table-cell-role="th">Income group</th>
 <th data-quarto-table-cell-role="th">average_learning_Adjusted_of_school</th>
+<th data-quarto-table-cell-role="th">Continent</th>
 <th data-quarto-table-cell-role="th">GDP(2022)</th>
+<th data-quarto-table-cell-role="th">GDP_per_capita</th>
 </tr>
 </thead>
 <tbody>
@@ -355,7 +363,9 @@ div.csl-indent {
 <td>High</td>
 <td>Low income</td>
 <td>Low</td>
+<td>Asia</td>
 <td>Middle</td>
+<td>3309.844</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">1</td>
@@ -369,7 +379,9 @@ div.csl-indent {
 <td>High</td>
 <td>Low income</td>
 <td>Low</td>
+<td>Asia</td>
 <td>Middle</td>
+<td>3309.844</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2</td>
@@ -383,7 +395,9 @@ div.csl-indent {
 <td>High</td>
 <td>Low income</td>
 <td>Low</td>
+<td>Asia</td>
 <td>Middle</td>
+<td>3309.844</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">3</td>
@@ -397,7 +411,9 @@ div.csl-indent {
 <td>High</td>
 <td>Low income</td>
 <td>Low</td>
+<td>Asia</td>
 <td>Middle</td>
+<td>3309.844</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">4</td>
@@ -411,7 +427,9 @@ div.csl-indent {
 <td>High</td>
 <td>Low income</td>
 <td>Low</td>
+<td>Asia</td>
 <td>Middle</td>
+<td>3309.844</td>
 </tr>
 </tbody>
 </table>
@@ -421,15 +439,15 @@ div.csl-indent {
 </div>
 </section>
 <section id="introduction" class="level2">
-<h2 class="anchored" data-anchor-id="introduction">Introduction:</h2>
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
 <p>Our dataset encapsulates a range of mental health indicators across various economies, categorized into ‘Low’, ‘Middle’, and ‘High’ based on their reported percentages. These indicators provide a holistic view of mental health status in correlation with economic factors such as GDP and income groups. The ARM analysis on this dataset is designed to unearth associations between different mental health conditions and these economic indicators. By applying ARM, we aim to reveal potential patterns that could inform healthcare policy, indicating, for example, if higher GDP correlates with lower rates of certain mental health conditions, or if specific disorders are more prevalent in certain economic classes.</p>
 </section>
 <section id="theory" class="level2">
-<h2 class="anchored" data-anchor-id="theory">Theory:</h2>
+<h2 class="anchored" data-anchor-id="theory">Theory</h2>
 <p>Association Rule Mining (ARM)is akin to finding a needle in a haystack, except instead of a needle, we’re searching for golden threads that connect different pieces of hay. In data terms, these threads are the rules that link various items within our dataset. ARM operates by looking for these rules within large volumes of data, where the presence of one set of items may influence the presence of another. It’s how, for instance, a supermarket might notice that people who buy pasta also often buy tomato sauce. The ‘support’ tells us how often these item combinations appear, the ‘confidence’ gives the likelihood that the items are purchased together, and the ‘lift’ compares the observed frequency of the combination with the frequency we’d expect if the items were independent. It’s through these metrics that ARM provides a glimpse into the hidden patterns of our behaviors, preferences, and even health.</p>
 </section>
 <section id="method" class="level2">
-<h2 class="anchored" data-anchor-id="method">Method:</h2>
+<h2 class="anchored" data-anchor-id="method">Method</h2>
 <p>Our methodology involved first preparing the data by categorizing continuous variables into ‘Low’, ‘Middle’, and ‘High’ categories. This trinarization was carried out using Python’s Pandas library, which enabled us to manipulate the data effectively. Following this, we utilized the Apriori algorithm to identify frequent itemsets within the data. These itemsets were then used to generate association rules, which were subsequently evaluated based on their support, confidence, and lift.</p>
 <div class="cell" data-execution_count="2">
 <details>
@@ -481,42 +499,42 @@ div.csl-indent {
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">0</td>
-<td>(Anxiety disorders (%)_High)</td>
 <td>(Eating disorders (%)_High)</td>
+<td>(Anxiety disorders (%)_High)</td>
 <td>0.25</td>
 <td>0.250000</td>
-<td>0.164396</td>
-<td>0.657585</td>
-<td>2.630339</td>
-<td>0.101896</td>
-<td>2.190323</td>
-<td>0.826428</td>
+<td>0.159893</td>
+<td>0.639573</td>
+<td>2.558292</td>
+<td>0.097393</td>
+<td>2.080866</td>
+<td>0.812152</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">1</td>
-<td>(Eating disorders (%)_High)</td>
 <td>(Anxiety disorders (%)_High)</td>
+<td>(Eating disorders (%)_High)</td>
 <td>0.25</td>
 <td>0.250000</td>
-<td>0.164396</td>
-<td>0.657585</td>
-<td>2.630339</td>
-<td>0.101896</td>
-<td>2.190323</td>
-<td>0.826428</td>
+<td>0.159893</td>
+<td>0.639573</td>
+<td>2.558292</td>
+<td>0.097393</td>
+<td>2.080866</td>
+<td>0.812152</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2</td>
 <td>(Anxiety disorders (%)_High)</td>
 <td>(Income group_High income)</td>
 <td>0.25</td>
-<td>0.324742</td>
-<td>0.167526</td>
-<td>0.670103</td>
-<td>2.063492</td>
-<td>0.086340</td>
-<td>2.046875</td>
-<td>0.687179</td>
+<td>0.298851</td>
+<td>0.163793</td>
+<td>0.655172</td>
+<td>2.192308</td>
+<td>0.089080</td>
+<td>2.033333</td>
+<td>0.725146</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">3</td>
@@ -524,12 +542,12 @@ div.csl-indent {
 <td>(Bipolar disorder (%)_Middle)</td>
 <td>0.25</td>
 <td>0.500000</td>
-<td>0.210236</td>
-<td>0.840943</td>
-<td>1.681885</td>
-<td>0.085236</td>
-<td>3.143519</td>
-<td>0.540572</td>
+<td>0.215107</td>
+<td>0.860427</td>
+<td>1.720854</td>
+<td>0.090107</td>
+<td>3.582353</td>
+<td>0.558524</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">4</td>
@@ -537,12 +555,12 @@ div.csl-indent {
 <td>(GDP(2022)_Middle)</td>
 <td>0.25</td>
 <td>0.500000</td>
-<td>0.152982</td>
-<td>0.611929</td>
-<td>1.223859</td>
-<td>0.027982</td>
-<td>1.288425</td>
-<td>0.243883</td>
+<td>0.155583</td>
+<td>0.622332</td>
+<td>1.244663</td>
+<td>0.030583</td>
+<td>1.323913</td>
+<td>0.262093</td>
 </tr>
 </tbody>
 </table>
@@ -561,27 +579,18 @@ div.csl-indent {
 <div class="cell" data-execution_count="3">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>pivot_table <span class="op">=</span> rules.pivot(<span class="st">"antecedents"</span>, <span class="st">"consequents"</span>, <span class="st">"lift"</span>)</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating the heatmap</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">8</span>))</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>sns.heatmap(pivot_table, annot<span class="op">=</span><span class="va">True</span>, cmap<span class="op">=</span><span class="st">"YlGnBu"</span>)</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Heatmap of Lift Values for Mental Health Conditions'</span>)</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Consequents'</span>)</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Antecedents'</span>)</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># import pandas as pd</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># import matplotlib.pyplot as plt</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># import seaborn as sns</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># pivot_table = rules.pivot("antecedents", "consequents", "lift")</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># # Creating the heatmap</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># plt.figure(figsize=(10, 8))</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># sns.heatmap(pivot_table, annot=True, cmap="YlGnBu")</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># plt.title('Heatmap of Lift Values for Mental Health Conditions')</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># plt.xlabel('Consequents')</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co"># plt.ylabel('Antecedents')</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co"># plt.show()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stderr">
-<pre><code>/var/folders/px/bhxss9d10zs_wzsv0ck6sb200000gn/T/ipykernel_58805/517098744.py:4: FutureWarning:
-
-In a future version of pandas all arguments of DataFrame.pivot will be keyword-only.
-</code></pre>
-</div>
-<div class="cell-output cell-output-display">
-<p><img src="ARM_files/figure-html/cell-4-output-2.png" width="2228" height="1842"></p>
-</div>
 </div>
 </section>
 <section id="conclusions" class="level2">
@@ -591,8 +600,8 @@ In a future version of pandas all arguments of DataFrame.pivot will be keyword-o
 <p>Moreover, the connection between lower anxiety levels and moderate bipolar disorder prevalence suggests that mental health conditions manifest in various forms across different socio-economic spectrums. This underlines the importance of personalized and context-sensitive mental health care.</p>
 <p>In essence, my analysis not only sheds light on the intricate relationship between mental health and socio-economic factors but also underscores the importance of a nuanced approach to mental health issues, considering the multifaceted nature of these challenges.</p>
 </section>
-<section id="pubilication" class="level2">
-<h2 class="anchored" data-anchor-id="pubilication">Pubilication</h2>
+<section id="publication" class="level2">
+<h2 class="anchored" data-anchor-id="publication">Publication</h2>
 <p><span class="citation" data-cites="kumbhare2014">(<a href="#ref-kumbhare2014" role="doc-biblioref">Kumbhare and Chobe 2014</a>)</span></p>
 
 

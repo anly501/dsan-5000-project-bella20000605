@@ -1,0 +1,115 @@
+,Symptoms,Label
+0,"Feelings of sadness, tearfulness, emptiness or hopelessness",Depression
+1,"Angry outbursts, irritability or frustration, even over small matters",Depression
+2,"Loss of interest or pleasure in most or all normal activities, such as sex, hobbies or sports",Depression
+3,"Sleep disturbances, including insomnia or sleeping too much",Depression
+4,"Tiredness and lack of energy, so even small tasks take extra effort",Depression
+5,Reduced appetite and weight loss or increased cravings for food and weight gain,Depression
+6,"Anxiety, agitation or restlessness",Depression
+7,"Slowed thinking, speaking or body movements",Depression
+8,"Feelings of worthlessness or guilt, fixating on past failures or self-blame",Depression
+9,"Trouble thinking, concentrating, making decisions and remembering things",Depression
+10,"Frequent or recurrent thoughts of death, suicidal thoughts, suicide attempts or suicide",Depression
+11,"Unexplained physical problems, such as back pain or headaches",Depression
+12,"Persistent physical symptoms that do not respond to treatment, such as headaches, digestive disorders, and chronic pain",Depression
+13,"Decreased ability to concentrate, indecisiveness",Depression
+14,Insomnia or hypersomnia nearly every day,Depression
+15,"Markedly diminished interest or pleasure in all, or almost all, activities most of the day",Depression
+16,Significant weight loss when not dieting or weight gain,Depression
+17,Psychomotor agitation or retardation nearly every day,Depression
+18,"Recurrent thoughts of death, recurrent suicidal ideation without a specific plan, or a suicide attempt or a specific plan for committing suicide",Depression
+19,Feelings of worthlessness or excessive or inappropriate guilt,Depression
+20,A loss of energy or fatigue nearly every day,Depression
+21,"Diminished ability to think or concentrate, or indecisiveness",Depression
+22,"Preoccupation with weight, food, calories, carbohydrates, fat grams, and dieting",Eating Disorder
+23,"Refusal to eat certain foods, progressing to restrictions against whole categories of food (e.g., no carbohydrates, etc.)",Eating Disorder
+24,Appears uncomfortable eating around others,Eating Disorder
+25,Skipping meals or taking small portions of food at regular meals,Eating Disorder
+26,Withdrawal from usual friends and activities,Eating Disorder
+27,"Frequent dieting, extreme concern with body size and shape",Eating Disorder
+28,Frequent checking in the mirror for perceived flaws in appearance,Eating Disorder
+29,Extreme concern with body weight and shape,Eating Disorder
+30,"Use of dietary supplements, laxatives, or herbal products for weight loss",Eating Disorder
+31,Excessive exercise,Eating Disorder
+32,"Expressing depression, disgust, shame, or guilt about eating habits",Eating Disorder
+33,"Eating in secret, hiding eating, or eating alone",Eating Disorder
+34,"Developing food rituals (e.g., eating foods in certain orders, excessive chewing, rearranging food on a plate)",Eating Disorder
+35,Not wanting to eat in public,Eating Disorder
+36,Feeling overwhelmed by food choices,Eating Disorder
+37,"Sensitivity to comments or criticism about exercise habits, eating, and body shape",Eating Disorder
+38,Denial of the seriousness of low body weight,Eating Disorder
+39,Fear of eating in public or with others,Eating Disorder
+40,"Stomach cramps, other non-specific gastrointestinal complaints (constipation, acid reflux, etc.)",Eating Disorder
+41,Menstrual irregularities—missing periods or only having a period while on hormonal contraceptives,Eating Disorder
+42,Difficulty concentrating,Eating Disorder
+43,"Anemia, immune system deficiencies, and nutrient deficiencies",Eating Disorder
+44,"Dizziness, especially upon standing",Eating Disorder
+45,"Feeling nervous, restless or tense",Anxiety
+46,"Having a sense of impending danger, panic or doom",Anxiety
+47,Increased heart rate,Anxiety
+48,Breathing rapidly (hyperventilation),Anxiety
+49,Sweating,Anxiety
+50,Trembling,Anxiety
+51,Feeling weak or tired,Anxiety
+52,Trouble concentrating or thinking about anything other than the present worry,Anxiety
+53,Having trouble sleeping,Anxiety
+54,Experiencing gastrointestinal (GI) problems,Anxiety
+55,Having difficulty controlling worry,Anxiety
+56,Having the urge to avoid things that trigger anxiety,Anxiety
+57,Excessive fear or worry,Anxiety
+58,Avoiding social situations,Anxiety
+59,"Irrational fear or avoidance of an object, place, or situation that poses little or no threat of danger",Anxiety
+60,Distress in social situations,Anxiety
+61,Physical symptoms like headaches or nausea,Anxiety
+62,Muscle tension,Anxiety
+63,Difficulty controlling feelings of worry,Anxiety
+64,Panic attacks,Anxiety
+65,Avoiding situations due to anxiety,Anxiety
+66,Needing reassurance from others,Anxiety
+67,Fear of being judged or scrutinized by others,Anxiety
+68,Delusions (%),Schizophrenia
+69,Hallucinations (%),Schizophrenia
+70,"Disorganized speech (e.g., frequent derailment or incoherence) (%)",Schizophrenia
+71,Grossly disorganized or catatonic behavior (%),Schizophrenia
+72,"Negative symptoms (e.g., diminished emotional expression) (%)",Schizophrenia
+73,"Impaired cognition (problems with attention, concentration, or memory) (%)",Schizophrenia
+74,Decreased ability to plan or carry out activities (%),Schizophrenia
+75,Decreased emotional range (%),Schizophrenia
+76,Lack of interest in life (%),Schizophrenia
+77,Withdrawal from social activity (%),Schizophrenia
+78,Unusual thoughts and perceptions (%),Schizophrenia
+79,Disorganized thinking (%),Schizophrenia
+80,Suspiciousness or paranoia (%),Schizophrenia
+81,Inappropriate emotional responses (%),Schizophrenia
+82,Odd or eccentric behavior or speech (%),Schizophrenia
+83,Extreme agitation or excitement (%),Schizophrenia
+84,Incoherence or illogical thoughts (%),Schizophrenia
+85,Lack of inhibition and impulse control (%),Schizophrenia
+86,Hostility or aggression (%),Schizophrenia
+87,Severe anxiety or fearfulness (%),Schizophrenia
+88,Inability to make friends or socialize with others (%),Schizophrenia
+89,Unusual behavior affecting normal function (%),Schizophrenia
+90,Apathy and lack of enthusiasm (%),Schizophrenia
+91,"Feelings of high, or elevated mood (mania)",Bipolar Disorder
+92,"Increased energy, activity, and restlessness",Bipolar Disorder
+93,"Excessively high, overly good, euphoric mood",Bipolar Disorder
+94,Extreme irritability and distractibility,Bipolar Disorder
+95,"Racing thoughts, fast talking, jumping between ideas",Bipolar Disorder
+96,Sleeping little or not feeling tired,Bipolar Disorder
+97,Unrealistic beliefs in one’s abilities and powers,Bipolar Disorder
+98,Poor judgment,Bipolar Disorder
+99,Spending sprees,Bipolar Disorder
+100,A lasting period of behavior that is different from usual,Bipolar Disorder
+101,Increased sexual drive,Bipolar Disorder
+102,"Abuse of drugs, particularly cocaine, alcohol, and sleeping medications",Bipolar Disorder
+103,"Provocative, intrusive, or aggressive behavior",Bipolar Disorder
+104,Denial that anything is wrong,Bipolar Disorder
+105,"Sad, anxious, or empty mood",Bipolar Disorder
+106,Feelings of hopelessness or pessimism,Bipolar Disorder
+107,"Feelings of guilt, worthlessness, or helplessness",Bipolar Disorder
+108,"Loss of interest or pleasure in activities once enjoyed, including sex",Bipolar Disorder
+109,"Decreased energy, a feeling of fatigue or of being 'slowed down'",Bipolar Disorder
+110,"Difficulty concentrating, remembering, making decisions",Bipolar Disorder
+111,Restlessness or irritability,Bipolar Disorder
+112,"Sleeping too much, or can't sleep",Bipolar Disorder
+113,Change in appetite and/or unintended weight loss or gain,Bipolar Disorder

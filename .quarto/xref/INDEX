@@ -48,7 +48,8 @@
     "Gathering.html": "8fefd1a3"
   },
   "Cleaning.ipynb": {
-    "Cleaning.html": "14173e77"
+    "Cleaning.html": "14173e77",
+    "Cleaning.tex": "994c30a3"
   },
   "HW-03/Code/EDA.ipynb": {
     "EDA.html": "02154142"
@@ -94,5 +95,26 @@
   },
   "Clustering1.ipynb": {
     "Clustering1.html": "c14883a6"
+  },
+  "References.ipynb": {
+    "References.html": "fc3fbf57"
+  },
+  "cleaning_copy.qmd": {
+    "cleaning_copy.html": "4ba96a50"
+  },
+  "HW-02/Code/cleaning.ipynb": {
+    "cleaning.html": "d46563b3"
+  },
+  "cleaning.ipynb": {
+    "cleaning.html": "0da0dfa9"
+  },
+  "Exploration copy.ipynb": {
+    "Exploration copy.html": "73dc6ab9"
+  },
+  "a.ipynb": {
+    "a.html": "75bab4e9"
+  },
+  "DT_text_data.ipynb": {
+    "DT_text_data.html": "5f080421"
   }
 }

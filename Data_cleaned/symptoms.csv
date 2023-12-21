@@ -1,0 +1,187 @@
+,Symptoms,Label
+0,I often experience shortness of breath.,Physical health
+1,I have been feeling persistent fatigue lately.,Physical health
+2,I am experiencing unexplained weight loss.,Physical health
+3,I have a consistent cough that won't go away.,Physical health
+4,I am dealing with frequent headaches.,Physical health
+5,I have noticed a change in my appetite.,Physical health
+6,I've been having trouble sleeping recently.,Physical health
+7,I am experiencing muscle weakness.,Physical health
+8,I have chronic back pain.,Physical health
+9,I feel sharp chest pains occasionally.,Physical health
+10,I have been suffering from prolonged dizziness.,Physical health
+11,I get unusually tired after physical activity.,Physical health
+12,I've noticed swelling in my ankles and feet.,Physical health
+13,I have episodes of rapid heartbeat.,Physical health
+14,I am experiencing joint pain and stiffness.,Physical health
+15,I have persistent abdominal pain.,Physical health
+16,I suffer from severe menstrual cramps.,Physical health
+17,I have been having digestive issues frequently.,Physical health
+18,I feel numbness in my hands and feet.,Physical health
+19,I am dealing with constant throat irritation.,Physical health
+20,I have unusually dry skin.,Physical health
+21,I've noticed some vision changes.,Physical health
+22,I am experiencing frequent urination.,Physical health
+23,I have a high fever that won't subside.,Physical health
+24,I am dealing with uncontrolled bleeding.,Physical health
+25,I have sudden severe headaches.,Physical health
+26,I get easily bruised without any apparent reason.,Physical health
+27,I have been having chest congestion.,Physical health
+28,I am experiencing a loss of balance.,Physical health
+29,I have difficulty swallowing.,Physical health
+30,I've been suffering from constant nausea.,Physical health
+31,I have a persistent rash.,Physical health
+32,I experience severe allergic reactions.,Physical health
+33,I have irregular bowel movements.,Physical health
+34,I am dealing with excessive sweating.,Physical health
+35,I have a chronic sore throat.,Physical health
+36,I get severe cramps in my legs.,Physical health
+37,I have been experiencing unusual hair loss.,Physical health
+38,I get muscle spasms frequently.,Physical health
+39,I suffer from chronic dehydration.,Physical health
+40,I experience tingling sensations in my limbs.,Physical health
+41,I have unexplained bruises appearing.,Physical health
+42,I suffer from frequent earaches.,Physical health
+43,I have difficulty concentrating due to physical discomfort.,Physical health
+44,I experience unexplained changes in my weight.,Physical health
+45,I have a persistent feeling of being unwell.,Physical health
+46,I suffer from extreme fatigue after eating.,Physical health
+47,I have trouble breathing when lying down.,Physical health
+48,I get sharp pains in my abdomen.,Physical health
+49,I have been experiencing increased thirst.,Physical health
+50,I suffer from regular night sweats.,Physical health
+51,I have bouts of rapid and unexplained mood swings.,Physical health
+52,I get sharp pains in my joints.,Physical health
+53,I have trouble maintaining my balance.,Physical health
+54,I experience blurred vision.,Physical health
+55,I have persistent itching without a rash.,Physical health
+56,I suffer from swelling in my lymph nodes.,Physical health
+57,I experience a loss of muscle coordination.,Physical health
+58,I have severe pain in my lower back.,Physical health
+59,I suffer from extreme cold sensitivity.,Physical health
+60,I have unexplained gastrointestinal discomfort.,Physical health
+61,I experience frequent heartburn.,Physical health
+62,I have a constant salty taste in my mouth.,Physical health
+63,I suffer from severe migraines.,Physical health
+64,I experience chest tightness.,Physical health
+65,I have difficulty breathing during exercise.,Physical health
+66,I get numbness in my face.,Physical health
+67,I have been experiencing a persistent cough.,Physical health
+68,I suffer from sudden vision loss in one eye.,Physical health
+69,I have a loss of smell and taste.,Physical health
+70,I experience ringing in my ears.,Physical health
+71,"I have swollen, red, or painful joints.",Physical health
+72,I get frequent infections.,Physical health
+73,I experience severe abdominal cramping.,Physical health
+74,I have trouble with frequent urination at night.,Physical health
+75,I suffer from excessive thirst.,Physical health
+76,I get dizzy spells when I stand up.,Physical health
+77,I have chronic indigestion.,Physical health
+78,I experience heat intolerance.,Physical health
+79,I have a prolonged sore that doesn't heal.,Physical health
+80,I suffer from unexplained muscle aches.,Physical health
+81,I experience chronic constipation.,Physical health
+82,I have frequent bouts of diarrhea.,Physical health
+83,I get unexplained nosebleeds.,Physical health
+84,I suffer from palpitations.,Physical health
+85,I have bouts of severe sweating at night.,Physical health
+86,I experience sudden swelling of hands and feet.,Physical health
+87,I have persistent acne that doesn’t respond to treatment.,Physical health
+88,I suffer from extreme light sensitivity.,Physical health
+89,I have recurring urinary tract infections.,Physical health
+90,"I experience short, sharp pains in my chest.",Physical health
+91,I have a tingling sensation in my fingertips.,Physical health
+92,I suffer from excessive gas and bloating.,Physical health
+93,I experience frequent flare-ups of eczema.,Physical health
+94,I have chronic sinus pressure.,Physical health
+95,I suffer from recurrent bronchitis.,Physical health
+96,I have severe pains in my neck.,Physical health
+97,I experience swelling and pain in my knee.,Physical health
+98,I have a chronic metallic taste in my mouth.,Physical health
+99,I suffer from restless leg syndrome at night.,Physical health
+100,I frequently feel anxious without any specific reason.,Mental health
+101,I have been experiencing overwhelming sadness.,Mental health
+102,I feel a persistent sense of hopelessness.,Mental health
+103,I have lost interest in activities I used to enjoy.,Mental health
+104,I am dealing with significant mood swings.,Mental health
+105,I find it hard to concentrate on everyday tasks.,Mental health
+106,I am experiencing severe emotional highs and lows.,Mental health
+107,I feel a constant sense of worthlessness.,Mental health
+108,I have been having trouble sleeping or sleeping too much.,Mental health
+109,I feel persistently tired and have low energy.,Mental health
+110,I am experiencing unexplained irritability.,Mental health
+111,I am withdrawing from social interactions.,Mental health
+112,I have a significant change in my eating habits.,Mental health
+113,I am dealing with constant restlessness.,Mental health
+114,I feel intense and uncontrolled anger.,Mental health
+115,I have thoughts of self-harm or suicide.,Mental health
+116,I am experiencing panic attacks.,Mental health
+117,I have obsessive thoughts or behaviors.,Mental health
+118,I am struggling with compulsive behaviors.,Mental health
+119,I have been feeling detached from reality.,Mental health
+120,I am experiencing hallucinations.,Mental health
+121,I have a persistent sense of guilt.,Mental health
+122,I am having difficulty dealing with stress.,Mental health
+123,I feel disconnected from my own emotions.,Mental health
+124,I am experiencing paranoia or distrust of others.,Mental health
+125,I have a loss of motivation for most activities.,Mental health
+126,I am feeling unusually confused.,Mental health
+127,I am dealing with severe anxiety in social situations.,Mental health
+128,I am struggling with feelings of overwhelm.,Mental health
+129,I am experiencing persistent nightmares.,Mental health
+130,I feel an excessive fear or worry about specific things.,Mental health
+131,I am struggling with flashbacks of traumatic events.,Mental health
+132,I am having trouble forming or maintaining relationships.,Mental health
+133,I am experiencing severe physical reactions to stress.,Mental health
+134,I am having difficulty controlling my thoughts.,Mental health
+135,I have a strong feeling of dread about the future.,Mental health
+136,I am experiencing prolonged periods of sadness.,Mental health
+137,I am dealing with unexplained physical ailments.,Mental health
+138,I feel a lack of interest in personal hygiene.,Mental health
+139,I am experiencing significant weight gain or loss.,Mental health
+140,I feel a sense of detachment from loved ones.,Mental health
+141,I am dealing with an inability to cope with daily problems.,Mental health
+142,I have a decreased ability to feel pleasure.,Mental health
+143,I am experiencing frequent tearfulness.,Mental health
+144,I have a strong sense of guilt or worthlessness.,Mental health
+145,I am finding it hard to make decisions.,Mental health
+146,I am experiencing an inability to feel empathy.,Mental health
+147,I am dealing with persistent nervousness.,Mental health
+148,I have a pervasive fear of being judged by others.,Mental health
+149,I am experiencing a loss of sexual desire.,Mental health
+150,I am feeling trapped or in an unbearable situation.,Mental health
+151,I am dealing with excessive rumination on past events.,Mental health
+152,I feel a general sense of malaise or being unwell.,Mental health
+153,I am experiencing sudden changes in behavior.,Mental health
+154,I have a lack of desire to interact with others.,Mental health
+155,I am feeling a persistent emptiness.,Mental health
+156,I am experiencing unexplained aches and pains.,Mental health
+157,I have a strong sense of unreality or being detached from oneself.,Mental health
+158,I am dealing with a decreased ability to cope with minor problems.,Mental health
+159,I am experiencing intense fear or phobia.,Mental health
+160,I feel a chronic sense of unease or nervous anticipation.,Mental health
+161,I am dealing with an extreme sensitivity to rejection.,Mental health
+162,I am experiencing frequent outbursts of anger.,Mental health
+163,I have a pervasive pattern of unstable relationships.,Mental health
+164,I am feeling a chronic sense of alienation from others.,Mental health
+165,I am experiencing difficulty with memory or concentration.,Mental health
+166,I have a decreased sense of self-worth.,Mental health
+167,I am dealing with a persistent feeling of being overwhelmed.,Mental health
+168,I am experiencing strong feelings of envy or jealousy.,Mental health
+169,I feel an inability to be alone.,Mental health
+170,I am feeling an intense and irrational fear of everyday situations.,Mental health
+171,I am experiencing difficulty understanding and expressing emotions.,Mental health
+172,I am dealing with a constant preoccupation with certain ideas.,Mental health
+173,I have a lack of flexibility in thinking or behavior.,Mental health
+174,I am experiencing extreme restlessness or agitation.,Mental health
+175,I am feeling a deep fear of abandonment.,Mental health
+176,I have a tendency to self-isolate or withdraw from others.,Mental health
+177,I am experiencing a prolonged sense of grief or mourning.,Mental health
+178,I feel an excessive need for admiration or attention.,Mental health
+179,I am dealing with a severe reaction to criticism.,Mental health
+180,I am experiencing a persistent feeling of being out of control.,Mental health
+181,I have a distorted or negative body image.,Mental health
+182,I am feeling a chronic sense of boredom or emptiness.,Mental health
+183,I am experiencing an exaggerated sense of self-importance.,Mental health
+184,I feel an intense and inappropriate display of emotions.,Mental health
+185,I am dealing with a persistent distrust of others.,Mental health

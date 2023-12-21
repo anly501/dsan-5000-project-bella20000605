@@ -14,10 +14,13 @@ A: The prevalence rates for disorders like schizophrenia, bipolar disorder, eati
 A: The Box Plot above shows the distribution of 'Bipolar disorder (%)', 'Schizophrenia (%)', 'Eating disorders (%)', 'Anxiety disorders (%)'prevalence vary differently by income group, while the Depression doesn't vary accoringly by income group. 
 
 #### Q: How does mental health vary by education level(average_adjusted_years_of_school)<br>
-A: As education levels increase, the prevalence rates of Schizophrenia seem to spread out, while others don't show a clear trend indicating a strong relationship with education level. This could indicate that other factors msy be more influential in determining the prevalence of these mental health disorders.
+A: As education levels increase, the prevalence rates of Schizophrenia and eating disorder seem to spread out, while others don't show a clear trend indicating a strong relationship with education level. This could indicate that when education level increases, people may have more awareness of recogonizing or reporting these 
+Schizophrenia and eating disorder.
 
 #### Q: How does mental health vary by GDP and GDP_per_capita?<br>
-A: The scatter plots show that they does not appear to be a clear trend or correlation between GDP and the prevalence of these mental health problems. As GDP per capita increases, the prevalence rates of eating disorder seems to spread out, while others don't show a clear trend indicating a strong relationship with gdp per capita.
+A: The scatter plots show that they does not appear to be a clear trend or correlation between GDP and the prevalence of these mental health problems. 
+
+As GDP per capita increases, the prevalence rates of eating disorder seems to spread out, while others don't show a clear trend indicating a strong relationship with gdp per capita.
 
 #### Q: How does eating order prevalence changed over time in the male and female?<br>
 A: The line plot above shows the global average prevalence of eating disorders over time for males, females, and all genders combined. The trends can be compared to see how the prevalence has changed over the years. Eating disorders were more than twice as prevalent among females (3.8%) than males (1.5%)
@@ -57,11 +60,10 @@ A: <b>Socioeconomic Factors:</b> These include GDP (2022), GDP per capita, and i
 In summary, educational factors, indicated by 'average_learning_Adjusted_of_school', show the most consistent strong positive correlations across several mental health outcomes, suggesting that education level may be a strong predictor of mental health outcomes, potentially due to greater awareness and reporting. Socioeconomic factors, particularly income level, also show strong correlations, especially in high-income groups. Geographic factors show both strong negative and moderate positive correlations, indicating a more complex relationship with mental health outcomes that could be influenced by a variety of regional factors.
 
 #### Q: Do the mental health indicators and educational outcomes necessarily align neatly with economic categories such as income levels?<br>
+
 A: The essence of my findings reveals that the complexities of mental health, geolocation indicators and educational outcomes do not necessarily align neatly with economic categories such as income levels which are defined to 4 levels.
 
 
-#### Q: Can we use educational, economic, and geological factors to predict if a economy have a low or high eating disorders rate? <br>
+#### Q: Can we use educational, economic, and geological factors to predict if a economy have a low or high eating disorder prevalence rate? <br>
 A: Yes.<br>
-We employed a Naive bayes, random forests algorithm and decesion trees to predict the prevalence of eating disorders based on a set of educational, socio-economic and geographical features. The confusion matrix results indicate a high level of accuracy, suggesting that the chosen features—average learning years of school, GDP per capita, total GDP, and continent—have significant predictive power.
-
-
+We employed a Naive bayes, random forests and decesion trees to predict the prevalence of eating disorders based on a set of educational, socio-economic and geographical features. The confusion matrix results indicate a high level of accuracy, suggesting that the chosen features: average learning years of school, GDP per capita, income, and continent have significant predictive power.
